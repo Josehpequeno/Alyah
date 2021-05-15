@@ -1,4 +1,3 @@
-//const templates = require('../views/index');
 const createApp = require('../config/app');
 
 class RouteController {
