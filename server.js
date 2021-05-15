@@ -11,9 +11,12 @@ app.set("host", process.env.HOST || "localhost");
 app.get("/", function (req, res) {
     //res.sendFile(path.join(__dirname, '../Alyah/views/index.html'));//utilizando o html de views.
 })*/
-
+if (process.env.NODE_ENV !== 'production') {
+    process.env.NODE_ENV = 'Local';
+}
 http.createServer(app).listen(3000, () =>
-    console.log(verde + "Servidor rodando localmente em http://%s:%s" + reset,
+    console.log(verde + "%s servidor rodando localmente em http://%s:%s" + reset,
+        process.env.NODE_ENV,
         app.get("host"),
         app.get("port"))
 );
