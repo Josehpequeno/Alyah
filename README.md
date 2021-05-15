@@ -9,9 +9,10 @@
 <img src="https://img.shields.io/github/stars/Josehpequeno/Alyah">
 </p>
 <p align="center">
- <a href="#Back End">Back End</a> •
-<!-- <a href="#roadmap">Roadmap</a> • 
- <a href="#tecnologias">Tecnologias</a> • 
+ <a href="#Back-End">Back-End</a> •
+<a href="#Prerequisites">Prerequisites</a> • 
+ <a href="#Technology">Technology</a> • 
+<!-- 
  <a href="#contribuicao">Contribuição</a> • 
  <a href="#licenc-a">Licença</a> • 
  <a href="#autor">Autor</a>-->
@@ -25,7 +26,7 @@ Before you begin, you will need to have the following tools installed on your ma
 [Git] (https://git-scm.com), [Node.js] (https://nodejs.org/en/).
 In addition, it is good to have an editor to work with the code like [VSCode] (https://code.visualstudio.com/)
 
-### Back End
+### Back-End
 
 ```bash
 # Clone this repository
@@ -42,7 +43,7 @@ $ npm run start
 $ npm run dev
 ```
 
-### 🛠 Tecnologias
+### 🛠 Technology
 - [Express](https://expressjs.com/)
 - [Node.js](https://nodejs.org/en/)
 - [Vue.js](https://br.vuejs.org/)
