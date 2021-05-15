@@ -7,7 +7,6 @@ const app = customExpress();
 
 app.set("port", process.env.PORT || 3000);
 app.set("host", process.env.HOST || "localhost");
-app.set('view engine', 'html');
 /*
 app.get("/", function (req, res) {
     //res.sendFile(path.join(__dirname, '../Alyah/views/index.html'));//utilizando o html de views.
