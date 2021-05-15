@@ -9,8 +9,8 @@
 <img src="https://img.shields.io/github/stars/Josehpequeno/Alyah">
 </p>
 <p align="center">
- <a href="#Back-End">Back-End</a> •
 <a href="#Prerequisites">Prerequisites</a> • 
+ <a href="#Back-End">Back-End</a> •
  <a href="#Technology">Technology</a> • 
 <!-- 
  <a href="#contribuicao">Contribuição</a> • 
