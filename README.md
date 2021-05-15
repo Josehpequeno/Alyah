@@ -1,2 +1,2 @@
 # Alyah
-//Manga reader
+Manga reader
