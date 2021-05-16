@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://archcraft-os.github.io"><img src="public/images/logo2.png" height="50" width="150" alt="Alyah"></a>
+<a href="https://github.com/Josehpequeno/Alyah"><img src="public/images/logo.png" height="50" width="150" alt="Alyah"></a>
 </p>
 <p align="center">A manga manager where you can read, download and list your favorites.</p>
 <p align="center">
@@ -9,7 +9,8 @@
 <img src="https://img.shields.io/github/stars/Josehpequeno/Alyah">
 </p>
 <p align="center">
- <a href="#Technology">Heroku</a> •
+ <a href="#Heroku">Heroku</a> •
+ <a href="#Preview">Preview</a> •
  <a href="#Prerequisites">Prerequisites</a> • 
  <a href="#Back-End">Back-End</a> •
  <a href="#Technology">Technology</a>  
@@ -26,6 +27,9 @@
     <a href="https://alyah.herokuapp.com/">:link: Site Heroku</a>
 </h3>
 
+### Preview
+current situation of the homepage
+<img src="public/images/preview.png">
 ### Prerequisites
 Before you begin, you will need to have the following tools installed on your machine:
 [Git] (https://git-scm.com), [Node.js] (https://nodejs.org/en/).
