@@ -13,7 +13,7 @@
  <a href="#Preview">Preview</a> •
  <a href="#Prerequisites">Prerequisites</a> • 
  <a href="#Back-End">Back-End</a> •
- <a href="#Technology">Technology</a>  
+ <a href="#🛠 Technology">Technology</a>  
 <!-- 
  <a href="#contribuicao">Contribuição</a> • 
  <a href="#licenc-a">Licença</a> • 
@@ -28,7 +28,8 @@
 </h3>
 
 ### Preview
-current situation of the homepage
+current situation of the homepage.
+
 <img src="public/images/preview.png">
 ### Prerequisites
 Before you begin, you will need to have the following tools installed on your machine:
