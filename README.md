@@ -23,7 +23,7 @@
 </h4>
 
 <h3 align="center">
-    <a href="https://eleicoesapp.herokuapp.com/">:link: Site Heroku</a>
+    <a href="https://alyah.herokuapp.com/">:link: Site Heroku</a>
 </h3>
 
 ### Prerequisites
