@@ -9,9 +9,10 @@
 <img src="https://img.shields.io/github/stars/Josehpequeno/Alyah">
 </p>
 <p align="center">
-<a href="#Prerequisites">Prerequisites</a> • 
+ <a href="#Technology">Heroku</a> •
+ <a href="#Prerequisites">Prerequisites</a> • 
  <a href="#Back-End">Back-End</a> •
- <a href="#Technology">Technology</a> • 
+ <a href="#Technology">Technology</a>  
 <!-- 
  <a href="#contribuicao">Contribuição</a> • 
  <a href="#licenc-a">Licença</a> • 
@@ -20,6 +21,10 @@
 <h4 align="center"> 
 	:construction: Work In Progress. :construction:
 </h4>
+
+<h3 align="center">
+    <a href="https://eleicoesapp.herokuapp.com/">:link: Site Heroku</a>
+</h3>
 
 ### Prerequisites
 Before you begin, you will need to have the following tools installed on your machine:
