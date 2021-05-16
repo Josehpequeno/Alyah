@@ -22,7 +22,7 @@
 	:construction: Work In Progress. :construction:
 </h4>
 
-<h3 align="center">
+<h3>
     <a href="https://alyah.herokuapp.com/">:link: Site Heroku</a>
 </h3>
 
