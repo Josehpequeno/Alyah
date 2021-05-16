@@ -13,7 +13,7 @@
  <a href="#Preview">Preview</a> •
  <a href="#Prerequisites">Prerequisites</a> • 
  <a href="#Back-End">Back-End</a> •
- <a href="#🛠 Technology">Technology</a>  
+ <a href="#Technology">Technology</a>  
 <!-- 
  <a href="#contribuicao">Contribuição</a> • 
  <a href="#licenc-a">Licença</a> • 
@@ -28,7 +28,7 @@
 </h3>
 
 ### Preview
-current situation of the homepage.
+Current situation of the homepage.
 
 <img src="public/images/preview.png">
 ### Prerequisites
@@ -53,7 +53,7 @@ $ npm run start
 $ npm run dev
 ```
 
-### 🛠 Technology
+### Technology
 - [Express](https://expressjs.com/)
 - [Node.js](https://nodejs.org/en/)
 - [Vue.js](https://br.vuejs.org/)
