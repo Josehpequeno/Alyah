@@ -24,7 +24,7 @@
 </h4>
 
 <h3>
-    <a href="https://alyah.herokuapp.com/">:link: Site Heroku</a>
+    <a href="https://alyah.herokuapp.com/">:link: Heroku</a>
 </h3>
 
 ### Preview
