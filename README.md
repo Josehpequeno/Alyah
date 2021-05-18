@@ -48,9 +48,9 @@ $ cd Alyah
 
 # Install the dependencies
 $ npm install
-# Execute a aplicação
+# Run the application
 $ npm run start
-# Execute a aplicação em modo de desenvolvimento
+# Run the application in development mode
 $ npm run dev
 ```
 
