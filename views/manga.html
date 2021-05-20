@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="/nd_md/tailwindcss/dist/components.min.css" />
     <link rel="stylesheet" href="/nd_md/tailwindcss/dist/utilities.min.css" />
     <link rel="stylesheet" href="/static/css/index.min.css" />
+    <style>
+        @import url(https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css);
+    </style>
     <!-- use double mustache for HTML-escaped interpolation -->
     <title>{{ title }}</title>
 
@@ -42,6 +45,22 @@
         </header>
     </div>
     <div id="content" class="md:container md:mx-auto min-h-screen py-10">
+        <div class="min-w-screen flex items-center justify-center px-5 pb-10">
+            <div class="w-full mx-auto rounded-xl bg-color-secundary-light shadow-lg p-10 text-gray-800 relative overflow-hidden resize-x min-w-80 max-w-3xl"
+                x-data="app()" x-init="generatePassword()">
+                <div class="relative mt-1">
+                    <input type="text" id="password"
+                        class="w-full pl-3 pr-10 py-2 border-2 border-gray-200 rounded-xl hover:border-gray-300 focus:outline-none focus:border-blue-500 transition-colors"
+                        placeholder="Search...">
+                    <button
+                        class="block w-7 h-7 text-center text-xl leading-0 absolute top-2 right-2 text-gray-400 focus:outline-none hover:text-gray-900 transition-colors"><i
+                            class="mdi mdi-magnify"></i></button>
+                </div>
+                <div class="absolute top-0 left-0 w-full h-2 flex">
+                    <div class="h-2 bg-color-primary-dark flex-1"></div>
+                </div>
+            </div>
+        </div>
         <div class="flex flex-cols flex-wrap gap-4 grid md:grid-cols-2 md:items-center">
             <!-- Start of component -->
             <div class="h-80 bg-color-secundary md:col-span-1 text-white p-5 rounded-md tracking-wide shadow-lg">
@@ -290,6 +309,28 @@
                 </div>
             </div>
             <!-- End of component -->
+            <!-- End of component -->
+            <div class="h-80 bg-color-secundary md:col-span-1 text-white p-5 rounded-md tracking-wide shadow-lg">
+                <div id="header" class="flex">
+                    <div>
+                        <div class="manga">
+                            <img alt="manga" class="w-11/12 md:w-full rounded-md"
+                                src="/static/images/manga-static/manga10.png" />
+                        </div>
+                    </div>
+                    <div id="body" class="flex flex-col ml-5">
+                        <p id="job" class="md:text-left mt-0">Joseh e Marcus se encontram pela primeira vez na
+                            universidade. Marcus pretente ser um filósofo que rompe com a filosofia tradicional e Joseh
+                            só quer se divertir. Depois de alguns relacionamentos frustrados os dois acabam se
+                            encaixando de várias maneiras possíveis. Entre dar e receber os dois vão percebendo o que a
+                            vida tem de melhor. Acompanhe, em breve...</p>
+                    </div>
+                </div>
+                <div class="mt-4 md:justify-items-center text-center bg-color-primary-dark rounded-md">
+                    <small id="name" class="font-semibold">Para o Marcus de Joseh do Marcus</small>
+                </div>
+            </div>
+            <!-- End of component -->
         </div>
     </div>
     <div class="bg-color-secundary-dark bottom-0 py-2">
@@ -337,6 +378,16 @@
                             - www.freepik.com</small></a>
                 </div>
             </div>
+            <!-- BUY ME A BEER AND HELP SUPPORT OPEN-SOURCE RESOURCES -->
+            <!--<div class="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
+                <div>
+                    <a title="Buy me a beer" href="https://www.buymeacoffee.com/scottwindon" target="_blank"
+                        class="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12">
+                        <img class="object-cover object-center w-full h-full rounded-full"
+                            src="https://i.pinimg.com/originals/60/fd/e8/60fde811b6be57094e0abc69d9c2622a.jpg" />
+                    </a>
+                </div>
+            </div>-->
         </footer>
     </div>
     <!--responsável pela renderização do app vue do lado do servidor-->

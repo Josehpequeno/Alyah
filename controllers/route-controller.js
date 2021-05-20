@@ -5,7 +5,10 @@ class RouteController {
         return {
             home: '/',
             login: '/login',
-            signup: '/signup'
+            signup: '/signup',
+            manga: '/manga',
+            populares: '/populares',
+            profile: '/profile'
         }
     }
     home() {
@@ -79,6 +82,80 @@ class RouteController {
                         return;
                     }
                     res.end(html);
+                })
+        }
+    }
+    manga() {
+        return (req, res) => {
+            //console.log(templates);
+            const template = require('fs').readFileSync('views/manga.html', 'utf-8');
+
+            const renderer = require('vue-server-renderer').createRenderer({
+                template,
+            });
+            const context = {
+                title: 'Alyah',
+                meta: `<meta charset="utf-8"/>`,
+                url: req.url
+            };
+            const appVue = createApp(context);
+            renderer
+                .renderToString(appVue, context, (err, html) => {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).end('Internal Server Error');
+                        return;
+                    }
+                    res.end(html);
+                })
+        }
+    }
+    populares() {
+        return (req, res) => {
+            //console.log(templates);
+            const template = require('fs').readFileSync('views/populares.html', 'utf-8');
+
+            const renderer = require('vue-server-renderer').createRenderer({
+                template,
+            });
+            const context = {
+                title: 'Alyah',
+                meta: `<meta charset="utf-8"/>`,
+                url: req.url
+            };
+            const appVue = createApp(context);
+            renderer
+                .renderToString(appVue, context, (err, html) => {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).end('Internal Server Error');
+                        return;
+                    }
+                    res.end(html);
+                })
+        }
+    }
+    profile() {
+        return (req, res) => {
+            const template = require('fs').readFileSync('views/profile.html', 'utf-8');
+
+            const renderer = require('vue-server-renderer').createRenderer({
+                template,
+            });
+            const context = {
+                title: 'Alyah',
+                meta: `<meta charset="utf-8"/>`,
+                url: req.url
+            };
+            const appVue = createApp(context);
+            renderer
+                .renderToString(appVue, context, (err, html) => {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).end('Internal Server Error');
+                        return;
+                    }
+                    res.status(404).end(html);
                 })
         }
     }
