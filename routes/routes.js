@@ -11,6 +11,7 @@ module.exports = (app) => {
     app.get(routes.manga, routeController.manga());
     app.get(routes.populares, routeController.populares());
     app.get(routes.profile, routeController.profile());
+    app.get(routes.editprofile, routeController.editprofile());
     
     app.use(function (req, res, next) {
         const template = require('fs').readFileSync('views/404.html', 'utf-8');

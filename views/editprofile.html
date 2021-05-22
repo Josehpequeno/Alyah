@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link class="rounded-circle" href="/static/images/favicon.ico" rel="icon" />
+    <link rel="stylesheet" href="/nd_md/tailwindcss/dist/base.min.css" />
+    <link rel="stylesheet" href="/nd_md/tailwindcss/dist/components.min.css" />
+    <link rel="stylesheet" href="/nd_md/tailwindcss/dist/utilities.min.css" />
+    <link rel="stylesheet" href="/static/css/index.min.css" />
+    <!-- use double mustache for HTML-escaped interpolation -->
+    <title>{{ title }}</title>
+
+    <!-- use triple mustache for non-HTML-escaped interpolation -->
+    {{{ meta }}}
+</head>
+
+<body>
+    <div class="flex items-center min-h-screen dark:bg-gray-900">
+        <div class="container mx-auto">
+            <div class="max-w-md mx-auto my-10 py-10 bg-color-secundary-light md:rounded">
+                <div class="text-center">
+                    <a class="py-5 flex md:flex-col">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="fill-current color-primary-dark bg-color-light-dark h-32 w-32 rounded-full object-cover"
+                            alt="username" width="24" height="24" viewBox="0 0 24 24">
+                            <path
+                                d="M19 7.001c0 3.865-3.134 7-7 7s-7-3.135-7-7c0-3.867 3.134-7.001 7-7.001s7 3.134 7 7.001zm-1.598 7.18c-1.506 1.137-3.374 1.82-5.402 1.82-2.03 0-3.899-.685-5.407-1.822-4.072 1.793-6.593 7.376-6.593 9.821h24c0-2.423-2.6-8.006-6.598-9.819z" />
+                        </svg>
+                    </a>
+                    <h1 class="my-3 text-3xl font-semibold color-secundary-dark dark:text-gray-200">Create your account
+                    </h1>
+                    <small>Join Alyah</small>
+                </div>
+                <div class="m-7">
+                    <form action="">
+                        <div class="mb-6">
+                            <label for="email"
+                                class="block mb-2 text-sm color-secundary-dark dark:text-gray-400">Username</label>
+                            <input type="text" name="username" id="username" placeholder="Username"
+                                class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block mb-2 text-sm color-secundary-dark dark:text-gray-400">Email
+                                Address</label>
+                            <input type="email" name="email" id="email" placeholder="you@company.com"
+                                class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
+                        </div>
+                        <div class="mb-6">
+                            <div class="flex justify-between mb-2">
+                                <label for="password"
+                                    class="text-sm color-secundary-dark dark:text-gray-400">Password</label>
+                            </div>
+                            <input type="password" name="password" id="password" placeholder="************"
+                                class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
+                        </div>
+                        <div class="mb-6">
+                            <div class="flex justify-between mb-2">
+                                <label for="password" class="text-sm color-secundary-dark dark:text-gray-400">Confirm
+                                    Password</label>
+                            </div>
+                            <input type="password" name="confirm-password" id="confirm-password"
+                                placeholder="************"
+                                class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
+                        </div>
+                        <div class="mb-6">
+                            <button type="button"
+                                class="w-full px-3 py-4 text-white bg-color-secundary-dark rounded-md focus:bg-indigo-600 focus:outline-none">Sign
+                                up</button>
+                        </div>
+                        <p class="text-sm text-center color-secundary-dark">Already registered? <a href="/login"
+                                class="color-primary focus:outline-none focus:underline focus:text-indigo-500 dark:focus:border-indigo-800">Sign
+                                In</a>.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer Mentions -->
+    <div class="bottom-5 w-full text-center text-gray-400">
+        Josehpequeno © 2021
+    </div>
+    <!--vue-ssr-outlet-->
+</body>
+
+</html>

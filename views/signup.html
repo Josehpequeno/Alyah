@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/nd_md/tailwindcss/dist/components.min.css" />
     <link rel="stylesheet" href="/nd_md/tailwindcss/dist/utilities.min.css" />
     <link rel="stylesheet" href="/static/css/index.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- use double mustache for HTML-escaped interpolation -->
     <title>{{ title }}</title>
 
@@ -14,69 +15,85 @@
     {{{ meta }}}
 </head>
 
-<body>
-    <div class="flex items-center min-h-screen dark:bg-gray-900">
-        <div class="container mx-auto">
-            <div class="max-w-md mx-auto my-10 py-10 bg-color-secundary-light md:rounded">
-                <div class="text-center">
-                    <a href="/" class="py-5 flex md:flex-col">
-                        <img src="/static/images/logo2.svg" alt="Logo Icon" style="height:34px;">
-                    </a>
-                    <h1 class="my-3 text-3xl font-semibold color-secundary-dark dark:text-gray-200">Create your account
-                    </h1>
-                    <small>Join Alyah</small>
-                </div>
-                <div class="m-7">
-                    <form action="">
-                        <div class="mb-6">
-                            <label for="email"
-                                class="block mb-2 text-sm color-secundary-dark dark:text-gray-400">Username</label>
-                            <input type="text" name="username" id="username" placeholder="Username"
-                                class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
+<body class="bg-black">
+    <div class="container mx-auto min-h-screen font-nunito py-10">
+        <main>
+            <div class="flex items-center justify-center mt-16 mx-6">
+                <div class="p-6 max-w-sm w-full bg-color-secundary-dark shadow rounded-md">
+                    <div class="py-10 flex justify-center">
+                        <a href="/">
+                            <img src="/static/images/logo2.png" class="object-center" alt="Logo Icon"
+                                style="width:200px; height:34px;">
+                        </a>
+                    </div>
+                    <small class="text-white text-xs text-center flex justify-center">Join Alyah</small>
+                    <h3 class="text-white text-xl text-center">Create your account</h3>
+                    <form class="mt-4" method="POST" action="/login">
+                        <input type="hidden" name="_token" value="96LGLQC0ylNCwHDLyTqFuBvSMwOqHi7voLu8lwj4">
+                        <label class="block">
+                            <span class="text-white text-sm">Username</span>
+                            <input id="username" name="username"
+                                class="px-3 py-2 h-7 form-input mt-1 block w-full rounded-md bg-color-secundary border-gray-700 text-white"
+                                value="" required autocomplete="email" autofocus>
+                        </label>
+                        <label class="block mt-3">
+                            <span class="text-white text-sm">Email</span>
+                            <input type="email" id="email" name="email"
+                                class="px-3 py-2 h-7 form-input mt-1 block w-full rounded-md bg-color-secundary border-gray-700 text-white"
+                                value="" required autocomplete="email" autofocus>
+                        </label>
+                        <label class="block mt-3">
+                            <span class="text-white text-sm">Password</span>
+                            <input id="password" type="password"
+                                class="px-3 py-2 h-7 form-input mt-1 block w-full rounded-md bg-color-secundary border-gray-700 text-white"
+                                name="password" required autocomplete="current-password">
+                        </label>
+                        <label class="block mt-3">
+                            <span class="text-white text-sm">Confirm Password</span>
+                            <input id="confirm-password" type="password"
+                                class="px-3 py-2 h-7 form-input mt-1 block w-full rounded-md bg-color-secundary border-gray-700 text-white"
+                                name="password" required autocomplete="current-password">
+                            <span id="message" class="py-10"></span>
+                        </label>
+
+                        <div class="mt-6">
+                            <button type="submit"
+                                class="w-full py-2 px-4 text-center bg-color-sucess rounded-md text-white text-sm hover:bg-blue-500 focus:outline-none">
+                                Sign Up
+                            </button>
                         </div>
-                        <div class="mb-6">
-                            <label for="email" class="block mb-2 text-sm color-secundary-dark dark:text-gray-400">Email
-                                Address</label>
-                            <input type="email" name="email" id="email" placeholder="you@company.com"
-                                class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
-                        </div>
-                        <div class="mb-6">
-                            <div class="flex justify-between mb-2">
-                                <label for="password"
-                                    class="text-sm color-secundary-dark dark:text-gray-400">Password</label>
-                            </div>
-                            <input type="password" name="password" id="password" placeholder="************"
-                                class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
-                        </div>
-                        <div class="mb-6">
-                            <div class="flex justify-between mb-2">
-                                <label for="password" class="text-sm color-secundary-dark dark:text-gray-400">Confirm
-                                    Password</label>
-                            </div>
-                            <input type="password" name="confirm-password" id="confirm-password"
-                                placeholder="************"
-                                class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
-                        </div>
-                        <div class="mb-6">
-                            <button type="button"
-                                class="w-full px-3 py-4 text-white bg-color-secundary-dark rounded-md focus:bg-indigo-600 focus:outline-none">Sign
-                                up</button>
-                        </div>
-                        <p class="text-sm text-center color-secundary-dark">Already registered? <a href="/login"
-                                class="color-primary focus:outline-none focus:underline focus:text-indigo-500 dark:focus:border-indigo-800">Sign
-                                In</a>.</p>
+                        <p class="text-sm text-center text-white py-5">Already registered? <a href="/login"
+                                class="text-blue-500 focus:outline-none focus:underline focus:text-indigo-500 dark:focus:border-indigo-800">Login</a>.
+                        </p>
                     </form>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
-
-
     <!-- Footer Mentions -->
-    <div class="bottom-5 w-full text-center text-gray-400">
+    <div class="dark:bg-gray-900 bottom-5 w-full text-center text-gray-400">
         Josehpequeno © 2021
     </div>
     <!--vue-ssr-outlet-->
+    <script src="/nd_md/jquery/dist/jquery.min.js" />
+    <script src="/nd_md/jquery/dist/jquery.slim.min.js" />
+    <script src="/nd_md/popper.js/dist/umd/popper.min.js" />
+    <script>
+        Vue.use(checkPasswordMatch);
+    </script>
+    <script>
+        function checkPasswordMatch() {
+            if ($('#password').val() == $('#confirm-password').val()) {
+                $('#message').html('_______________________________________________').css('color', 'green');
+            } else {
+                $('#message').html('_______________________________________________').css('color', 'red');
+            }
+        }
+        $(document).ready(function () {
+            $("#password").keyup(checkPasswordMatch);
+            $("#confirm-password").keyup(checkPasswordMatch);
+        });
+    </script>
 </body>
 
 </html>

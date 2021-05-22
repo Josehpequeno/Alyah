@@ -45,115 +45,170 @@
         </header>
     </div>
     <div id="content" class="md:container md:mx-auto min-h-screen py-10">
-        <div class="flex items-center min-h-screen dark:bg-gray-900">
-            <div class="container mx-auto">
-                <div class="max-w-md mx-auto my-10 py-10 bg-color-secundary-light md:rounded">
-                    <div class="text-center">
-                        <div
-                            class="h-24 w-72 md rounded-full relative avatar flex items-end justify-end text-purple-600 min-w-max absolute -top-16 flex bg-purple-200 text-purple-100 row-start-1 row-end-3 text-purple-650 ring-1 ring-white">
-                            <img class="h-24 w-24 md rounded-full relative"
-                                src="https://avatars3.githubusercontent.com/u/11801238?v=4" alt="">
-                            <div class="absolute"></div>
-                        </div>
-                        <h1 class="my-3 text-3xl font-semibold color-secundary-dark dark:text-gray-200">Create your
-                            account
-                        </h1>
-                        <small>Join Alyah</small>
+        <div class="bg-color-secundary py-5 rounded">
+            <div class="flex justify-center pb-10">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    class="fill-current color-primary-dark bg-color-light-dark h-32 w-32 rounded-full object-cover"
+                    alt="username" width="24" height="24" viewBox="0 0 24 24">
+                    <path
+                        d="M19 7.001c0 3.865-3.134 7-7 7s-7-3.135-7-7c0-3.867 3.134-7.001 7-7.001s7 3.134 7 7.001zm-1.598 7.18c-1.506 1.137-3.374 1.82-5.402 1.82-2.03 0-3.899-.685-5.407-1.822-4.072 1.793-6.593 7.376-6.593 9.821h24c0-2.423-2.6-8.006-6.598-9.819z" />
+                </svg>
+                <div class="ml-10">
+                    <div class="flex items-center">
+                        <h2 class="block leading-relaxed font-light text-white text-3xl">Username</h2>
+                        <a href="\editprofile"
+                            class="cursor-pointer h-7 px-3 ml-3 focus:outline-none hover:border-transparent text-center rounded border border-white hover:bg-white button bg-transparent text-white font-semibold">Editar
+                            perfil</a>
                     </div>
-                    <div class="m-7">
-                        <form action="">
-                            <div class="mb-6">
-                                <label for="email"
-                                    class="block mb-2 text-sm color-secundary-dark dark:text-gray-400">Username</label>
-                                <input type="text" name="username" id="username" placeholder="Username"
-                                    class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
-                            </div>
-                            <div class="mb-6">
-                                <label for="email"
-                                    class="block mb-2 text-sm color-secundary-dark dark:text-gray-400">Email
-                                    Address</label>
-                                <input type="email" name="email" id="email" placeholder="you@company.com"
-                                    class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
-                            </div>
-                            <div class="mb-6">
-                                <div class="flex justify-between mb-2">
-                                    <label for="password"
-                                        class="text-sm color-secundary-dark dark:text-gray-400">Password</label>
-                                </div>
-                                <input type="password" name="password" id="password" placeholder="************"
-                                    class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
-                            </div>
-                            <div class="mb-6">
-                                <div class="flex justify-between mb-2">
-                                    <label for="password"
-                                        class="text-sm color-secundary-dark dark:text-gray-400">Confirm
-                                        Password</label>
-                                </div>
-                                <input type="password" name="confirm-password" id="confirm-password"
-                                    placeholder="************"
-                                    class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
-                            </div>
-                            <div class="mb-6">
-                                <button type="button"
-                                    class="w-full px-3 py-4 text-white bg-color-secundary-dark rounded-md focus:bg-indigo-600 focus:outline-none">Sign
-                                    up</button>
-                            </div>
-                            <p class="text-sm text-center color-secundary-dark">Already registered? <a href="/login"
-                                    class="color-primary focus:outline-none focus:underline focus:text-indigo-500 dark:focus:border-indigo-800">Sign
-                                    In</a>.</p>
-                        </form>
+                    <ul class="flex justify-content-around items-center">
+                        <li>
+                            <span class="block text-base flex text-white"><span class="font-bold mr-2">7 </span>
+                                Favorites</span>
+                        </li>
+                    </ul>
+                    <br>
+                    <div class="">
+                        <h1 class="text-base text-white font-bold font-light">Username</h1>
+                        <span class="text-base text-white">description ...</span>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="bg-color-secundary-dark bottom-0 py-2">
-            <footer class="flex flex-wrap items-center justify-between p-3 m-auto">
-                <div class="container mx-auto flex flex-col flex-wrap items-center justify-between">
-                    <ul class="flex mx-auto text-white text-center">
-                        <li class="p-2 cursor-pointer"><a href="https://www.linkedin.com/in/hicaro-jose-2aa269166/">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="fill-current text-white" width="24"
-                                    height="24" viewBox="0 0 24 24">
-                                    <path
-                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="p-2 cursor-pointer"><a href="https://www.instagram.com/mentalityslow/">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="fill-current text-white" width="24"
-                                    height="24" viewBox="0 0 24 24">
-                                    <path
-                                        d="M15.233 5.488c-.843-.038-1.097-.046-3.233-.046s-2.389.008-3.232.046c-2.17.099-3.181 1.127-3.279 3.279-.039.844-.048 1.097-.048 3.233s.009 2.389.047 3.233c.099 2.148 1.106 3.18 3.279 3.279.843.038 1.097.047 3.233.047 2.137 0 2.39-.008 3.233-.046 2.17-.099 3.18-1.129 3.279-3.279.038-.844.046-1.097.046-3.233s-.008-2.389-.046-3.232c-.099-2.153-1.111-3.182-3.279-3.281zm-3.233 10.62c-2.269 0-4.108-1.839-4.108-4.108 0-2.269 1.84-4.108 4.108-4.108s4.108 1.839 4.108 4.108c0 2.269-1.839 4.108-4.108 4.108zm4.271-7.418c-.53 0-.96-.43-.96-.96s.43-.96.96-.96.96.43.96.96-.43.96-.96.96zm-1.604 3.31c0 1.473-1.194 2.667-2.667 2.667s-2.667-1.194-2.667-2.667c0-1.473 1.194-2.667 2.667-2.667s2.667 1.194 2.667 2.667zm4.333-12h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm.952 15.298c-.132 2.909-1.751 4.521-4.653 4.654-.854.039-1.126.048-3.299.048s-2.444-.009-3.298-.048c-2.908-.133-4.52-1.748-4.654-4.654-.039-.853-.048-1.125-.048-3.298 0-2.172.009-2.445.048-3.298.134-2.908 1.748-4.521 4.654-4.653.854-.04 1.125-.049 3.298-.049s2.445.009 3.299.048c2.908.133 4.523 1.751 4.653 4.653.039.854.048 1.127.048 3.299 0 2.173-.009 2.445-.048 3.298z" />
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="p-2 cursor-pointer"><a
-                                href="mailto:hicarojbs21@gmail.com?subject=Alyah Manga reader">
-                                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"
-                                    class="fill-current text-white" fill-rule="evenodd" clip-rule="evenodd">
-                                    <path
-                                        d="M19 24h-14c-2.761 0-5-2.239-5-5v-14c0-2.761 2.239-5 5-5h14c2.762 0 5 2.239 5 5v14c0 2.761-2.238 5-5 5zm-.141-6.333c.63 0 1.141-.512 1.141-1.142v-9.05c0-.63-.511-1.142-1.141-1.142h-13.718c-.63 0-1.141.512-1.141 1.142v9.05c0 .63.511 1.142 1.141 1.142h13.718zm-6.859-4.058l-6.228-4.321-.014 7.712h12.457v-7.712l-6.215 4.321zm5.913-6.609c-1.745 1.215-5.913 4.153-5.913 4.153l-5.947-4.153h11.86z" />
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="p-2 cursor-pointer">
-                            <a href="https://github.com/Josehpequeno"><svg xmlns="http://www.w3.org/2000/svg"
-                                    class="fill-current text-white" width="24" height="24" viewBox="0 0 24 24">
-                                    <path
-                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-4.466 19.59c-.405.078-.534-.171-.534-.384v-2.195c0-.747-.262-1.233-.55-1.481 1.782-.198 3.654-.875 3.654-3.947 0-.874-.312-1.588-.823-2.147.082-.202.356-1.016-.079-2.117 0 0-.671-.215-2.198.82-.64-.18-1.324-.267-2.004-.271-.68.003-1.364.091-2.003.269-1.528-1.035-2.2-.82-2.2-.82-.434 1.102-.16 1.915-.077 2.118-.512.56-.824 1.273-.824 2.147 0 3.064 1.867 3.751 3.645 3.954-.229.2-.436.552-.508 1.07-.457.204-1.614.557-2.328-.666 0 0-.423-.768-1.227-.825 0 0-.78-.01-.055.487 0 0 .525.246.889 1.17 0 0 .463 1.428 2.688.944v1.489c0 .211-.129.459-.528.385-3.18-1.057-5.472-4.056-5.472-7.59 0-4.419 3.582-8 8-8s8 3.581 8 8c0 3.533-2.289 6.531-5.466 7.59z" />
-                                </svg></a>
-                        </li>
-                    </ul>
-                    <div class="flex mx-auto text-white text-center">
-                        Josehpequeno © 2021
-                    </div>
-                    <div class="flex mx-auto text-white text-center">
-                        <a href='https://www.freepik.com/vectors/background'><small>Background vector created by
-                                kjpargeter
-                                - www.freepik.com</small></a>
+            <div class="border-b border-gray-300"></div>
+            <article class="flex px-10 mt-5 flex flex-cols flex-wrap md:items-center grid 2xl:grid-cols-6 xl:grid-cols-10 md:grid-cols-6 gap-10">
+                <!-- Start of component -->
+                <div
+                    class="h-80 w-52 px-5 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
+                    <div class="cursor-pointer relative manga-fav">
+                        <img src="/static/images/manga-static/manga1.jpg"
+                            class="foto w-full h-full object-cover rounded" alt="description" />
+                        <div class="mt-2 md:justify-items-center text-center rounded-md">
+                            <small id="name" class="font-semibold">FLCL de Hajime Ueda</small>
+                        </div>
                     </div>
                 </div>
-                <!-- BUY ME A BEER AND HELP SUPPORT OPEN-SOURCE RESOURCES -->
-                <!--<div class="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
+                <!-- End of component -->
+                <!-- Start of component -->
+                <div
+                    class="h-80 w-52 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
+                    <div class="cursor-pointer relative manga-fav">
+                        <img src="/static/images/manga-static/manga2.jpeg"
+                            class="foto w-full h-full object-cover rounded" alt="description" />
+                        <div class="mt-2 md:justify-items-center text-center rounded-md">
+                            <small id="name" class="font-semibold">Totsukuni no Shoujo de Nagabe</small>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of component -->
+                <!-- Start of component -->
+                <div
+                    class="h-80 w-52 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
+                    <div class="cursor-pointer relative manga-fav">
+                        <img src="/static/images/manga-static/manga3.jpeg"
+                            class="foto w-full h-full object-cover rounded" alt="description" />
+                        <div class="mt-2 md:justify-items-center text-center rounded-md">
+                            <small id="name" class="font-semibold">Oyasumi Punpun de Asano Inio</small>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of component -->
+                <!-- Start of component -->
+                <div
+                    class="h-80 w-52 px-5 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
+                    <div class="cursor-pointer relative manga-fav">
+                        <img src="/static/images/manga-static/manga4.jpeg"
+                            class="foto w-full h-full object-cover rounded" alt="description" />
+                        <div class="mt-2 md:justify-items-center text-center rounded-md">
+                            <small id="name" class="font-semibold">Natsu no Zenjitsu de Yoshida Motoi</small>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of component -->
+                <!-- Start of component -->
+                <div
+                    class="h-80 w-52 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
+                    <div class="cursor-pointer relative manga-fav">
+                        <img src="/static/images/manga-static/manga5.jpeg"
+                            class="foto w-full h-full object-cover rounded" alt="description" />
+                        <div class="mt-2 md:justify-items-center text-center rounded-md">
+                            <small id="name" class="font-semibold">Vagrant Soldier Ares de Ryu Geum Chel</small>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of component -->
+                <!-- Start of component -->
+                <div
+                    class="h-80 w-52 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
+                    <div class="cursor-pointer relative manga-fav">
+                        <img src="/static/images/manga-static/manga6.jpg"
+                            class="foto w-full h-full object-cover rounded" alt="description" />
+                        <div class="mt-2 md:justify-items-center text-center rounded-md">
+                            <small id="name" class="font-semibold">Tokyo Ghoul:re de Ishida Sui</small>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of component -->
+                <!-- Start of component -->
+                <div
+                    class="h-80 w-52 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
+                    <div class="cursor-pointer relative manga-fav">
+                        <img src="/static/images/manga-static/manga7.jpeg"
+                            class="foto w-full h-full object-cover rounded" alt="description" />
+                        <div class="mt-2 md:justify-items-center text-center rounded-md">
+                            <small id="name" class="font-semibold">Ahiru no Sora de Hinata Takeshi</small>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of component -->
+            </article>
+        </div>
+    </div>
+    <div class="bg-color-secundary-dark bottom-0 py-2">
+        <footer class="flex flex-wrap items-center justify-between p-3 m-auto">
+            <div class="container mx-auto flex flex-col flex-wrap items-center justify-between">
+                <ul class="flex mx-auto text-white text-center">
+                    <li class="p-2 cursor-pointer"><a href="https://www.linkedin.com/in/hicaro-jose-2aa269166/">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="fill-current text-white" width="24"
+                                height="24" viewBox="0 0 24 24">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="p-2 cursor-pointer"><a href="https://www.instagram.com/mentalityslow/">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="fill-current text-white" width="24"
+                                height="24" viewBox="0 0 24 24">
+                                <path
+                                    d="M15.233 5.488c-.843-.038-1.097-.046-3.233-.046s-2.389.008-3.232.046c-2.17.099-3.181 1.127-3.279 3.279-.039.844-.048 1.097-.048 3.233s.009 2.389.047 3.233c.099 2.148 1.106 3.18 3.279 3.279.843.038 1.097.047 3.233.047 2.137 0 2.39-.008 3.233-.046 2.17-.099 3.18-1.129 3.279-3.279.038-.844.046-1.097.046-3.233s-.008-2.389-.046-3.232c-.099-2.153-1.111-3.182-3.279-3.281zm-3.233 10.62c-2.269 0-4.108-1.839-4.108-4.108 0-2.269 1.84-4.108 4.108-4.108s4.108 1.839 4.108 4.108c0 2.269-1.839 4.108-4.108 4.108zm4.271-7.418c-.53 0-.96-.43-.96-.96s.43-.96.96-.96.96.43.96.96-.43.96-.96.96zm-1.604 3.31c0 1.473-1.194 2.667-2.667 2.667s-2.667-1.194-2.667-2.667c0-1.473 1.194-2.667 2.667-2.667s2.667 1.194 2.667 2.667zm4.333-12h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm.952 15.298c-.132 2.909-1.751 4.521-4.653 4.654-.854.039-1.126.048-3.299.048s-2.444-.009-3.298-.048c-2.908-.133-4.52-1.748-4.654-4.654-.039-.853-.048-1.125-.048-3.298 0-2.172.009-2.445.048-3.298.134-2.908 1.748-4.521 4.654-4.653.854-.04 1.125-.049 3.298-.049s2.445.009 3.299.048c2.908.133 4.523 1.751 4.653 4.653.039.854.048 1.127.048 3.299 0 2.173-.009 2.445-.048 3.298z" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="p-2 cursor-pointer"><a href="mailto:hicarojbs21@gmail.com?subject=Alyah Manga reader">
+                            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"
+                                class="fill-current text-white" fill-rule="evenodd" clip-rule="evenodd">
+                                <path
+                                    d="M19 24h-14c-2.761 0-5-2.239-5-5v-14c0-2.761 2.239-5 5-5h14c2.762 0 5 2.239 5 5v14c0 2.761-2.238 5-5 5zm-.141-6.333c.63 0 1.141-.512 1.141-1.142v-9.05c0-.63-.511-1.142-1.141-1.142h-13.718c-.63 0-1.141.512-1.141 1.142v9.05c0 .63.511 1.142 1.141 1.142h13.718zm-6.859-4.058l-6.228-4.321-.014 7.712h12.457v-7.712l-6.215 4.321zm5.913-6.609c-1.745 1.215-5.913 4.153-5.913 4.153l-5.947-4.153h11.86z" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="p-2 cursor-pointer">
+                        <a href="https://github.com/Josehpequeno"><svg xmlns="http://www.w3.org/2000/svg"
+                                class="fill-current text-white" width="24" height="24" viewBox="0 0 24 24">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-4.466 19.59c-.405.078-.534-.171-.534-.384v-2.195c0-.747-.262-1.233-.55-1.481 1.782-.198 3.654-.875 3.654-3.947 0-.874-.312-1.588-.823-2.147.082-.202.356-1.016-.079-2.117 0 0-.671-.215-2.198.82-.64-.18-1.324-.267-2.004-.271-.68.003-1.364.091-2.003.269-1.528-1.035-2.2-.82-2.2-.82-.434 1.102-.16 1.915-.077 2.118-.512.56-.824 1.273-.824 2.147 0 3.064 1.867 3.751 3.645 3.954-.229.2-.436.552-.508 1.07-.457.204-1.614.557-2.328-.666 0 0-.423-.768-1.227-.825 0 0-.78-.01-.055.487 0 0 .525.246.889 1.17 0 0 .463 1.428 2.688.944v1.489c0 .211-.129.459-.528.385-3.18-1.057-5.472-4.056-5.472-7.59 0-4.419 3.582-8 8-8s8 3.581 8 8c0 3.533-2.289 6.531-5.466 7.59z" />
+                            </svg></a>
+                    </li>
+                </ul>
+                <div class="flex mx-auto text-white text-center">
+                    Josehpequeno © 2021
+                </div>
+                <div class="flex mx-auto text-white text-center">
+                    <a href='https://www.freepik.com/vectors/background'><small>Background vector created by
+                            kjpargeter
+                            - www.freepik.com</small></a>
+                </div>
+            </div>
+            <!-- BUY ME A BEER AND HELP SUPPORT OPEN-SOURCE RESOURCES -->
+            <!--<div class="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
                 <div>
                     <a title="Buy me a beer" href="https://www.buymeacoffee.com/scottwindon" target="_blank"
                         class="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12">
@@ -162,10 +217,10 @@
                     </a>
                 </div>
             </div>-->
-            </footer>
-        </div>
-        <!--responsável pela renderização do app vue do lado do servidor-->
-        <!--vue-ssr-outlet-->
+        </footer>
+    </div>
+    <!--responsável pela renderização do app vue do lado do servidor-->
+    <!--vue-ssr-outlet-->
 </body>
 
 </html>

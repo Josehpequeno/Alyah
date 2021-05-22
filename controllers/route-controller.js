@@ -8,7 +8,8 @@ class RouteController {
             signup: '/signup',
             manga: '/manga',
             populares: '/populares',
-            profile: '/profile'
+            profile: '/profile',
+            editprofile: '/editprofile'
         }
     }
     home() {
@@ -155,7 +156,31 @@ class RouteController {
                         res.status(500).end('Internal Server Error');
                         return;
                     }
-                    res.status(404).end(html);
+                    res.end(html);
+                })
+        }
+    }
+    editprofile() {
+        return (req, res) => {
+            const template = require('fs').readFileSync('views/editprofile.html', 'utf-8');
+
+            const renderer = require('vue-server-renderer').createRenderer({
+                template,
+            });
+            const context = {
+                title: 'Alyah',
+                meta: `<meta charset="utf-8"/>`,
+                url: req.url
+            };
+            const appVue = createApp(context);
+            renderer
+                .renderToString(appVue, context, (err, html) => {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).end('Internal Server Error');
+                        return;
+                    }
+                    res.end(html);
                 })
         }
     }

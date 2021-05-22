@@ -111,17 +111,16 @@ p {
     -webkit-line-clamp: 9;
     -webkit-box-orient: vertical;
 }
+
 .min-w-80 {
     min-width: 20rem;
 }
-.resize::-webkit-resizer,
-.resize-x::-webkit-resizer,
-.resize-y::-webkit-resizer {
+
+.resize::-webkit-resizer, .resize-x::-webkit-resizer, .resize-y::-webkit-resizer {
     background-color: transparent;
 }
-.resize:after,
-.resize-x:after,
-.resize-y:after {
+
+.resize:after, .resize-x:after, .resize-y:after {
     display: block;
     position: absolute;
     bottom: 5px;
@@ -135,5 +134,17 @@ p {
     line-height: 24px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: rgba(0,0,0,0.3);
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.manga-fav img {
+    max-width: 200px;
+    max-height: 225px;
+    width: 100%;
+    height: auto;
+    width: 100%;
+    min-height: auto;
+    /* Mínimo da altura, por padrão “auto” */
+    background-size: 100%;
+    background-repeat: no-repeat;
 }

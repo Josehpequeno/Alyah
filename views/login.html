@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/nd_md/tailwindcss/dist/components.min.css" />
     <link rel="stylesheet" href="/nd_md/tailwindcss/dist/utilities.min.css" />
     <link rel="stylesheet" href="/static/css/index.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- use double mustache for HTML-escaped interpolation -->
     <title>{{ title }}</title>
 
@@ -15,51 +16,62 @@
 </head>
 
 <body class="bg-black">
-    <div class="flex items-center min-h-screen dark:bg-gray-900">
-        <div class="container mx-auto">
-            <div class="max-w-md mx-auto my-10 py-10 bg-color-secundary-light md:rounded">
-                <div class="text-center">
-                    <a href="/" class="py-5 flex md:flex-col">
-                        <img src="/static/images/logo2.svg" alt="Logo Icon" style="height:34px;">
-                    </a>
-                    <h1 class="my-3 text-3xl font-semibold color-secundary-dark dark:text-gray-200">Sign in</h1>
-                    <p class="color-secundary-dark dark:text-gray-400">Sign in to access your account</p>
-                </div>
-                <div class="m-7">
-                    <form action="">
-                        <div class="mb-6">
-                            <label for="email" class="block mb-2 text-sm color-secundary-dark dark:text-gray-400">Email
-                                Address or username</label>
-                            <input type="email" name="email" id="email" placeholder="you@company.com"
-                                class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
-                        </div>
-                        <div class="mb-6">
-                            <div class="flex justify-between mb-2">
-                                <label for="password"
-                                    class="text-sm color-secundary-dark dark:text-gray-400">Password</label>
-                                <a href="#!"
-                                    class="text-sm color-primary focus:outline-none focus:text-indigo-500 hover:text-indigo-500 dark:hover:text-indigo-300">Forgot
-                                    password?</a>
+    <div class="min-h-screen container mx-auto font-nunito py-10">
+        <main>
+            <div class="flex items-center justify-center mt-16 mx-6">
+                <div class="p-6 max-w-sm w-full bg-color-secundary-dark shadow rounded-md">
+                    <div class="py-10 flex justify-center">
+                        <a href="/">
+                            <img src="/static/images/logo2.png" class="object-center" alt="Logo Icon"
+                                style="width:200px; height:34px;">
+                        </a>
+                    </div>
+                    <h3 class="text-white text-xl text-center">Login</h3>
+                    <form class="mt-4" method="POST" action="/login">
+                        <input type="hidden" name="_token" value="96LGLQC0ylNCwHDLyTqFuBvSMwOqHi7voLu8lwj4">
+                        <label class="block">
+                            <span class="text-white text-sm">Email or Username</span>
+                            <input id="email" name="email"
+                                class="px-3 py-2 h-7 form-input mt-1 block w-full rounded-md bg-color-secundary border-gray-700 text-white"
+                                value="" required autocomplete="email" autofocus>
+                        </label>
+                        <label class="block mt-3">
+                            <span class="text-white text-sm">Password</span>
+                            <input id="password" type="password"
+                                class="px-3 py-2 h-7 form-input mt-1 block w-full rounded-md bg-color-secundary border-gray-700 text-white"
+                                name="password" required autocomplete="current-password">
+                        </label>
+                        <div class="flex justify-between items-center mt-4">
+                            <div>
+                                <label class="inline-flex items-center">
+                                    <input type="checkbox"
+                                        class="form-checkbox text-blue-500 bg-gray-800 border-gray-600" name="remember"
+                                        id="remember">
+                                    <span class="mx-2 text-gray-200 text-sm">Remember Me</span>
+                                </label>
                             </div>
-                            <input type="password" name="password" id="password" placeholder="Your Password"
-                                class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
+
+                            <div>
+                                <a class="block text-sm text-blue-500 hover:underline"
+                                    href="http://localhost:8000/password/reset">
+                                    Forgot Your Password?
+                                </a>
+                            </div>
                         </div>
-                        <div class="mb-6">
-                            <button type="button"
-                                class="w-full px-3 py-4 text-white bg-color-secundary-dark rounded-md focus:bg-indigo-600 focus:outline-none">Sign
-                                in</button>
+                        <div class="mt-6">
+                            <button type="submit"
+                                class="w-full py-2 px-4 text-center bg-color-sucess rounded-md text-white text-sm hover:bg-blue-500 focus:outline-none">
+                                Login
+                            </button>
                         </div>
-                        <p class="text-sm text-center color-secundary-dark">Don&#x27;t have an account yet? <a
-                                href="/signup"
-                                class="color-primary focus:outline-none focus:underline focus:text-indigo-500 dark:focus:border-indigo-800">Sign
-                                up</a>.</p>
+                        <p class="text-sm text-center text-white py-5">Don&#x27;t have an account yet? <a href="/signup"
+                                class="text-blue-500 focus:outline-none focus:underline focus:text-indigo-500 dark:focus:border-indigo-800">Create
+                                an account</a>.</p>
                     </form>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
-
-
     <!-- Footer Mentions -->
     <div class="dark:bg-gray-900 bottom-5 w-full text-center text-gray-400">
         Josehpequeno © 2021

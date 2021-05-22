@@ -3,6 +3,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      fontFamily: {
+        nunito: ['Nunito'],
+      },
       backgroundImage: theme => ({
         'dark': "url('/static/images/bg.jpg')",
       })
@@ -18,5 +21,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms'),],
 }
