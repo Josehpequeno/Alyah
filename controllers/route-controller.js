@@ -6,10 +6,13 @@ class RouteController {
             home: '/',
             login: '/login',
             signup: '/signup',
+            mangas: '/mangas',
             manga: '/manga',
             populares: '/populares',
             profile: '/profile',
-            editprofile: '/editprofile'
+            editProfile: '/editprofile',
+            changePassword: '/changepassword',
+            mangaReader: '/mangaReader'
         }
     }
     home() {
@@ -65,6 +68,31 @@ class RouteController {
         return (req, res) => {
             //console.log(templates);
             const template = require('fs').readFileSync('views/signup.html', 'utf-8');
+
+            const renderer = require('vue-server-renderer').createRenderer({
+                template,
+            });
+            const context = {
+                title: 'Alyah',
+                meta: `<meta charset="utf-8"/>`,
+                url: req.url
+            };
+            const appVue = createApp(context);
+            renderer
+                .renderToString(appVue, context, (err, html) => {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).end('Internal Server Error');
+                        return;
+                    }
+                    res.end(html);
+                })
+        }
+    }
+    mangas() {
+        return (req, res) => {
+            //console.log(templates);
+            const template = require('fs').readFileSync('views/mangas.html', 'utf-8');
 
             const renderer = require('vue-server-renderer').createRenderer({
                 template,
@@ -160,9 +188,57 @@ class RouteController {
                 })
         }
     }
-    editprofile() {
+    editProfile() {
         return (req, res) => {
-            const template = require('fs').readFileSync('views/editprofile.html', 'utf-8');
+            const template = require('fs').readFileSync('views/editProfile.html', 'utf-8');
+
+            const renderer = require('vue-server-renderer').createRenderer({
+                template,
+            });
+            const context = {
+                title: 'Alyah',
+                meta: `<meta charset="utf-8"/>`,
+                url: req.url
+            };
+            const appVue = createApp(context);
+            renderer
+                .renderToString(appVue, context, (err, html) => {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).end('Internal Server Error');
+                        return;
+                    }
+                    res.end(html);
+                })
+        }
+    }
+    changePassword() {
+        return (req, res) => {
+            const template = require('fs').readFileSync('views/changePassword.html', 'utf-8');
+
+            const renderer = require('vue-server-renderer').createRenderer({
+                template,
+            });
+            const context = {
+                title: 'Alyah',
+                meta: `<meta charset="utf-8"/>`,
+                url: req.url
+            };
+            const appVue = createApp(context);
+            renderer
+                .renderToString(appVue, context, (err, html) => {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).end('Internal Server Error');
+                        return;
+                    }
+                    res.end(html);
+                })
+        }
+    }
+    mangaReader() {
+        return (req, res) => {
+            const template = require('fs').readFileSync('views/mangaReader.html', 'utf-8');
 
             const renderer = require('vue-server-renderer').createRenderer({
                 template,

@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="/nd_md/tailwindcss/dist/components.min.css" />
     <link rel="stylesheet" href="/nd_md/tailwindcss/dist/utilities.min.css" />
     <link rel="stylesheet" href="/static/css/index.min.css" />
-    <style>
-        @import url(https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css);
-    </style>
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- use double mustache for HTML-escaped interpolation -->
     <title>{{ title }}</title>
 
@@ -17,7 +15,7 @@
     {{{ meta }}}
 </head>
 
-<body>
+<body class="bg-black">
     <div class="bg-color-secundary-dark">
         <header class="text-gray-100 body-font shadow w-full">
             <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center text-white">
@@ -44,123 +42,59 @@
             </div>
         </header>
     </div>
-    <div id="content" class="md:container md:mx-auto min-h-screen py-10">
-        <div class="bg-color-secundary py-5 rounded">
-            <div class="flex justify-center pb-10">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                    class="fill-current color-primary-dark bg-color-light-dark h-32 w-32 rounded-full object-cover"
-                    alt="username" width="24" height="24" viewBox="0 0 24 24">
-                    <path
-                        d="M19 7.001c0 3.865-3.134 7-7 7s-7-3.135-7-7c0-3.867 3.134-7.001 7-7.001s7 3.134 7 7.001zm-1.598 7.18c-1.506 1.137-3.374 1.82-5.402 1.82-2.03 0-3.899-.685-5.407-1.822-4.072 1.793-6.593 7.376-6.593 9.821h24c0-2.423-2.6-8.006-6.598-9.819z" />
-                </svg>
-                <div class="ml-10">
-                    <div class="flex items-center">
-                        <h2 class="block leading-relaxed font-light text-white text-3xl">Username</h2>
-                        <a href="\editprofile"
-                            class="cursor-pointer h-7 px-3 ml-3 focus:outline-none hover:border-transparent text-center rounded border border-white hover:bg-white button bg-transparent text-white font-semibold">Editar
-                            perfil</a>
-                    </div>
-                    <ul class="flex justify-content-around items-center">
-                        <li>
-                            <span class="block text-base flex text-white"><span class="font-bold mr-2">7 </span>
-                                Favorites</span>
-                        </li>
-                    </ul>
-                    <br>
-                    <div>
-                        <h1 class="text-base text-white font-bold font-light">Username</h1>
-                        <span class="text-base text-white">description ...</span>
-                    </div>
+    <div class="container mx-auto min-h-screen font-nunito py-10">
+        <main>
+            <div class="flex items-center justify-center mt-16 mx-6">
+                <div class="p-6 max-w-sm w-full bg-color-secundary-dark shadow rounded-md">
+                    <h3 class="text-white text-xl text-center">Edit Proflile</h3>
+                    <form class="mt-4" method="POST" action="/editProfile">
+                        <div class="py-5">
+                            <label class="block text-sm font-medium text-white">
+                                Photo
+                            </label>
+                            <div class="mt-1 flex items-center py-2">
+                                <span class="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="fill-current color-primary-dark bg-color-light-dark h-12 w-12 rounded-full object-cover"
+                                        alt="username" width="24" height="24" viewBox="0 0 24 24">
+                                        <path
+                                            d="M19 7.001c0 3.865-3.134 7-7 7s-7-3.135-7-7c0-3.867 3.134-7.001 7-7.001s7 3.134 7 7.001zm-1.598 7.18c-1.506 1.137-3.374 1.82-5.402 1.82-2.03 0-3.899-.685-5.407-1.822-4.072 1.793-6.593 7.376-6.593 9.821h24c0-2.423-2.6-8.006-6.598-9.819z" />
+                                    </svg>
+                                </span>
+                                <button type="button"
+                                    class="inline-flex text-sm border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
+                                    Change
+                                </button>
+                            </div>
+                        </div>
+                        <input type="hidden" name="_token" value="96LGLQC0ylNCwHDLyTqFuBvSMwOqHi7voLu8lwj4">
+                        <label class="block">
+                            <span class="text-white text-sm">Username</span>
+                            <input id="username" name="username"
+                                class="px-3 py-2 h-7 form-input mt-1 block w-full rounded-md bg-color-secundary border-gray-700 text-white"
+                                value="Username" required autocomplete="username" autofocus>
+                        </label>
+                        <label class="block mt-3">
+                            <span class="text-white text-sm">Email</span>
+                            <input type="email" id="email" name="email"
+                                class="px-3 py-2 h-7 form-input mt-1 block w-full rounded-md bg-color-secundary border-gray-700 text-white"
+                                value="Email@email.com.br" required autocomplete="email" autofocus>
+                        </label>
+                        <label class="block mt-3">
+                            <span class="text-white text-sm">Description</span>
+                            <textarea id="description" name="description" rows="3" autofocus
+                                class="form-textarea resize-none border rounded-md px-3 py-2 mt-1 block w-full bg-color-secundary border-gray-700 text-white"></textarea>
+                        </label>
+                        <div class="mt-6">
+                            <button type="submit"
+                                class="w-full py-2 px-4 text-center bg-color-sucess rounded-md text-white text-sm hover:bg-blue-500 focus:outline-none">
+                                Save
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="border-b border-gray-300"></div>
-            <article class="flex px-10 mt-5 flex flex-cols flex-wrap md:items-center grid 2xl:grid-cols-6 xl:grid-cols-10 md:grid-cols-6 gap-10">
-                <!-- Start of component -->
-                <div
-                    class="h-80 w-52 px-5 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative manga-fav">
-                        <img src="/static/images/manga-static/manga1.jpg"
-                            class="foto w-full h-full object-cover rounded" alt="description" />
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">FLCL de Hajime Ueda</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-80 w-52 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative manga-fav">
-                        <img src="/static/images/manga-static/manga2.jpeg"
-                            class="foto w-full h-full object-cover rounded" alt="description" />
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">Totsukuni no Shoujo de Nagabe</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-80 w-52 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative manga-fav">
-                        <img src="/static/images/manga-static/manga3.jpeg"
-                            class="foto w-full h-full object-cover rounded" alt="description" />
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">Oyasumi Punpun de Asano Inio</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-80 w-52 px-5 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative manga-fav">
-                        <img src="/static/images/manga-static/manga4.jpeg"
-                            class="foto w-full h-full object-cover rounded" alt="description" />
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">Natsu no Zenjitsu de Yoshida Motoi</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-80 w-52 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative manga-fav">
-                        <img src="/static/images/manga-static/manga5.jpeg"
-                            class="foto w-full h-full object-cover rounded" alt="description" />
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">Vagrant Soldier Ares de Ryu Geum Chel</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-80 w-52 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative manga-fav">
-                        <img src="/static/images/manga-static/manga6.jpg"
-                            class="foto w-full h-full object-cover rounded" alt="description" />
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">Tokyo Ghoul:re de Ishida Sui</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-80 w-52 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative manga-fav">
-                        <img src="/static/images/manga-static/manga7.jpeg"
-                            class="foto w-full h-full object-cover rounded" alt="description" />
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">Ahiru no Sora de Hinata Takeshi</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-            </article>
-        </div>
+        </main>
     </div>
     <div class="bg-color-secundary-dark bottom-0 py-2">
         <footer class="flex flex-wrap items-center justify-between p-3 m-auto">
@@ -182,7 +116,7 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="p-2 cursor-pointer"><a href="mailto:hicarojbs21@gmail.com?subject=Alyah manga reader">
+                    <li class="p-2 cursor-pointer"><a href="mailto:hicarojbs21@gmail.com?subject=Alyah mangas reader">
                             <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"
                                 class="fill-current text-white" fill-rule="evenodd" clip-rule="evenodd">
                                 <path
@@ -218,9 +152,7 @@
                 </div>
             </div>-->
         </footer>
-    </div>
-    <!--responsável pela renderização do app vue do lado do servidor-->
-    <!--vue-ssr-outlet-->
+        <!--vue-ssr-outlet-->
 </body>
 
 </html>

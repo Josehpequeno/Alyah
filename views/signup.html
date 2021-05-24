@@ -28,13 +28,13 @@
                     </div>
                     <small class="text-white text-xs text-center flex justify-center">Join Alyah</small>
                     <h3 class="text-white text-xl text-center">Create your account</h3>
-                    <form class="mt-4" method="POST" action="/login">
+                    <form class="mt-4" method="POST" action="/signup">
                         <input type="hidden" name="_token" value="96LGLQC0ylNCwHDLyTqFuBvSMwOqHi7voLu8lwj4">
                         <label class="block">
                             <span class="text-white text-sm">Username</span>
                             <input id="username" name="username"
                                 class="px-3 py-2 h-7 form-input mt-1 block w-full rounded-md bg-color-secundary border-gray-700 text-white"
-                                value="" required autocomplete="email" autofocus>
+                                value="" required autocomplete="username" autofocus>
                         </label>
                         <label class="block mt-3">
                             <span class="text-white text-sm">Email</span>
@@ -46,13 +46,13 @@
                             <span class="text-white text-sm">Password</span>
                             <input id="password" type="password"
                                 class="px-3 py-2 h-7 form-input mt-1 block w-full rounded-md bg-color-secundary border-gray-700 text-white"
-                                name="password" required autocomplete="current-password">
+                                name="password" required autocomplete="password">
                         </label>
                         <label class="block mt-3">
                             <span class="text-white text-sm">Confirm Password</span>
                             <input id="confirm-password" type="password"
                                 class="px-3 py-2 h-7 form-input mt-1 block w-full rounded-md bg-color-secundary border-gray-700 text-white"
-                                name="password" required autocomplete="current-password">
+                                name="password" required>
                             <span id="message" class="py-10"></span>
                         </label>
 
@@ -83,10 +83,14 @@
     </script>
     <script>
         function checkPasswordMatch() {
-            if ($('#password').val() == $('#confirm-password').val()) {
-                $('#message').html('_______________________________________________').css('color', 'green');
+            if ($('#password').val() == '' || $('#confirm-password').val() == '') {
+                $('#message').html('').css('color', 'black');
             } else {
-                $('#message').html('_______________________________________________').css('color', 'red');
+                if ($('#password').val() == $('#confirm-password').val()) {
+                    $('#message').html('_______________________________________________').css('color', 'green');
+                } else {
+                    $('#message').html('_______________________________________________').css('color', 'red');
+                }
             }
         }
         $(document).ready(function () {

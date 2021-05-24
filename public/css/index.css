@@ -2,106 +2,106 @@ body {
     background-image: url('../images/bg.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: cover
 }
 
 .color-primary {
-    color: #3B3F62;
+    color: #3B3F62
 }
 
 .bg-color-primary {
-    background-color: #3B3F62;
+    background-color: #3B3F62
 }
 
 .color-primary-dark {
-    color: #0C0D14;
+    color: #0C0D14
 }
 
 .bg-color-primary-dark {
-    background-color: #0C0D14;
+    background-color: #0C0D14
 }
 
 .color-primary-light {
-    color: #626581;
+    color: #626581
 }
 
 .bg-color-primary-light {
-    background-color: #626581;
+    background-color: #626581
 }
 
 .color-secundary {
-    color: #5C5C5C;
+    color: #5C5C5C
 }
 
 .bg-color-secundary {
-    background-color: #5C5C5C;
+    background-color: #5C5C5C
 }
 
 .color-secundary-dark {
-    color: #121212;
+    color: #121212
 }
 
 .bg-color-secundary-dark {
-    background-color: #121212;
+    background-color: #121212
 }
 
 .color-secundary-light {
-    color: #7D7D7D;
+    color: #7D7D7D
 }
 
 .bg-color-secundary-light {
-    background-color: #7D7D7D;
+    background-color: #7D7D7D
 }
 
 .color-light {
-    color: #FBFBFB;
+    color: #FBFBFB
 }
 
 .bg-color-light {
-    background-color: #FBFBFB;
+    background-color: #FBFBFB
 }
 
 .color-light-dark {
-    color: #FBFBFB;
+    color: #FBFBFB
 }
 
 .bg-color-light-dark {
-    background-color: #FBFBFB;
+    background-color: #FBFBFB
 }
 
 .color-light-light {
-    color: #FFFFFF;
+    color: #FFFFFF
 }
 
 .bg-color-light-light {
-    background-color: #FFFFFF;
+    background-color: #FFFFFF
 }
 
 .color-danger {
-    color: #DC1818;
+    color: #DC1818
 }
 
 .bg-color-danger {
-    background-color: #DC1818;
+    background-color: #DC1818
 }
 
 .color-sucess {
-    color: #278D75;
+    color: #278D75
 }
 
 .bg-color-sucess {
-    background-color: #278D75;
+    background-color: #278D75
 }
 
 .button:hover {
-    color: black;
+    color: black
 }
 
 .manga img {
-    max-width: 200px;
+    max-width: 400px;
     max-height: 225px;
     width: auto;
-    height: auto;
+    height: auto
 }
 
 p {
@@ -109,15 +109,15 @@ p {
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 9;
-    -webkit-box-orient: vertical;
+    -webkit-box-orient: vertical
 }
 
 .min-w-80 {
-    min-width: 20rem;
+    min-width: 20rem
 }
 
 .resize::-webkit-resizer, .resize-x::-webkit-resizer, .resize-y::-webkit-resizer {
-    background-color: transparent;
+    background-color: transparent
 }
 
 .resize:after, .resize-x:after, .resize-y:after {
@@ -134,17 +134,22 @@ p {
     line-height: 24px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: rgba(0, 0, 0, 0.3);
+    color: rgba(0, 0, 0, 0.3)
 }
 
 .manga-fav img {
-    max-width: 200px;
+    max-width: 400px;
     max-height: 225px;
-    width: 100%;
     height: auto;
     width: 100%;
     min-height: auto;
     /* Mínimo da altura, por padrão “auto” */
     background-size: 100%;
     background-repeat: no-repeat;
+}
+
+.manga-page img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
