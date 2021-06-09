@@ -57,5 +57,5 @@ $ npm run dev
 ### Technology
 - [Express](https://expressjs.com/)
 - [Node.js](https://nodejs.org/en/)
-- [Vue.js](https://br.vuejs.org/)
+- [Handlebars](https://handlebarsjs.com/)
 - [Tailwindcss](https://tailwindcss.com/)

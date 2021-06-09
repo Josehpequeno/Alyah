@@ -1,5 +1,4 @@
-const createApp = require('../config/app');
-
+const templates = '../views/';
 class RouteController {
     static routes() {
         return {
@@ -17,247 +16,64 @@ class RouteController {
     }
     home() {
         return (req, res) => {
-            //console.log(templates);
-            const template = require('fs').readFileSync('views/home.html', 'utf-8');
-
-            const renderer = require('vue-server-renderer').createRenderer({
-                template,
-            });
-            const context = {
-                title: 'Alyah',
-                meta: `<meta charset="utf-8"/>`,
-                url: req.url
-            };
-            const appVue = createApp(context);
-            renderer
-                .renderToString(appVue, context, (err, html) => {
-                    if (err) {
-                        console.log(err);
-                        res.status(500).end('Internal Server Error');
-                        return;
-                    }
-                    res.end(html);
-                })
+            return res.render(templates + 'home.handlebars', { layout: false });
         }
     }
     login() {
         return (req, res) => {
-            const template = require('fs').readFileSync('views/login.html', 'utf-8');
-
-            const renderer = require('vue-server-renderer').createRenderer({
-                template,
-            });
-            const context = {
-                title: 'Alyah',
-                meta: `<meta charset="utf-8"/>`,
-                url: req.url
-            };
-            const appVue = createApp(context);
-            renderer
-                .renderToString(appVue, context, (err, html) => {
-                    if (err) {
-                        console.log(err);
-                        res.status(500).end('Internal Server Error');
-                        return;
-                    }
-                    res.end(html);
-                })
+            return res.render(templates + 'login.handlebars', { layout: false });
         }
     }
     signup() {
         return (req, res) => {
-            //console.log(templates);
-            const template = require('fs').readFileSync('views/signup.html', 'utf-8');
-
-            const renderer = require('vue-server-renderer').createRenderer({
-                template,
-            });
-            const context = {
-                title: 'Alyah',
-                meta: `<meta charset="utf-8"/>`,
-                url: req.url
-            };
-            const appVue = createApp(context);
-            renderer
-                .renderToString(appVue, context, (err, html) => {
-                    if (err) {
-                        console.log(err);
-                        res.status(500).end('Internal Server Error');
-                        return;
-                    }
-                    res.end(html);
-                })
+            return res.render(templates + 'signup.handlebars', { layout: false });
         }
     }
     mangas() {
         return (req, res) => {
-            //console.log(templates);
-            const template = require('fs').readFileSync('views/mangas.html', 'utf-8');
-
-            const renderer = require('vue-server-renderer').createRenderer({
-                template,
-            });
-            const context = {
-                title: 'Alyah',
-                meta: `<meta charset="utf-8"/>`,
-                url: req.url
-            };
-            const appVue = createApp(context);
-            renderer
-                .renderToString(appVue, context, (err, html) => {
-                    if (err) {
-                        console.log(err);
-                        res.status(500).end('Internal Server Error');
-                        return;
-                    }
-                    res.end(html);
-                })
+            return res.render(templates + 'mangas.handlebars', { layout: false });
         }
     }
     manga() {
         return (req, res) => {
-            //console.log(templates);
-            const template = require('fs').readFileSync('views/manga.html', 'utf-8');
-
-            const renderer = require('vue-server-renderer').createRenderer({
-                template,
-            });
-            const context = {
-                title: 'Alyah',
-                meta: `<meta charset="utf-8"/>`,
-                url: req.url
-            };
-            const appVue = createApp(context);
-            renderer
-                .renderToString(appVue, context, (err, html) => {
-                    if (err) {
-                        console.log(err);
-                        res.status(500).end('Internal Server Error');
-                        return;
-                    }
-                    res.end(html);
-                })
+            return res.render(templates + 'manga.handlebars', { layout: false });
         }
     }
     populares() {
         return (req, res) => {
-            //console.log(templates);
-            const template = require('fs').readFileSync('views/populares.html', 'utf-8');
-
-            const renderer = require('vue-server-renderer').createRenderer({
-                template,
-            });
-            const context = {
-                title: 'Alyah',
-                meta: `<meta charset="utf-8"/>`,
-                url: req.url
-            };
-            const appVue = createApp(context);
-            renderer
-                .renderToString(appVue, context, (err, html) => {
-                    if (err) {
-                        console.log(err);
-                        res.status(500).end('Internal Server Error');
-                        return;
-                    }
-                    res.end(html);
-                })
+            return res.render(templates + 'populares.handlebars', { layout: false });
         }
     }
     profile() {
         return (req, res) => {
-            const template = require('fs').readFileSync('views/profile.html', 'utf-8');
-
-            const renderer = require('vue-server-renderer').createRenderer({
-                template,
-            });
-            const context = {
-                title: 'Alyah',
-                meta: `<meta charset="utf-8"/>`,
-                url: req.url
-            };
-            const appVue = createApp(context);
-            renderer
-                .renderToString(appVue, context, (err, html) => {
-                    if (err) {
-                        console.log(err);
-                        res.status(500).end('Internal Server Error');
-                        return;
-                    }
-                    res.end(html);
-                })
+            return res.render(templates + 'profile.handlebars', { layout: false });
         }
     }
     editProfile() {
         return (req, res) => {
-            const template = require('fs').readFileSync('views/editProfile.html', 'utf-8');
-
-            const renderer = require('vue-server-renderer').createRenderer({
-                template,
-            });
-            const context = {
-                title: 'Alyah',
-                meta: `<meta charset="utf-8"/>`,
-                url: req.url
-            };
-            const appVue = createApp(context);
-            renderer
-                .renderToString(appVue, context, (err, html) => {
-                    if (err) {
-                        console.log(err);
-                        res.status(500).end('Internal Server Error');
-                        return;
-                    }
-                    res.end(html);
-                })
+            return res.render(templates + 'editProfile.handlebars', { layout: false });
         }
     }
     changePassword() {
         return (req, res) => {
-            const template = require('fs').readFileSync('views/changePassword.html', 'utf-8');
-
-            const renderer = require('vue-server-renderer').createRenderer({
-                template,
-            });
-            const context = {
-                title: 'Alyah',
-                meta: `<meta charset="utf-8"/>`,
-                url: req.url
-            };
-            const appVue = createApp(context);
-            renderer
-                .renderToString(appVue, context, (err, html) => {
-                    if (err) {
-                        console.log(err);
-                        res.status(500).end('Internal Server Error');
-                        return;
-                    }
-                    res.end(html);
-                })
+            return res.render(templates + 'changePassword.handlebars', { layout: false });
         }
     }
     mangaReader() {
         return (req, res) => {
-            const template = require('fs').readFileSync('views/mangaReader.html', 'utf-8');
-
-            const renderer = require('vue-server-renderer').createRenderer({
-                template,
-            });
-            const context = {
-                title: 'Alyah',
-                meta: `<meta charset="utf-8"/>`,
-                url: req.url
-            };
-            const appVue = createApp(context);
-            renderer
-                .renderToString(appVue, context, (err, html) => {
-                    if (err) {
-                        console.log(err);
-                        res.status(500).end('Internal Server Error');
-                        return;
-                    }
-                    res.end(html);
-                })
+            return res.render(templates + 'mangaReader.handlebars', { layout: false });
+            /*methods: {
+                options() {
+                    const pages = [...Array(context.items.length + 1).keys()];
+                    let opt = '';
+                    pages.map(function (item) {
+                        if (item != 0) {
+                            opt += `<option value="${item - 1}"> Page ${item} </<option>`;
+                        }
+                    });
+                    return opt;
+                }
+            }*/
         }
     }
 }
