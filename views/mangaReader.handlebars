@@ -59,19 +59,37 @@
                 }
             }
         }
-        $(document).ready(function() {
+        $(document).ready(function () {
             return optionsChange();
-        }); 
+        });
     </script>
     <script>
-        document.onkeydown = function (e) {
+        function arrow(d) {
+            let i = d - 38;
+            let pages = Number($('#length').val());
+            let opt = Number($('#options').val());
+            console.log(opt);
+            console.log("pages:  " + pages);
+            if (i > 0 && opt + 1 < pages) {
+                console.log("i: " + i);
+                $('#options').val(opt + i);
+            }
+            else if (i < 0 && opt - 1 >= 0) {
+                console.log("i: " + i);
+                $('#options').val(opt + i);
+            }
+        }
+        document.onkeyup = function (e) {
             //console.log(e.keyCode);
             if (e.keyCode === 39) {
+                arrow(e.keyCode);
                 console.log("hereR");
             }
-            if (e.keyCode === 37) {
+            else if (e.keyCode === 37) {
+                arrow(e.keyCode);
                 console.log("hereL");
             }
+            optionsChange();
         }
     </script>
 </body>
