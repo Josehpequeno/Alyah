@@ -6,63 +6,26 @@
     <title>Alyah</title>
     <link class="rounded-circle" href="/static/images/favicon.ico" rel="icon" />
     <link rel="stylesheet" href="/nd_md/tailwindcss/dist/base.min.css" />
-    <link rel="stylesheet" href="/nd_md/tailwindcss/dist/components.min.css" />
     <link rel="stylesheet" href="/nd_md/tailwindcss/dist/utilities.min.css" />
     <link rel="stylesheet" href="/static/css/index.min.css" />
     <link rel="stylesheet" href="/static/css/error.min.css" />
-    <style>
-        @import url(https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css);
-    </style>
 </head>
-<div class="container">
-    <div class="row">
-        <div class="xs-12 md-6 mx-auto text-2xl">
-            <div id="countUp">
-                <div class="number" data-count="404">404</div>
-                <div class="text">Page not found</div>
-                <div class="text">This may not mean anything.</div>
-                <div class="text">I'm probably working on something that has blown up.</div>
-                <div class="text"> Do you want to go back to a safe place? <a href="/">here</a></div>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="xs-12 md-6 mx-auto text-2xl 2xl:text-4xl">
+                <div id="countUp">
+                    <div class="number">404</div>
+                    <div class="text"></div>
+                    <div class="text">Page not found</div>
+                    <div class="text">This may not mean anything.</div>
+                    <div class="text">I'm probably working on something that has blown up.</div>
+                    <div class="text"> Do you want to go back to a safe place? <a href="/">here</a></div>
+                </div>
             </div>
         </div>
     </div>
-    <!--responsável pela renderização do app vue do lado do servidor-->
-    <!--vue-ssr-outlet-->
-</div>
-<script>
-    var formatThousandsNoRounding = function (n, dp) {
-        var e = '', s = e + n, l = s.length, b = n < 0 ? 1 : 0,
-            i = s.lastIndexOf(','), j = i == -1 ? l : i,
-            r = e, d = s.substr(j + 1, dp);
-        while ((j -= 3) > b) { r = '.' + s.substr(j, 3) + r; }
-        return s.substr(0, j + 3) + r +
-            (dp ? ',' + d + (d.length < dp ?
-                ('00000').substr(0, dp - d.length) : e) : e);
-    };
+</body>
 
-    var hasRun = false;
-
-    inView('#countUp').on('enter', function () {
-        if (hasRun == false) {
-            $('.number').each(function () {
-                var $this = $(this),
-                    countTo = $this.attr('data-count');
-
-                $({ countNum: $this.text() }).animate({
-                    countNum: countTo
-                },
-                    {
-                        duration: 2000,
-                        easing: 'linear',
-                        step: function () {
-                            $this.text(formatThousandsNoRounding(Math.floor(this.countNum)));
-                        },
-                        complete: function () {
-                            $this.text(formatThousandsNoRounding(this.countNum));
-                        }
-                    });
-            });
-            hasRun = true;
-        }
-    });
-</script>
+</html>

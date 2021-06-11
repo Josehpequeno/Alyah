@@ -2,7 +2,7 @@ body {
     background-image: url('../images/bg.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: cover
 }
 
 .color-primary {
@@ -143,13 +143,22 @@ p {
     height: auto;
     width: 100%;
     min-height: auto;
-    /* Mínimo da altura, por padrão “auto” */
     background-size: 100%;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat
 }
 
 .manga-page img {
-    display: block;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
+    background-size: cover;
+    height: auto;
+    min-height: 100vh;
+}
+
+@media screen and (max-height: 700px) {
+    .manga-page img {
+        max-height: 100vh;
+        height: auto;
+    }
 }

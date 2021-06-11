@@ -6,7 +6,6 @@ var exphbs = require('express-handlebars');
 const templates = '../views/';
 module.exports = () => {
     const app = express();
-
     app.engine('handlebars', exphbs());
     app.set('view engine', 'handlebars');
     //the rest of your express routes.

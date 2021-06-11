@@ -20,9 +20,9 @@
                         class="mr-5 hover:text-white-900 cursor-pointer border-b border-transparent hover:border-green-600">Mangá
                         page</a>
                     <div class="relative">
-                        <select onchange=""
+                        <select id="options" onchange="optionsChange();"
                             class="block w-full bg-color-secundary border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                            {{{methods.options()}}}
+                            {{{options}}}
                         </select>
                     </div>
                     <div class="px-5 fill-current text-white" @click="fullscreen">
@@ -37,29 +37,42 @@
     </div>
     <div id="content" class="md:container md:mx-auto py-1 px-4 md:items-center h-screen">
         <div class="manga-page h-screen">
-            <img alt="manga" src="{{items[0].url}}" />
+            {{{images}}}
         </div>
     </div>
-
-    <script src="/nd_md/jquery/dist/jquery.min.js" />
-    <script src="/nd_md/jquery/dist/jquery.slim.min.js" />
-    <script src="/nd_md/popper.js/dist/umd/popper.min.js" />
+    <input id="length" class="hidden" value="{{length}}" />
+    <script src="/nd_md/handlebars/dist/handlebars.min.js"></script>
+    <script src="/nd_md/jquery/dist/jquery.min.js"></script>
+    <script src="/nd_md/jquery/dist/jquery.slim.min.js"></script>
+    <script src="/nd_md/popper.js/dist/umd/popper.min.js"></script>
     <script>
-        function f() {
-            return console.log(pages);
+        function optionsChange() {
+            let pages = Number($('#length').val());
+            let opt = Number($('#options').val());
+            for (let i = 0; i < pages; i++) {
+                let $box = $(`#page_${i}`);
+                if (i != opt) {
+                    $box.addClass("hidden");
+                }
+                else {
+                    $box.removeClass("hidden");
+                }
+            }
         }
-        $(document).ready(function () {
-            document.addEventListener("keypress", function (e) {
-                //console.log(e.keyCode);
-                //console.log(e.data);
-                if (e.keyCode === '39') {
-                    console.log("hereR");
-                }
-                if (e.keyCode === '37') {
-                    console.log("hereL");
-                }
-            }, false);
-        });
+        $(document).ready(function() {
+            return optionsChange();
+        }); 
+    </script>
+    <script>
+        document.onkeydown = function (e) {
+            //console.log(e.keyCode);
+            if (e.keyCode === 39) {
+                console.log("hereR");
+            }
+            if (e.keyCode === 37) {
+                console.log("hereL");
+            }
+        }
     </script>
 </body>
 

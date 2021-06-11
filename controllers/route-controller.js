@@ -16,7 +16,7 @@ class RouteController {
     }
     home() {
         return (req, res) => {
-            return res.render(templates + 'home.handlebars', { layout: false });
+            return res.render(templates + 'home.handlebars', { layout: false, title: 'Alyah' });
         }
     }
     login() {
@@ -61,19 +61,35 @@ class RouteController {
     }
     mangaReader() {
         return (req, res) => {
-            return res.render(templates + 'mangaReader.handlebars', { layout: false });
-            /*methods: {
-                options() {
-                    const pages = [...Array(context.items.length + 1).keys()];
-                    let opt = '';
-                    pages.map(function (item) {
-                        if (item != 0) {
-                            opt += `<option value="${item - 1}"> Page ${item} </<option>`;
-                        }
-                    });
-                    return opt;
+            let items = [
+                { url: 'static/images/manga-static/manga1.jpg' },
+                { url: 'static/images/manga-static/manga2.jpeg' },
+                { url: 'static/images/manga-static/manga3.jpeg' },
+                { url: 'static/images/manga-static/manga4.jpeg' },
+                { url: 'static/images/manga-static/manga5.jpeg' },
+                { url: 'static/images/manga-static/manga6.jpg' },
+                { url: 'static/images/manga-static/manga7v3.jpeg' },
+                { url: 'static/images/manga-static/manga8.jpg' },
+                { url: 'static/images/manga-static/manga9.jpeg' },
+                { url: 'static/images/manga-static/manga10.png' }
+            ];
+            const pages = [...Array(items.length + 1).keys()];
+            let opt = '';
+            pages.map(function (item) {
+                if (item != 0) {
+                    opt += `<option value="${item - 1}"> Page ${item} </<option>`;
                 }
-            }*/
+            });
+            let images = '';
+            let i = 0;
+            items.map(function (item) {
+                if (images === '') {
+                    images += `<img alt="manga" src="${item.url}" id="page_${i}" />`;
+                }
+                images += `<img alt="manga" src="${item.url}" class="hidden" id="page_${i}" />`;
+                i++;
+            });
+            return res.render(templates + 'mangaReader.handlebars', { layout: false, items: items, options: opt, images: images, length: i });
         }
     }
 }
