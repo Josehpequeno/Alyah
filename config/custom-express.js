@@ -4,6 +4,7 @@ const consign = require('consign');
 var compression = require('compression');
 var exphbs = require('express-handlebars');
 const templates = '../views/';
+//const db = require('./db');
 module.exports = () => {
     const app = express();
     app.engine('handlebars', exphbs());

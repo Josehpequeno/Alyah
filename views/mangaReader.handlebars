@@ -25,7 +25,7 @@
                             {{{options}}}
                         </select>
                     </div>
-                    <div class="px-5 fill-current text-white" @click="fullscreen">
+                    <div class="px-5 fill-current text-white" onclick="openFullscreen();">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <path
                                 d="M0 0v24h24v-24h-24zm20 11.333l-2.253-2.252-8.667 8.667 2.253 2.252h-7.333v-7.333l2.252 2.252 8.667-8.667-2.252-2.252h7.333v7.333z" />
@@ -81,15 +81,41 @@
         }
         document.onkeyup = function (e) {
             //console.log(e.keyCode);
-            if (e.keyCode === 39) {
+            if (e.keyCode === 39 || e.keyCode === 37) {
                 arrow(e.keyCode);
-                console.log("hereR");
+                optionsChange();
             }
-            else if (e.keyCode === 37) {
-                arrow(e.keyCode);
-                console.log("hereL");
+            else if (e.keyCode === 70) {
+                let isInFullScreen = document.fullscreenElement;
+                if (isInFullScreen === null) {
+                    openFullscreen();
+                } else {
+                    closeFullscreen();
+                }
             }
-            optionsChange();
+        }
+    </script>
+    <script>
+        /* View in fullscreen */
+        var elem = document.getElementById("content");
+        function openFullscreen() {
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) { /* Safari */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE11 */
+                elem.msRequestFullscreen();
+            }
+        }
+        /* Close fullscreen */
+        function closeFullscreen() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) { /* Safari */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { /* IE11 */
+                document.msExitFullscreen();
+            }
         }
     </script>
 </body>
