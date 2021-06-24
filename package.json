@@ -20,9 +20,9 @@
   "homepage": "https://github.com/Josehpequeno/Alyah#readme",
   "dependencies": {
     "autoprefixer": "^10.2.5",
-    "aws-sdk": "^2.928.0",
     "compression": "^1.7.4",
     "consign": "^0.1.6",
+    "crypto-js": "^4.0.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.2",
