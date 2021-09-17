@@ -13,6 +13,24 @@
 </head>
 
 <body class="bg-black">
+    {{#if error}}
+    <div id="alert" class="alert-banner w-full fixed top-0">
+        <input type="checkbox" class="hidden" id="banneralert">
+
+        <label class="close cursor-pointer flex items-center justify-between w-full p-2 bg-red-500 shadow text-white"
+            title="close" for="banneralert">
+            {{{error}}}
+            <div onclick="closeAlert();">
+                <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                    viewBox="0 0 18 18">
+                    <path
+                        d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                    </path>
+                </svg>
+            </div>
+        </label>
+    </div>
+    {{/if}}
     <div class="container mx-auto min-h-screen font-nunito py-10">
         <main>
             <div class="flex items-center justify-center mt-16 mx-6">
@@ -31,25 +49,29 @@
                             <span class="text-white text-sm">Username</span>
                             <input id="username" name="username"
                                 class="px-3 py-2 h-7 form-input mt-1 block w-full rounded-md bg-color-secundary border-gray-700 text-white"
-                                value="" required autocomplete="username" autofocus>
+                                required autocomplete="username" autofocus {{#if user}} value="{{user.username}}"
+                                {{/if}} {{#else}} value="" {{/else}}>
                         </label>
                         <label class="block mt-3">
                             <span class="text-white text-sm">Email</span>
                             <input type="email" id="email" name="email"
                                 class="px-3 py-2 h-7 form-input mt-1 block w-full rounded-md bg-color-secundary border-gray-700 text-white"
-                                value="" required autocomplete="email" autofocus>
+                                required autocomplete="email" autofocus {{#if user}} value="{{user.email}}" {{/if}}
+                                {{#else}} value="" {{/else}}>
                         </label>
                         <label class="block mt-3">
                             <span class="text-white text-sm">Password</span>
                             <input id="password" type="password"
                                 class="px-3 py-2 h-7 form-input mt-1 block w-full rounded-md bg-color-secundary border-gray-700 text-white"
-                                name="password" required autocomplete="password">
+                                name="password" required autocomplete="password" {{#if user}} value="{{user.password}}"
+                                {{/if}} {{#else}} value="" {{/else}}>
                         </label>
                         <label class="block mt-3">
                             <span class="text-white text-sm">Confirm Password</span>
                             <input id="confirm-password" type="password"
                                 class="px-3 py-2 h-7 form-input mt-1 block w-full rounded-md bg-color-secundary border-gray-700 text-white"
-                                name="password" required>
+                                name="confirm-password" required {{#if user}} value="{{user.confirm-password}}" {{/if}}
+                                {{#else}} value="" {{/else}}>
                             <span id="message" class="py-10"></span>
                         </label>
 
@@ -71,13 +93,9 @@
     <div class="dark:bg-gray-900 bottom-5 w-full text-center text-gray-400">
         Josehpequeno © 2021
     </div>
-    <!--vue-ssr-outlet-->
-    <script src="/nd_md/jquery/dist/jquery.min.js" />
-    <script src="/nd_md/jquery/dist/jquery.slim.min.js" />
-    <script src="/nd_md/popper.js/dist/umd/popper.min.js" />
-    <script>
-        Vue.use(checkPasswordMatch);
-    </script>
+    <script src="/nd_md/jquery/dist/jquery.min.js"></script>
+    <script src="/nd_md/jquery/dist/jquery.slim.min.js"></script>
+    <script src="/nd_md/popper.js/dist/umd/popper.min.js"></script>
     <script>
         function checkPasswordMatch() {
             if ($('#password').val() == '' || $('#confirm-password').val() == '') {
@@ -94,6 +112,11 @@
             $("#password").keyup(checkPasswordMatch);
             $("#confirm-password").keyup(checkPasswordMatch);
         });
+    </script>
+    <script>
+        function closeAlert() {
+            $('#alert').addClass('hidden');
+        }
     </script>
 </body>
 

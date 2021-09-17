@@ -1,4 +1,5 @@
 const templates = '../views/';
+const { validationResult } = require('express-validator');
 class RouteController {
     static routes() {
         return {
@@ -27,6 +28,19 @@ class RouteController {
     signup() {
         return (req, res) => {
             return res.render(templates + 'signup.handlebars', { layout: false });
+        }
+    }
+    makeSignup() {
+        return (req, res) => {
+            const err = validationResult(req);
+            let userReq = req.body;
+            if (!err.isEmpty()) {
+                console.log(err.errors);
+                return res.render(templates + 'signup.handlebars', { layout: false, error: err.errors[0].msg, user: userReq });
+            }
+            else{
+                console.log(userReq);
+            }
         }
     }
     mangas() {

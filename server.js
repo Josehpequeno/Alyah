@@ -1,4 +1,4 @@
-const verde = '\u001b[32m';
+const green = '\u001b[32m';
 const reset = '\u001b[0m';
 const customExpress = require('./config/custom-express');
 const app = customExpress();
@@ -14,7 +14,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 //http.createServer(app).listen(3000, () =>
 app.listen(app.get("port"), () =>
-    console.log(verde + "%s servidor rodando localmente em http://%s:%s" + reset,
+    console.log(green + "%s servidor rodando localmente em http://%s:%s" + reset,
         process.env.NODE_ENV,
         app.get("host"),
         app.get("port"))

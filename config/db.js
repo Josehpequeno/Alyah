@@ -1,5 +1,8 @@
 require('dotenv/config');
 const { Pool } = require('pg');
+const red = '\u001b[31m';
+const blue = '\u001b[34m';
+const reset = '\u001b[0m';
 
 const pool = new Pool({
     connectionString: process.env.DB_URL,
@@ -31,9 +34,9 @@ pool
 */
 pool.connect(err => {
     if (err) {
-        console.error('error connecting: ' + err.stack);
+        console.error(red+'error connecting: ' + err.stack+reset);
     } else {
-        console.log('connection established');
+        console.log(blue+'connection established'+reset);
     }
 });
 /* Manipulando o postgresql
@@ -156,15 +159,15 @@ pool.query(
         console.log(results);
     }
 );*/
-pool.query(
-    `SELECT * FROM users;`,
-    (error, results) => {
-        if (error) {
-            throw error
-        }
-        //response.status(200).send(`User modified with ID: ${id}`)
-        //console.log(results.rows);
-    }
-);
+// pool.query(
+//     `SELECT * FROM users;`,
+//     (error, results) => {
+//         if (error) {
+//             throw error
+//         }
+//         response.status(200).send(`User modified with ID: ${id}`)
+//         console.log(results.rows);
+//     }
+// );
 
 module.exports = pool;
