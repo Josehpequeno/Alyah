@@ -154,6 +154,7 @@ p {
     background-size: cover;
     height: auto;
     min-height: 100vh;
+    max-height: 100vh;
 }
 
 @media screen and (min-height: 600px) {

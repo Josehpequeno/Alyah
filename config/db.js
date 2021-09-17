@@ -163,7 +163,7 @@ pool.query(
             throw error
         }
         //response.status(200).send(`User modified with ID: ${id}`)
-        console.log(results.rows);
+        //console.log(results.rows);
     }
 );
 

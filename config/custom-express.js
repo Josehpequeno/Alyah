@@ -17,6 +17,8 @@ module.exports = () => {
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 
+    const sessionAuth = require('./auth');
+    sessionAuth(app);
     consign().include('routes').into(app);
     app.use(function (req, res, next) {
         return res.status(404).render(templates + '404.handlebars', { layout: false });

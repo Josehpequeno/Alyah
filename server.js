@@ -1,7 +1,5 @@
-//const http = require('http');
 const verde = '\u001b[32m';
 const reset = '\u001b[0m';
-//const path = require('path');
 const customExpress = require('./config/custom-express');
 const app = customExpress();
 
