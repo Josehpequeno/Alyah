@@ -159,15 +159,14 @@ pool.query(
         console.log(results);
     }
 );*/
-// pool.query(
-//     `SELECT * FROM users;`,
-//     (error, results) => {
-//         if (error) {
-//             throw error
-//         }
-//         response.status(200).send(`User modified with ID: ${id}`)
-//         console.log(results.rows);
-//     }
-// );
+pool.query(
+    `SELECT * FROM users;`,
+    (error, results) => {
+        if (error) {
+            throw error
+        }
+        console.log(results.rows);
+    }
+);
 
 module.exports = pool;

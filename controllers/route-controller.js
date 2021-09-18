@@ -1,5 +1,9 @@
 const templates = '../views/';
 const { validationResult } = require('express-validator');
+const UserDAO = require('../dao/user-dao');
+const db = require('../config/db');
+const nodemailer = require('nodemailer');
+require('dotenv/config');
 class RouteController {
     static routes() {
         return {
@@ -35,11 +39,54 @@ class RouteController {
             const err = validationResult(req);
             let userReq = req.body;
             if (!err.isEmpty()) {
-                console.log(err.errors);
+                // console.log(err.errors);
                 return res.render(templates + 'signup.handlebars', { layout: false, error: err.errors[0].msg, user: userReq });
             }
-            else{
-                console.log(userReq);
+            else {
+                //console.log(userReq);
+                const userDAO = new UserDAO(db);
+                userDAO.searchEmail(userReq.email).then(user => {
+                    let msg = "This email is already being used!";
+                    return res.render(templates + 'signup.handlebars', { layout: false, error: msg, user: userReq });
+                }).catch(err => {
+                    userDAO.searchName(userReq.name).then(user => {
+                        let msg = "This username is already being used!";
+                        return res.render(templates + 'signup.handlebars', { layout: false, error: msg, user: userReq });
+                    }).catch(err => {
+                        //userDAO.createUser()
+                        let chars = "9ABC0DEF1GHI2JKL3MNO4PQR5STU6VWX7YZ8";
+                        let randomstring = "";
+                        for (let i = 0; i <= 5; i++) {
+                            let j = Math.floor(Math.random() * chars.length);
+                            randomstring += chars[j];
+                        }
+                        let tranporter = nodemailer.createTransport({
+                            service: 'gmail',
+                            auth: {
+                                user: process.env.email,
+                                pass: process.env.password
+                            }
+                        });
+                        let mailOptions = {
+                            from: process.env.email,
+                            to: userReq.email,
+                            subject: 'security code from Alyah',
+                            text: randomstring,
+                            html: `<h1>Welcome to Alyah</h1>
+                            <h2>${randomstring}</h2>
+                            <p>That was easy!</p>
+                            <small>if you have not registered with Alyah, just ignore this email.</small>`
+                        }
+                        tranporter.sendMail(mailOptions, (err, info) => {
+                            if (err) {
+                                console.log(err);
+                            } else {
+                                console.log("Email sent: " + info.response);
+                            }
+                        })
+                        // TODO: [] cadastrar o email vazio e depois excluir
+                    });
+                });
             }
         }
     }

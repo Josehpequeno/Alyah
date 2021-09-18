@@ -28,7 +28,7 @@ class UserDao {
 
     getAllUser() {
         return new Promise((resolve, reject) => {
-            this_db.query(
+            this._db.query(
                 `SELECT * FROM users;`,
                 (error, results) => {
                     if (error) {
@@ -38,6 +38,36 @@ class UserDao {
                     resolve(results.rows);
                 }
             );
+        });
+    }
+
+    searchEmail(email) {
+        return new Promise((resolve, reject) => {
+            this._db.get(`
+                SELECT * FROM users WHERE email = $1
+            `,
+            [email],
+            (err, user) => {
+                if (err) {
+                    return reject("User not exist");
+                }
+                return resolve(user);
+            });
+        });
+    }
+
+    searchName(name) {
+        return new Promise((resolve, reject) => {
+            this._db.get(`
+                SELECT * FROM users WHERE name = $1
+            `,
+            [name],
+            (err, user) => {
+                if (err) {
+                    return reject("User not exist");
+                }
+                return resolve(user);
+            });
         });
     }
 
