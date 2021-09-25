@@ -3,7 +3,7 @@ const { body } = require('express-validator');
 class Usuario {
     static validacoes() {
         return [
-            body('username').isLength({ min: 4 }).withMessage('The username must be at least 4 characters long!'),
+            body('name').isLength({ min: 4 }).withMessage('The username must be at least 4 characters long!'),
             body('email').isEmail().withMessage('The email field is filled out incorrectly!'),
             body('password').isLength({ min: 1 }).withMessage('Empty password field!'),
             body('confirm-password').isLength({ min: 1 }).withMessage('Empty password confirmation field!'),

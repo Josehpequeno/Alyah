@@ -169,4 +169,15 @@ pool.query(
     }
 );
 
+// Apagando todos os usuários
+// pool.query(
+//     `DELETE FROM users;`,
+//     (error, results) => {
+//         if (error) {
+//             throw error
+//         }
+//         console.log(results.rows);
+//     }
+// );
+
 module.exports = pool;

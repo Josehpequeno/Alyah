@@ -5,7 +5,11 @@ module.exports = (app) => {
     const routes = RouteController.routes();
 
     app.get(routes.home, routeController.home());
-    app.get(routes.login, routeController.login());
+    app.get(routes.signout, routeController.signout());
+    
+    app.route(routes.login)
+    .get(routeController.login())
+    .post(User.validacoesLogin(), routeController.makeLogin());
     app.route(routes.signup)
     .get(routeController.signup())
     .post(User.validacoes(), routeController.makeSignup());

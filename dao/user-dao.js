@@ -10,14 +10,13 @@ class UserDao {
             let favoriteDao = new FavoriteDao(this._db);
             favoriteDao.createFavorite().then(favorites_id => {
                 this._db.query(
-                    'INSERT INTO users (name, email, password, favorites_id) VALUES ($1, $2, $3, $4)',
+                    'INSERT INTO users (name, email, password, favorites_id) VALUES ($1, $2, $3, $4) RETURNING name, email, favorites_id',
                     [name, email, sha256(password), favorites_id],
                     (error, results) => {
                         if (error) {
                             return reject(error);
                         }
-                        console.log(results.insertId);
-                        return resolve(results.insertId);
+                        return resolve(results.rows[0]);
                     }
                 );
             }).catch(err => {
@@ -43,31 +42,31 @@ class UserDao {
 
     searchEmail(email) {
         return new Promise((resolve, reject) => {
-            this._db.get(`
+            this._db.query(`
                 SELECT * FROM users WHERE email = $1
             `,
-            [email],
-            (err, user) => {
-                if (err) {
-                    return reject("User not exist");
-                }
-                return resolve(user);
-            });
+                [email],
+                (err, results) => {
+                    if (err || results.rows.length === 0) {
+                        return reject("User not exist");
+                    }
+                    return resolve(results.rows);
+                });
         });
     }
 
     searchName(name) {
         return new Promise((resolve, reject) => {
-            this._db.get(`
+            this._db.query(`
                 SELECT * FROM users WHERE name = $1
             `,
-            [name],
-            (err, user) => {
-                if (err) {
-                    return reject("User not exist");
-                }
-                return resolve(user);
-            });
+                [name],
+                (err, results) => {
+                    if (err || results.rows.length === 0) {
+                        return reject("User not exist");
+                    }
+                    return resolve(results.rows);
+                });
         });
     }
 
