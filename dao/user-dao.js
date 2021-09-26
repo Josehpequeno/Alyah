@@ -11,7 +11,7 @@ class UserDao {
             favoriteDao.createFavorite().then(favorites_id => {
                 this._db.query(
                     'INSERT INTO users (name, email, password, favorites_id) VALUES ($1, $2, $3, $4) RETURNING name, email, favorites_id',
-                    [name, email, sha256(password), favorites_id],
+                    [name, email, sha256(password).toString(), favorites_id],
                     (error, results) => {
                         if (error) {
                             return reject(error);
@@ -70,5 +70,12 @@ class UserDao {
         });
     }
 
+    search(email) {
+        return new Promise((resolve, reject) => {
+            return this.searchEmail(email).then(user => resolve(user)).catch(err => {
+                return this.searchName(email).then(user => resolve(user)).catch(err => reject(err));
+            });
+        });
+    }
 }
 module.exports = UserDao;

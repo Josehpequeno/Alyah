@@ -6,36 +6,52 @@ const sha256 = require("crypto-js/sha256");
 
 var MemoryStore = require('memorystore')(session);
 
-const userDao = require('../dao/user-dao');
+const UserDao = require('../dao/user-dao');
+const FavoriteDao = require('../dao/favorite-dao');
 const db = require('./db');
 
 module.exports = (app) => {
 
+    let favorites = null;
     passport.use(new LocalStrategy(
         {
             usernameField: 'email',
             passwordField: 'password'
         },
         (email, password, done) => {//done, função que precisa executar quando tiver feito a autenticação do usuário
-            const userDao = new userDao(db);
-            (userDao.busca(email)).then(user => {
-                if (!user || sha256(password) != user.password) {
+            const userDao = new UserDao(db);
+            (userDao.search(email)).then(user => {
+                // console.log("Senha recebida: " + sha256(password));
+                // console.log("Senha: "+ user[0].password);
+                // console.log(sha256(password) == user[0].password);
+                if (!user || sha256(password) != user[0].password) {
                     return done(null, false);
                 }
+                if (user.favorites_id != null) {
+                    let favoriteDao = new FavoriteDao(db);
+                    favoriteDao.search(user.favorites_id).then(favorites_array =>{
+                        console.log(favorites_array);
+                        favorites =  favorites_array.length;
+                    }).catch(err => {
+                        console.log(err);
+                    });
+                }
                 return done(null, user);
-            }).catch(erro => {
-                console.log(erro); //done(erro, false); 
+            }).catch(err => {
+                console.log(err); 
+                return done(err, false);
             });
         }
     ));
-
+        //:TODO: [] Corrigir error na serialiazação.
     passport.serializeUser((user, done) => {// serelização do usuário, guarda em uma sessão as informações relevantes do usuário 
         const usersession = {
             id: user.id,
-            nome: user.nome_de_user,
+            nome: user.name,
             email: user.email,
-            eleicao: user.ultima_eleicao,
-            descricao: user.descricao
+            favorites_id: user.favorites_id,
+            favorites: favorites,
+            descricao: user.description
         };
         done(null, usersession);
     });
@@ -56,7 +72,7 @@ module.exports = (app) => {
         store: new MemoryStore({
             checkPeriod: 86400000 // prune expired entries every 24h
         }),
-        secret: 'Luxius_secret',
+        secret: 'Alyahsecret',
         genid: function (req) {
             return uuidv4();// para gerar string aleatórias, usada aqui para gerar o id das sessões
         },
@@ -69,7 +85,7 @@ module.exports = (app) => {
 
     app.use(function (req, resp, next) {
         req.passport = passport;
-        req.session = true;
+        //req.session = true;
         //req.session = session.;
         next();//injeção de dependências
     });

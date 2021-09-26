@@ -3,7 +3,7 @@
 
 <head>
     <title>Alyah</title>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <link class="rounded-circle" href="/static/images/favicon.ico" rel="icon" />
     <link rel="stylesheet" href="/nd_md/tailwindcss/dist/base.min.css" />
     <link rel="stylesheet" href="/nd_md/tailwindcss/dist/components.min.css" />
@@ -13,6 +13,24 @@
 </head>
 
 <body class="bg-black">
+    {{#if error}}
+    <div id="alert" class="alert-banner w-full fixed top-0">
+        <input type="checkbox" class="hidden" id="banneralert">
+
+        <label class="close cursor-pointer flex items-center justify-between w-full p-2 bg-red-500 shadow text-white"
+            title="close" for="banneralert">
+            {{{error}}}
+            <div onclick="closeAlert();">
+                <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                    viewBox="0 0 18 18">
+                    <path
+                        d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                    </path>
+                </svg>
+            </div>
+        </label>
+    </div>
+    {{/if}}
     <div class="min-h-screen container mx-auto font-nunito py-10">
         <main>
             <div class="flex items-center justify-center mt-16 mx-6">

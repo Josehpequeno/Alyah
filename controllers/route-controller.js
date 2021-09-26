@@ -30,16 +30,41 @@ class RouteController {
             return res.render(templates + 'login.handlebars', { layout: false });
         }
     }
-    makeLogin(){
+    makeLogin() {
         return (req, res, next) => {
             const err = validationResult(req);
             let userReq = req.body;
             if (!err.isEmpty()) {
                 // console.log(err.errors);
-                return res.render(templates + 'signup.handlebars', { layout: false, error: err.errors[0].msg, user: userReq });
-            }
-            else {
-                // TODO: [] implementar login.
+                return res.render(templates + 'login.handlebars', { layout: false, error: err.errors[0].msg, user: userReq });
+            } else {
+                const passport = req.passport;
+                //console.log(passport);
+                passport.authenticate('local', (err, user, info) => {
+                    if (info) {
+                        console.log(info);
+                        return res.render(templates + 'login.handlebars', { layout: false, user: userReq });
+                    }
+                    if (err) {
+                        return next(err); // avança no processamento da requisição, passando um erro.
+                    }
+                    if (user) {
+                        req.login(user, err => {
+                            if (err) {
+                                return next(err);
+                            }
+                            console.log(req.session.passport.user);
+                            if (req.session.passport.user.favorites == null) {
+                                return res.render(templates + 'profile.handlebars', { layout: false, user: user[0], favorites: 0 });
+                            } else {
+                                return res.render(templates + 'profile.handlebars', { layout: false, user: user, favorites: req.session.passport.user.favorites });
+                            }
+                        });
+                    } else if (!user) {
+                        const msg = "Login or password filled out incorrectly!";
+                        return res.render(templates + 'login.handlebars', { layout: false, error: msg, user: userReq });
+                    }
+                })(req, res, next);
             }
         }
     }
