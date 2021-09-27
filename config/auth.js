@@ -43,15 +43,14 @@ module.exports = (app) => {
             });
         }
     ));
-        //:TODO: [] Corrigir error na serialiazação.
     passport.serializeUser((user, done) => {// serelização do usuário, guarda em uma sessão as informações relevantes do usuário 
         const usersession = {
-            id: user.id,
-            nome: user.name,
-            email: user.email,
-            favorites_id: user.favorites_id,
+            id: user[0].id,
+            name: user[0].name,
+            email: user[0].email,
+            favorites_id: user[0].favorites_id,
             favorites: favorites,
-            descricao: user.description
+            description: user[0].description
         };
         done(null, usersession);
     });
@@ -83,7 +82,7 @@ module.exports = (app) => {
     app.use(passport.initialize());
     app.use(passport.session());// iniciar o passaport e a sessão.
 
-    app.use(function (req, resp, next) {
+    app.use((req, resp, next) => {
         req.passport = passport;
         //req.session = true;
         //req.session = session.;

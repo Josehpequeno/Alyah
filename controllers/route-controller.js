@@ -53,11 +53,11 @@ class RouteController {
                             if (err) {
                                 return next(err);
                             }
-                            console.log(req.session.passport.user);
-                            if (req.session.passport.user.favorites == null) {
-                                return res.render(templates + 'profile.handlebars', { layout: false, user: user[0], favorites: 0 });
+                            const userSession = req.session.passport.user;
+                            if (userSession.favorites == null) {
+                                return res.render(templates + 'profile.handlebars', { layout: false, user: userSession, favorites: 0 });
                             } else {
-                                return res.render(templates + 'profile.handlebars', { layout: false, user: user, favorites: req.session.passport.user.favorites });
+                                return res.render(templates + 'profile.handlebars', { layout: false, user: userSession, favorites: userSession.favorites });
                             }
                         });
                     } else if (!user) {

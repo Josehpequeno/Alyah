@@ -159,15 +159,16 @@ pool.query(
         console.log(results);
     }
 );*/
-pool.query(
-    `SELECT * FROM users;`,
-    (error, results) => {
-        if (error) {
-            throw error
-        }
-        console.log(results.rows);
-    }
-);
+//mostra todos os usuários e suas informações.
+// pool.query(
+//     `SELECT * FROM users;`,
+//     (error, results) => {
+//         if (error) {
+//             throw error
+//         }
+//         console.log(results.rows);
+//     }
+// );
 
 // Apagando todos os usuários
 // pool.query(
