@@ -4,6 +4,8 @@ const consign = require('consign');
 var compression = require('compression');
 var exphbs = require('express-handlebars');
 const templates = '../views/';
+const jwt = require('jsonwebtoken');
+require('dotenv/config');
 //const db = require('./db');
 module.exports = () => {
     const app = express();
@@ -21,6 +23,10 @@ module.exports = () => {
     //sessionAuth(app);
     //consign().include('auth').into(app);
     consign().include('routes').into(app);
+    const token = jwt.sign({ id: 0 }, process.env.SECRET, {
+        expiresIn: 300 // expires in 5min
+    });
+    console.log(token);
     app.use(function (req, res, next) {
         return res.status(404).render(templates + '404.handlebars', { layout: false });
     });

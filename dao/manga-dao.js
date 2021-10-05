@@ -1,6 +1,6 @@
 const AuthorDao = require('./author-dao');
 
-class MangarDao {
+class MangaDao {
     constructor(db) {
         this._db = db;
     }
@@ -28,13 +28,17 @@ class MangarDao {
     getIdManga(name) {
         return new Promise((resolve, reject) => {
             this._db.query(
-                'SELECT * FROM mangas WHERE name = $1',
+                'SELECT * FROM mangas WHERE name = $1;',
                 [name],
                 (error, results) => {
                     if (error) {
                         return reject(error);
                     }
-                    return resolve(results.rows);
+                    if (results.rows.length === 0) {
+                        console.log(name);
+                        return reject("Sem resultados");
+                    }
+                    return resolve(results.rows[0].id);
                 }
             );
         });

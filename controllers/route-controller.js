@@ -174,16 +174,16 @@ class RouteController {
     mangaReader() {
         return (req, res) => {
             let items = [
-                { url: 'static/images/manga-static/manga1.jpg' },
-                { url: 'static/images/manga-static/manga2.jpeg' },
-                { url: 'static/images/manga-static/manga3.jpeg' },
-                { url: 'static/images/manga-static/manga4.jpeg' },
-                { url: 'static/images/manga-static/manga5.jpeg' },
-                { url: 'static/images/manga-static/manga6.jpg' },
-                { url: 'static/images/manga-static/manga7v3.jpeg' },
-                { url: 'static/images/manga-static/manga8.jpg' },
-                { url: 'static/images/manga-static/manga9.jpeg' },
-                { url: 'static/images/manga-static/manga10.png' }
+                { url: 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/Oyasumi%20Punpun%2Fcapitulo%2001%20-%20Oyasumi%20Punpun%2F00.png?alt=media&token=a6a4a7df-cf75-4b24-bee1-d5d396791e34' },
+                { url: 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/Oyasumi%20Punpun%2Fcapitulo%2001%20-%20Oyasumi%20Punpun%2F01-02.jpg?alt=media&token=7e24138a-a698-4f2b-a390-05f8c8e653a3' },
+                { url: 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/Oyasumi%20Punpun%2Fcapitulo%2001%20-%20Oyasumi%20Punpun%2F02.png?alt=media&token=a93f3307-a85b-43bd-be94-49c6e949217d' },
+                { url: 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/Oyasumi%20Punpun%2Fcapitulo%2001%20-%20Oyasumi%20Punpun%2F03.png?alt=media&token=92a48776-3403-48ff-ab7e-aae463c93c3b' },
+                { url: 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/Oyasumi%20Punpun%2Fcapitulo%2001%20-%20Oyasumi%20Punpun%2F05.png?alt=media&token=0e157ca5-7677-4301-9477-0e3d09f4b860' },
+                { url: 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/Oyasumi%20Punpun%2Fcapitulo%2001%20-%20Oyasumi%20Punpun%2F06.png?alt=media&token=0f816601-f1c7-4653-91f0-4894fa14044f' },
+                { url: 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/Oyasumi%20Punpun%2Fcapitulo%2001%20-%20Oyasumi%20Punpun%2F07.png?alt=media&token=a5943a60-e218-4d66-aa7f-3fa119ed1245' },
+                { url: 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/Oyasumi%20Punpun%2Fcapitulo%2001%20-%20Oyasumi%20Punpun%2F08.png?alt=media&token=b67b7343-7a61-481f-b3ad-3ae571562e4c' },
+                { url: 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/Oyasumi%20Punpun%2Fcapitulo%2001%20-%20Oyasumi%20Punpun%2F09.png?alt=media&token=d77e487d-faa6-46f5-978e-2782324fe610' },
+                { url: 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/Oyasumi%20Punpun%2Fcapitulo%2001%20-%20Oyasumi%20Punpun%2F10.png?alt=media&token=df0928f3-7152-42e3-98f8-328c6e051024' }
             ];
             const pages = [...Array(items.length + 1).keys()];
             let opt = '';

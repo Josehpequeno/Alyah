@@ -1,6 +1,7 @@
 const RouteController = require('../controllers/route-controller');
 const routeController = new RouteController();
 const User = require('../models/user');
+const jwt = require('../config/jwt');
 module.exports = (app) => {
     const routes = RouteController.routes();
 
@@ -21,4 +22,10 @@ module.exports = (app) => {
     app.get(routes.editProfile, routeController.editProfile());
     app.get(routes.changePassword, routeController.changePassword());
     app.get(routes.mangaReader, routeController.mangaReader());
+
+    
+    app.post('/AddImages', jwt.verify, (req, res, next) => {
+        //console.log(req.body);
+        res.send(req.body);
+    });
 }

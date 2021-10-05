@@ -5,19 +5,18 @@ class ChapterDao {
         this._db = db;
     }
 
-    createChapter(name) {
+    createChapter(name_manga, name_chapter) {
         return new Promise((resolve, reject) => {
-            let MangaDao = new MangaDao(this._db);
-            MangaDao.getIdManga(name).then(manga_id => {
+            let mangaDao = new MangaDao(this._db);
+            mangaDao.getIdManga(name_manga).then(manga_id => {
                 this._db.query(
                     'INSERT INTO chapters (name, manga_id) VALUES ($1, $2)',
-                    [name, manga_id],
+                    [name_chapter, manga_id],
                     (error, results) => {
                         if (error) {
                             return reject(error);
                         }
-                        console.log(results.insertId);
-                        return resolve(results.insertId);
+                        return resolve();
                     }
                 );
             }).catch(err => {
@@ -28,8 +27,8 @@ class ChapterDao {
 
     getChapters(manga) {
         return new Promise((resolve, reject) => {
-            let MangaDao = new MangaDao(this._db);
-            MangaDao.getIdManga(manga).then(manga_id => {
+            let mangaDao = new MangaDao(this._db);
+            mangaDao.getIdManga(manga).then(manga_id => {
                 this._db.query(
                     'SELECT * FROM chapters WHERE manga_id = $1',
                     [manga_id],
@@ -37,6 +36,7 @@ class ChapterDao {
                         if (error) {
                             return reject(error);
                         }
+                        // console.log("here: "+ JSON.stringify(results.rows[0]));
                         return resolve(results.rows);
                     }
                 );

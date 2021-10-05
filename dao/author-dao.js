@@ -6,14 +6,13 @@ class AuthorDao {
     createAuthor(name) {
         return new Promise((resolve, reject) => {
             this._db.query(
-                'INSERT INTO authors (name) VALUES ($1)',
+                'INSERT INTO authors (name) VALUES ($1) RETURNING *',
                 [name],
                 (error, results) => {
                     if (error) {
                         return reject(error);
                     }
-                    console.log(results.insertId);
-                    return resolve(results.insertId);
+                    return resolve(results.rows[0].id);
                 }
             );
         });
@@ -28,7 +27,7 @@ class AuthorDao {
                     if (error) {
                         return reject(error);
                     }
-                    return resolve(results.rows);
+                    return resolve(results.rows[0].id);
                 }
             );
         });
