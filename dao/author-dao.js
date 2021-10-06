@@ -32,6 +32,24 @@ class AuthorDao {
             );
         });
     }
+    getNameAuthor(id) {
+        return new Promise((resolve, reject) => {
+            this._db.query(
+                'SELECT * FROM authors WHERE id = $1',
+                [id],
+                (error, results) => {
+                    if (error) {
+                        return reject(error);
+                    }
+                    if (results.rows.length === 0) {
+                        console.log(results.rows);
+                        return reject("No author with this id!")
+                    }
+                    return resolve(results.rows[0].name);
+                }
+            );
+        });
+    }
 
 }
 module.exports = AuthorDao;

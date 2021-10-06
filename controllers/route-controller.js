@@ -1,6 +1,8 @@
 const templates = '../views/';
 const { validationResult } = require('express-validator');
 const UserDAO = require('../dao/user-dao');
+const MangaDao = require('../dao/manga-dao');
+const AuthorDao = require('../dao/author-dao');
 const db = require('../config/db');
 const nodemailer = require('nodemailer');
 require('dotenv/config');
@@ -17,12 +19,17 @@ class RouteController {
             profile: '/profile',
             editProfile: '/editprofile',
             changePassword: '/changepassword',
-            mangaReader: '/mangaReader'
+            mangaReader: '/mangaReader',
+            addImage: '/AddImages'
         }
     }
     home() {
         return (req, res) => {
-            return res.render(templates + 'home.handlebars', { layout: false, title: 'Alyah' });
+            let mangaDao = new MangaDao(db);
+            mangaDao.getAllMangas().then(results => {
+                // ?:TODO: [] alterar banco de dados add urls das capas de cada mangá.
+                return res.render(templates + 'home.handlebars', { layout: false, title: 'Alyah', mangas: results });
+            }).catch(err => console.log(err));
         }
     }
     login() {
@@ -203,6 +210,38 @@ class RouteController {
             });
             return res.render(templates + 'mangaReader.handlebars', { layout: false, items: items, options: opt, images: images, length: i });
         }
+    }
+    addImage() {
+        return (req, res) => {
+            const ImagesDao = require('../dao/images-dao');
+            let imagesDao = new ImagesDao(db);
+            let manga = req.body.manga;
+            let chapter = req.body.chapter;
+            let urls = req.body.urls;
+            async function f1(url) {
+                await imagesDao.createImages(
+                    url,
+                    chapter, manga);
+            }
+            res.send(req.body);
+            //adicionar de forma sequencial e assincrona.
+            (async () => {
+                for (let url of urls) {
+                    await f1(url);
+                }
+            })();
+            db.query(
+                `SELECT * FROM images;`,
+                (error, results) => {
+                    if (error) {
+                        throw error;
+                    }
+                    // console.log("Images: ");
+                    // console.log(results.rows);
+                    res.send("Dados registrados : ", JSON.stringify(results.rows));
+                }
+            );
+        };
     }
 }
 module.exports = RouteController;

@@ -24,8 +24,5 @@ module.exports = (app) => {
     app.get(routes.mangaReader, routeController.mangaReader());
 
     
-    app.post('/AddImages', jwt.verify, (req, res, next) => {
-        //console.log(req.body);
-        res.send(req.body);
-    });
+    app.post(routes.addImage, jwt.verify, routeController.addImage());
 }
