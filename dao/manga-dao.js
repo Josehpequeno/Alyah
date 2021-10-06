@@ -71,5 +71,33 @@ class MangaDao {
         });
     }
 
+    getAllMangasOrderByFavorites() {
+        return new Promise((resolve, reject) => {
+            this._db.query(
+                'SELECT * FROM mangas ORDER BY favorites_count LIMIT 10;',
+                [],
+                (error, results) => {
+                    if (error) {
+                        return reject(error);
+                    }
+                    if (results.rows.length === 0) {
+                        return reject("Sem resultados");
+                    }
+                    let promises = [];
+                    results.rows.forEach(row => {
+                        let authorDao = new AuthorDao(this._db);
+                        promises.push(authorDao.getNameAuthor(row.author_id));
+                    });
+                    Promise.all(promises).then((data) => {
+                        for (let i = 0; i < data.length; i++) {
+                            results.rows[i]["Author"] = data[i];
+                        }
+                        return resolve(results.rows);
+                    }).catch((err) => console.error(err));
+                }
+            );
+        });
+    }
+
 }
 module.exports = MangaDao;

@@ -40,14 +40,14 @@
     </div>
     <div id="content" class="md:container md:mx-auto min-h-screen py-10">
         <div class="flex flex-cols flex-wrap gap-4 grid md:grid-cols-2 md:items-center">
-            <!-- Start of component -->
             {{#each mangas}}
+            <!-- Start of component -->
             <div class="h-80 bg-color-secundary md:col-span-1 text-white p-5 rounded-md tracking-wide shadow-lg">
                 <div id="header" class="flex">
                     <div>
                         <div class="manga">
                             <img alt="manga" class="w-11/12 md:w-full rounded-md"
-                                src="/static/images/manga-static/manga1.jpg" />
+                                src="{{cover}}" />
                         </div>
                     </div>
                     <div id="body" class="flex flex-col ml-5">

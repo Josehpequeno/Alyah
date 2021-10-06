@@ -273,4 +273,47 @@ pool.query(
 //     }
 // );
 
+// pool.query(
+//     `ALTER TABLE mangas ADD capa VARCHAR(255);`,
+//     (error, results) => {
+//         if (error) {
+//             throw error;
+//         }
+//         console.log('================================');
+//     }
+// );
+
+// pool.query(
+//     `UPDATE mangas SET capa = 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/Capas%2Fmanga9.jpeg?alt=media&token=dc1893ce-ed64-4af2-96a0-db09587c1321' 
+//     WHERE id = 18;`,
+//     (error, results) => {
+//         if (error) {
+//             throw error
+//         }
+//         console.log('================================');
+//     }
+// );
+
+// pool.query(
+//     `ALTER TABLE mangas RENAME COLUMN "capa" to "cover";`,
+//     (error, results) => {
+//         if (error) {
+//             throw error;
+//         }
+//         console.log('================================');
+//     }
+// );
+
+// pool.query(
+//     `ALTER TABLE mangas 
+//     ADD favorites_count INTEGER NOT NULL 
+//     DEFAULT 0;`,
+//     (error, results) => {
+//         if (error) {
+//             throw error;
+//         }
+//         console.log('================================');
+//     }
+// );
+
 module.exports = pool;

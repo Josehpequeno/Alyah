@@ -23,6 +23,6 @@ module.exports = (app) => {
     app.get(routes.changePassword, routeController.changePassword());
     app.get(routes.mangaReader, routeController.mangaReader());
 
-    
+    // *API
     app.post(routes.addImage, jwt.verify, routeController.addImage());
 }

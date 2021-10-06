@@ -43,253 +43,28 @@
             #Top 10
         </div>
         <div class="flex flex-cols flex-wrap gap-4 grid md:grid-cols-2 md:items-center">
+            {{#each mangas}}
             <!-- Start of component -->
             <div class="h-80 bg-color-secundary md:col-span-1 text-white p-5 rounded-md tracking-wide shadow-lg">
                 <div id="header" class="flex">
                     <div>
                         <div class="manga">
                             <img alt="manga" class="w-11/12 md:w-full rounded-md"
-                                src="/static/images/manga-static/manga1.jpg" />
+                                src="{{cover}}" />
                         </div>
                     </div>
                     <div id="body" class="flex flex-col ml-5">
-                        <p id="job" class="md:text-left mt-0">Naota é um garoto japonês normal da 6ª série, mas
-                            quando
-                            seu irmão mais
-                            velho parte para a América para jogar beisebol, seu irmão deixa sua namorada de 17 anos,
-                            Mamimi, para trás. Mamimi está enviando sinais confusos e avanços para Naota, e ele não
-                            sabe
-                            o que fazer com ela. Mas para piorar as coisas, o mundo de Naota vira totalmente de
-                            cabeça
-                            para baixo quando ele é atropelado por uma mulher em uma Vespa. Durante o primeiro
-                            encontro,
-                            ela bateu na cabeça dele com a guitarra, o que fez com que uma trompa saísse de sua
-                            testa.
-                            Ela
-                            se autodenomina "Haruko" e sua presença muda a vida de Naota para uma loucura ainda
-                            maior.
+                        <p id="job" class="md:text-left mt-0">
+                            {{{description}}}
                         </p>
                     </div>
                 </div>
                 <div class="mt-4 md:justify-items-center text-center bg-color-primary-dark rounded-md">
-                    <small id="name" class="font-semibold">FLCL de Hajime Ueda</small>
+                    <small id="name" class="font-semibold">{{{name}}} de {{{Author}}}</small>
                 </div>
             </div>
             <!-- End of component -->
-            <!-- Start of component -->
-            <div class="h-80 bg-color-secundary md:col-span-1 text-white p-5 rounded-md tracking-wide shadow-lg">
-                <div id="header" class="flex">
-                    <div>
-                        <div class="manga">
-                            <img alt="manga" class="w-11/12 md:w-full rounded-md"
-                                src="/static/images/manga-static/manga2.jpeg" />
-                        </div>
-                    </div>
-                    <div id="body" class="flex flex-col ml-5">
-                        <p id="job" class="md:text-left mt-0">Há muito tempo, havia um deus da luz e um deus das
-                            trevas.
-                            Enquanto aqueles devotados ao deus da luz experimentavam felicidade e boa fortuna, o
-                            deus
-                            das trevas pregava peças nas pessoas e roubava sua alegria. E assim, como diz a lenda, o
-                            deus da luz decidiu puni-lo transformando-o em um monstro. Enfurecido por isso, o deus
-                            das
-                            trevas usou sua punição como uma maldição para infligir sofrimento aos outros. Por causa
-                            de
-                            suas ações, ele foi banido para o Exterior, onde ele e seus filhos monstruosos
-                            permanecerão
-                            por toda a eternidade, enquanto os de dentro nunca devem entrar em contato com alguém de
-                            fora, para que não sejam amaldiçoados com uma forma hedionda.
-
-                            Uma garotinha chamada Shiva, uma Insider, é encontrada por um Forasteiro que ela conhece
-                            como Sensei. Embora eles não possam se tocar, o Sensei cuida de Shiva o melhor que pode,
-                            e
-                            juntos eles vivem uma vida moderadamente feliz. Mas logo, Shiva não apenas se encontra
-                            em
-                            perigo por causa do Exterior, mas também de sua própria espécie.</p>
-                    </div>
-                </div>
-                <div class="mt-4 md:justify-items-center text-center bg-color-primary-dark rounded-md">
-                    <small id="name" class="font-semibold">Totsukuni no Shoujo de Nagabe</small>
-                </div>
-            </div>
-            <!-- End of component -->
-            <!-- Start of component -->
-            <div class="h-80 bg-color-secundary text-white p-5 rounded-md tracking-wide shadow-lg">
-                <div id="header" class="flex">
-                    <div>
-                        <div class="manga">
-                            <img alt="manga" class="w-11/12 md:w-full rounded-md"
-                                src="/static/images/manga-static/manga3.jpeg" />
-                        </div>
-                    </div>
-                    <div id="body" class="flex flex-col ml-5">
-                        <p id="job" class="md:text-left mt-0">Punpun Onodera é um menino normal de 11 anos que mora
-                            no Japão. Desesperadamente idealista e romântico, Punpun começa a ver sua vida tomar um
-                            sutil - embora surpreendente - virar-se para o adulto quando conhece a nova garota em
-                            sua classe, Aiko Tanaka. É então que o menino quieto aprende o quão inconstante pode ser
-                            manter um relacionamento e as dificuldades de superar a transição de uma infância
-                            ingênua para uma idade adulta complicada. Quando seu pai agride sua mãe uma noite,
-                            Punpun percebe outra coisa: aqueles que ele admirava não eram tão impressionantes quanto
-                            ele pensava.
-
-                            À medida que seus problemas aumentam, a atitude antes tímida de Punpun se transforma em
-                            reclusão voluntária. Em vez de curá-lo de seus problemas e emoções conflitantes, isso
-                            apenas os intensifica, enviando-o para o escuro caminho da maturidade nesta saga sombria
-                            da maioridade.</p>
-                    </div>
-                </div>
-                <div class="mt-4 md:justify-items-center text-center bg-color-primary-dark rounded-md">
-                    <small id="name" class="font-semibold">Oyasumi Punpun de Asano Inio</small>
-                </div>
-            </div>
-            <!-- End of component -->
-            <!-- Start of component -->
-            <div class="h-80 bg-color-secundary md:col-span-1 text-white p-5 rounded-md tracking-wide shadow-lg">
-                <div id="header" class="flex">
-                    <div>
-                        <div class="manga">
-                            <img alt="manga" class="w-11/12 md:w-full rounded-md"
-                                src="/static/images/manga-static/manga4.jpeg" />
-                        </div>
-                    </div>
-                    <div id="body" class="flex flex-col ml-5">
-                        <p id="job" class="md:text-left mt-0">A única coisa na mente de Tetsuo é arte. A beleza, a
-                            natureza e a qualidade da arte. Uma mulher o observa manusear sua arte. O nome dela é
-                            Akira. Ela observa enquanto ele tenta desenhar constantemente, dia após dia, e
-                            supervisiona a conclusão de seu trabalho em uma exposição de arte local. Aparentemente,
-                            Akira se interessou pelo amor de Tetsuo pela arte e por seu trabalho. Em uma noite
-                            chuvosa, Tetsuo percebe que Akira deixou seu guarda-chuva e decide entregá-lo a ela. Ele
-                            a encontra e lhe dá o guarda-chuva e não o usa, pois afirma que o guarda-chuva não é
-                            dele. Enquanto Tetsuo sai, Akira diz a ele para esperar. Ele se vira e encontra Akira
-                            trazendo seus lábios em direção aos dele ... O amor floresceu no meio de uma noite
-                            chuvosa.</p>
-                    </div>
-                </div>
-                <div class="mt-4 md:justify-items-center text-center bg-color-primary-dark rounded-md">
-                    <small id="name" class="font-semibold">Natsu no Zenjitsu de Yoshida Motoi</small>
-                </div>
-            </div>
-            <!-- End of component -->
-            <!-- Start of component -->
-            <div class="h-80 bg-color-secundary md:col-span-1 text-white p-5 rounded-md tracking-wide shadow-lg">
-                <div id="header" class="flex">
-                    <div>
-                        <div class="manga">
-                            <img alt="manga" class="w-11/12 md:w-full rounded-md"
-                                src="/static/images/manga-static/manga5.jpeg" />
-                        </div>
-                    </div>
-                    <div id="body" class="flex flex-col ml-5">
-                        <p id="job" class="md:text-left mt-0">A história se passa em uma época semelhante à da Roma
-                            antiga em um país chamado Chronos. Segue-se um grupo conhecido como Temple Mercenaries.
-                            Em particular, o manhwa é sobre Ares, Michael e Baroona, três jovens guerreiros com um
-                            passado misterioso e habilidades extraordinárias.</p>
-                    </div>
-                </div>
-                <div class="mt-4 md:justify-items-center text-center bg-color-primary-dark rounded-md">
-                    <small id="name" class="font-semibold">Vagrant Soldier Ares de Ryu Geum Chel</small>
-                </div>
-            </div>
-            <!-- End of component -->
-            <!-- Start of component -->
-            <div class="h-80 bg-color-secundary md:col-span-1 text-white p-5 rounded-md tracking-wide shadow-lg">
-                <div id="header" class="flex">
-                    <div>
-                        <div class="manga">
-                            <img alt="manga" class="w-11/12 md:w-full rounded-md"
-                                src="/static/images/manga-static/manga6.jpg" />
-                        </div>
-                    </div>
-                    <div id="body" class="flex flex-col ml-5">
-                        <p id="job" class="md:text-left mt-0">Dois anos se passaram desde a invasão do CCG em
-                            Anteiku. Embora a atmosfera em Tóquio tenha mudado drasticamente devido ao aumento da
-                            influência do CCG, ghouls continuam a representar um problema, pois eles começaram a
-                            tomar cuidado, especialmente a organização terrorista Aogiri Tree, que reconhece a
-                            crescente ameaça do CCG à sua existência.
-
-                            A criação de uma equipe especial, conhecida como Esquadrão Quinx, pode fornecer ao CCG o
-                            impulso de que precisa para exterminar os residentes indesejados de Tóquio. Como humanos
-                            que passaram por cirurgias para fazer uso das habilidades especiais dos carniçais, eles
-                            participam de operações para erradicar criaturas perigosas. O líder deste grupo, Haise
-                            Sasaki, é um meio-carniçal, meio-humano que foi treinado pelo famoso investigador de
-                            classe especial, Kishou Arima. No entanto, há mais neste jovem do que aparenta, com
-                            memórias desconhecidas em sua mente, lentamente lembrando-o da pessoa que ele costumava
-                            ser.</p>
-                    </div>
-                </div>
-                <div class="mt-4 md:justify-items-center text-center bg-color-primary-dark rounded-md">
-                    <small id="name" class="font-semibold">Tokyo Ghoul:re de Ishida Sui</small>
-                </div>
-            </div>
-            <!-- End of component -->
-            <!-- Start of component -->
-            <div class="h-80 bg-color-secundary md:col-span-1 text-white p-5 rounded-md tracking-wide shadow-lg">
-                <div id="header" class="flex">
-                    <div>
-                        <div class="manga">
-                            <img alt="manga" class="w-11/12 md:w-full rounded-md"
-                                src="/static/images/manga-static/manga7v3.jpeg" />
-                        </div>
-                    </div>
-                    <div id="body" class="flex flex-col ml-5">
-                        <p id="job" class="md:text-left mt-0">Ele é baixo, fraco e acabou de se transferir para uma
-                            nova escola. Kurumatani Sora é o personagem principal desta história que adora basquete.
-                            Ele joga basquete desde pequeno e tenta crescer como sua mãe, que "costumava" ser
-                            jogadora de basquete. O que aconteceu com ela e o que Sora vai fazer na nova escola
-                            depende de você descobrir!</p>
-                    </div>
-                </div>
-                <div class="mt-4 md:justify-items-center text-center bg-color-primary-dark rounded-md">
-                    <small id="name" class="font-semibold">Ahiru no Sora de Hinata Takeshi</small>
-                </div>
-            </div>
-            <!-- End of component -->
-            <!-- Start of component -->
-            <div class="h-80 bg-color-secundary md:col-span-1 text-white p-5 rounded-md tracking-wide shadow-lg">
-                <div id="header" class="flex">
-                    <div>
-                        <div class="manga">
-                            <img alt="manga" class="w-11/12 md:w-full rounded-md"
-                                src="/static/images/manga-static/manga8.jpg" />
-                        </div>
-                    </div>
-                    <div id="body" class="flex flex-col ml-5">
-                        <p id="job" class="md:text-left mt-0">Após a faculdade, Rikuo Uozumi, um garoto sem muita
-                            ambição na vida, arruma um emprego em uma loja de conveniência. Os dias passam sem
-                            intercorrências para Rikuo até que ele conhece sua ex-namorada e colega de classe, mas
-                            especialmente graças à incomum Haru Nonaka e seu corvo de estimação ...</p>
-                    </div>
-                </div>
-                <div class="mt-4 md:justify-items-center text-center bg-color-primary-dark rounded-md">
-                    <small id="name" class="font-semibold">Yesterday wo Utatte de Toume Kei </small>
-                </div>
-            </div>
-            <!-- End of component -->
-            <div class="h-80 bg-color-secundary md:col-span-1 text-white p-5 rounded-md tracking-wide shadow-lg">
-                <div id="header" class="flex">
-                    <div>
-                        <div class="manga">
-                            <img alt="manga" class="w-11/12 md:w-full rounded-md"
-                                src="/static/images/manga-static/manga9.jpeg" />
-                        </div>
-                    </div>
-                    <div id="body" class="flex flex-col ml-5">
-                        <p id="job" class="md:text-left mt-0">Makoto Okazaki é um estudante impopular do ensino médio
-                            que é freqüentemente intimidado por alguns de seus colegas de classe, sendo forçado a agir
-                            como seu ajudante de recados. Mas sua vida muda drasticamente uma noite quando ele é atacado
-                            por uma garota misteriosa, que enfia os dentes em seu pescoço e começa a beber seu sangue.
-                            Ao satisfazer seu desejo, ela oferece a Makoto uma escolha simples: torne-se como ela ou
-                            morra.
-
-                            Quando ele acorda em um hospital após seu encontro, Makoto é incapaz de lidar com as luzes
-                            brilhantes e ofuscantes e descobre que a água não pode matar sua sede crescente ...</p>
-                    </div>
-                </div>
-                <div class="mt-4 md:justify-items-center text-center bg-color-primary-dark rounded-md">
-                    <small id="name" class="font-semibold">Happiness de Oshimi Shuuzou</small>
-                </div>
-            </div>
-            <!-- End of component -->
+            {{/each}}
         </div>
     </div>
     <div class="bg-color-secundary-dark bottom-0 py-2">

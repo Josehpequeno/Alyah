@@ -27,7 +27,6 @@ class RouteController {
         return (req, res) => {
             let mangaDao = new MangaDao(db);
             mangaDao.getAllMangas().then(results => {
-                // ?:TODO: [] alterar banco de dados add urls das capas de cada mangá.
                 return res.render(templates + 'home.handlebars', { layout: false, title: 'Alyah', mangas: results });
             }).catch(err => console.log(err));
         }
@@ -150,7 +149,10 @@ class RouteController {
     }
     mangas() {
         return (req, res) => {
-            return res.render(templates + 'mangas.handlebars', { layout: false });
+            let mangaDao = new MangaDao(db);
+            mangaDao.getAllMangas().then(results => {
+                return res.render(templates + 'mangas.handlebars', { layout: false, mangas: results });
+            }).catch(err => console.log(err));
         }
     }
     manga() {
@@ -160,7 +162,10 @@ class RouteController {
     }
     populares() {
         return (req, res) => {
-            return res.render(templates + 'populares.handlebars', { layout: false });
+            let mangaDao = new MangaDao(db);
+            mangaDao.getAllMangasOrderByFavorites().then(results => {
+                return res.render(templates + 'populares.handlebars', { layout: false, mangas: results });
+            }).catch(err => console.log(err));
         }
     }
     profile() {
