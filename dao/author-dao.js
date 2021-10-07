@@ -32,6 +32,20 @@ class AuthorDao {
             );
         });
     }
+    getAuthor(id) {
+        return new Promise((resolve, reject) => {
+            this._db.query(
+                'SELECT * FROM authors WHERE id = $1',
+                [id],
+                (error, results) => {
+                    if (error) {
+                        return reject(error);
+                    }
+                    return resolve(results.rows[0]);
+                }
+            );
+        });
+    }
     getNameAuthor(id) {
         return new Promise((resolve, reject) => {
             this._db.query(

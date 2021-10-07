@@ -3,6 +3,8 @@ const { validationResult } = require('express-validator');
 const UserDAO = require('../dao/user-dao');
 const MangaDao = require('../dao/manga-dao');
 const AuthorDao = require('../dao/author-dao');
+const ChapterDao = require('../dao/chapter-dao');
+const ImagesDao = require('../dao/images-dao');
 const db = require('../config/db');
 const nodemailer = require('nodemailer');
 require('dotenv/config');
@@ -14,12 +16,12 @@ class RouteController {
             signup: '/signup',
             signout: '/signout',
             mangas: '/mangas',
-            manga: '/manga',
+            manga: '/manga/:name',
             populares: '/populares',
             profile: '/profile',
             editProfile: '/editprofile',
             changePassword: '/changepassword',
-            mangaReader: '/mangaReader',
+            mangaReader: '/mangaReader/:id/:name',
             addImage: '/AddImages'
         }
     }
@@ -157,7 +159,14 @@ class RouteController {
     }
     manga() {
         return (req, res) => {
-            return res.render(templates + 'manga.handlebars', { layout: false });
+            let name = req.params.name;
+            let mangaDao = new MangaDao(db);
+            mangaDao.getManga(name).then(manga => {
+                let chapterDao = new ChapterDao(db);
+                chapterDao.getChapters(name).then(chapters => {
+                    return res.render(templates + 'manga.handlebars', { layout: false, manga: manga, chapters: chapters });
+                }).catch(err => console.log(err));
+            }).catch(err => console.log(err));
         }
     }
     populares() {
@@ -185,35 +194,32 @@ class RouteController {
     }
     mangaReader() {
         return (req, res) => {
-            let items = [
-                { url: 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/Oyasumi%20Punpun%2Fcapitulo%2001%20-%20Oyasumi%20Punpun%2F00.png?alt=media&token=a6a4a7df-cf75-4b24-bee1-d5d396791e34' },
-                { url: 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/Oyasumi%20Punpun%2Fcapitulo%2001%20-%20Oyasumi%20Punpun%2F01-02.jpg?alt=media&token=7e24138a-a698-4f2b-a390-05f8c8e653a3' },
-                { url: 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/Oyasumi%20Punpun%2Fcapitulo%2001%20-%20Oyasumi%20Punpun%2F02.png?alt=media&token=a93f3307-a85b-43bd-be94-49c6e949217d' },
-                { url: 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/Oyasumi%20Punpun%2Fcapitulo%2001%20-%20Oyasumi%20Punpun%2F03.png?alt=media&token=92a48776-3403-48ff-ab7e-aae463c93c3b' },
-                { url: 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/Oyasumi%20Punpun%2Fcapitulo%2001%20-%20Oyasumi%20Punpun%2F05.png?alt=media&token=0e157ca5-7677-4301-9477-0e3d09f4b860' },
-                { url: 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/Oyasumi%20Punpun%2Fcapitulo%2001%20-%20Oyasumi%20Punpun%2F06.png?alt=media&token=0f816601-f1c7-4653-91f0-4894fa14044f' },
-                { url: 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/Oyasumi%20Punpun%2Fcapitulo%2001%20-%20Oyasumi%20Punpun%2F07.png?alt=media&token=a5943a60-e218-4d66-aa7f-3fa119ed1245' },
-                { url: 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/Oyasumi%20Punpun%2Fcapitulo%2001%20-%20Oyasumi%20Punpun%2F08.png?alt=media&token=b67b7343-7a61-481f-b3ad-3ae571562e4c' },
-                { url: 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/Oyasumi%20Punpun%2Fcapitulo%2001%20-%20Oyasumi%20Punpun%2F09.png?alt=media&token=d77e487d-faa6-46f5-978e-2782324fe610' },
-                { url: 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/Oyasumi%20Punpun%2Fcapitulo%2001%20-%20Oyasumi%20Punpun%2F10.png?alt=media&token=df0928f3-7152-42e3-98f8-328c6e051024' }
-            ];
-            const pages = [...Array(items.length + 1).keys()];
-            let opt = '';
-            pages.map(function (item) {
-                if (item != 0) {
-                    opt += `<option value="${item - 1}"> Page ${item} </<option>`;
-                }
-            });
-            let images = '';
-            let i = 0;
-            items.map(function (item) {
-                if (images === '') {
-                    images += `<img alt="manga" src="${item.url}" id="page_${i}" />`;
-                }
-                images += `<img alt="manga" src="${item.url}" class="hidden" id="page_${i}" />`;
-                i++;
-            });
-            return res.render(templates + 'mangaReader.handlebars', { layout: false, items: items, options: opt, images: images, length: i });
+            let id = req.params.id;
+            let name = req.params.name;
+            let imagesDao = new ImagesDao(db);
+            imagesDao.getAllUrls(id).then(urls => {
+                let items = [];
+                urls.forEach(url => {
+                    items.push(url);
+                });
+                const pages = [...Array(items.length + 1).keys()];
+                let opt = '';
+                pages.map(function (item) {
+                    if (item != 0) {
+                        opt += `<option value="${item - 1}"> Page ${item} </<option>`;
+                    }
+                });
+                let images = '';
+                let i = 0;
+                items.map(function (item) {
+                    if (images === '') {
+                        images += `<img alt="manga" src="${item.url}" id="page_${i}" />`;
+                    }
+                    images += `<img alt="manga" src="${item.url}" class="hidden" id="page_${i}" />`;
+                    i++;
+                });
+                return res.render(templates + 'mangaReader.handlebars', { layout: false, items: items, options: opt, images: images, length: i, manga: name });
+            }).catch(err => console.log(err));
         }
     }
     addImage() {

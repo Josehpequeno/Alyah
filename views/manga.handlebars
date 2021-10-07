@@ -3,7 +3,7 @@
 
 <head>
     <title>Alyah</title>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <link class="rounded-circle" href="/static/images/favicon.ico" rel="icon" />
     <link rel="stylesheet" href="/nd_md/tailwindcss/dist/base.min.css" />
     <link rel="stylesheet" href="/nd_md/tailwindcss/dist/components.min.css" />
@@ -46,31 +46,19 @@
             <div class="flex px-10 pb-10">
                 <div>
                     <div class="manga">
-                        <img alt="manga" class="w-11/12 md:w-full rounded-md"
-                            src="/static/images/manga-static/manga1.jpg" />
+                        <img alt="manga" class="w-11/12 md:w-full rounded-md" src="{{manga.cover}}" />
+                        <div class="mt-4 md:justify-items-center text-center bg-color-primary-dark rounded-md">
+                            <small id="name" class="font-semibold text-white">{{{manga.author}}}</small>
+                        </div>
                     </div>
                 </div>
                 <div class="ml-10">
                     <div class="flex items-center">
-                        <h2 class="block leading-relaxed font-light text-white text-3xl">FLCL</h2>
+                        <h2 class="block leading-relaxed font-light text-white text-3xl">{{manga.name}}</h2>
                     </div>
                     <br>
                     <div id="body" class="flex flex-col ml-1 text-white">
-                        <p id="job" class="md:text-left mt-0">Naota é um garoto japonês normal da 6ª série, mas
-                            quando
-                            seu irmão mais
-                            velho parte para a América para jogar beisebol, seu irmão deixa sua namorada de 17 anos,
-                            Mamimi, para trás. Mamimi está enviando sinais confusos e avanços para Naota, e ele não
-                            sabe
-                            o que fazer com ela. Mas para piorar as coisas, o mundo de Naota vira totalmente de
-                            cabeça
-                            para baixo quando ele é atropelado por uma mulher em uma Vespa. Durante o primeiro
-                            encontro,
-                            ela bateu na cabeça dele com a guitarra, o que fez com que uma trompa saísse de sua
-                            testa.
-                            Ela
-                            se autodenomina "Haruko" e sua presença muda a vida de Naota para uma loucura ainda
-                            maior.
+                        <p id="job" class="md:text-left mt-0">{{{manga.description}}}
                         </p>
                     </div>
                 </div>
@@ -78,146 +66,20 @@
             <div class="border-b border-gray-300"></div>
             <article
                 class="flex px-8 mt-5 flex flex-cols flex-wrap md:items-center grid 2xl:grid-cols-12 xl:grid-cols-10 md:grid-cols-12 gap-10">
-                <!-- Start of component -->
-                <div
-                    class="h-20 w-20 px-5 bg-color-primary-dark 2xl:col-span-1 xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative mangas-fav">
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">1</small>
+                {{#each chapters}}
+                <a href='/mangaReader/{{id}}/{{../manga.name}}'>
+                    <!-- Start of component -->
+                    <div
+                        class="h-20 w-20 px-5 bg-color-primary-dark 2xl:col-span-1 xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
+                        <div class="cursor-pointer relative mangas-fav">
+                            <div class="mt-2 md:justify-items-center text-center rounded-md">
+                                <small id="name" class="font-semibold">{{{name}}}</small>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-20 w-20 px-5 bg-color-primary-dark 2xl:col-span-1 xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative mangas-fav">
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">2</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-20 w-20 px-5 bg-color-primary-dark 2xl:col-span-1 xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative mangas-fav">
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">3</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-20 w-20 px-5 bg-color-primary-dark 2xl:col-span-1 xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative mangas-fav">
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">4</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-20 w-20 px-5 bg-color-primary-dark 2xl:col-span-1 xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative mangas-fav">
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">5</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-20 w-20 px-5 bg-color-primary-dark 2xl:col-span-1 xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative mangas-fav">
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">6</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-20 w-20 px-5 bg-color-primary-dark 2xl:col-span-1 xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative mangas-fav">
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">7</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-20 w-20 px-5 bg-color-primary-dark 2xl:col-span-1 xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative mangas-fav">
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">8</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-20 w-20 px-5 bg-color-primary-dark 2xl:col-span-1 xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative mangas-fav">
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">9</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-20 w-20 px-5 bg-color-primary-dark 2xl:col-span-1 xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative mangas-fav">
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">10</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-20 w-20 px-5 bg-color-primary-dark 2xl:col-span-1 xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative mangas-fav">
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">11</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-20 w-20 px-5 bg-color-primary-dark 2xl:col-span-1 xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative mangas-fav">
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">12</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-20 w-20 px-5 bg-color-primary-dark 2xl:col-span-1 xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative mangas-fav">
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">13</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-20 w-20 px-5 bg-color-primary-dark 2xl:col-span-1 xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative mangas-fav">
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">14</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
+                    <!-- End of component -->
+                </a>
+                {{/each}}
             </article>
         </div>
     </div>

@@ -33,5 +33,23 @@ class ImagesDao {
             })
         });
     }
+
+    getAllUrls(id) {
+        return new Promise((resolve, reject) => {
+            this._db.query(
+                'SELECT * FROM images WHERE chapter_id = $1;',
+                [id],
+                (error, results) => {
+                    if (error) {
+                        return reject(error);
+                    }
+                    if (results.rows.length === 0) {
+                        return reject("Sem resultados");
+                    }
+                    return resolve(results.rows);
+                }
+            );
+        });
+    }
 }
 module.exports = ImagesDao;
