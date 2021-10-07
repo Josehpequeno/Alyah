@@ -61,7 +61,7 @@
         <div id="list" class="flex flex-cols flex-wrap gap-4 grid md:grid-cols-2 md:items-center">
             {{#each mangas}}
             <!-- Start of component -->
-            <div id="item_{{id}}"
+            <div id="{{id}}"
                 class="h-80 bg-color-secundary md:col-span-1 text-white p-5 rounded-md tracking-wide shadow-lg">
                 <div id="header" class="flex">
                     <div>
@@ -79,7 +79,8 @@
                     <small id="name" class="font-semibold">{{{name}}} de {{{Author}}}</small>
                     <div id="info" class="hidden">
                         <small id="manga" name="{{name}}" class="font-semibold">{{{name}}}</small>
-                        <small id="author" class="font-semibold">{{{Author}}}</small>
+                        <small id="author" name="{{Author}}" class="font-semibold">{{{Author}}}</small>
+                        <small id="id" name="{{id}}" class="font-semibold">{{{id}}}</small>
                     </div>
                 </div>
             </div>
@@ -151,18 +152,22 @@
         $('#search').on('keyup change', function () {
             var search = $(this).val();
             $('#list').each(function () {
-                var val = $('#list #info #manga').toArray();
-                for (let i = 0; i < val.length; i++) {
-                    let name = val[i].getAttribute('name');
-                    let obj = $('#list #info').toArray(); 
-                    if (!!name.match(search)){
-                        console.log(name);
+                let array_manga = $('#list #info #manga').toArray();
+                let array_author = $('#list #info #author').toArray();
+                let array_id = $('#list #info #id').toArray();
+                for (let i = 0; i < array_manga.length; i++) {
+                    let name = array_manga[i].getAttribute('name');
+                    let author = array_author[i].getAttribute('name');
+                    let id = array_id[i].getAttribute('name');
+                    if (!(name.toLocaleLowerCase()).includes(search.toLocaleLowerCase()) && !(author.toLocaleLowerCase()).includes(search.toLocaleLowerCase())) {
+                        if (!$('#'+id).hasClass('hidden')) {
+                            $('#'+id).addClass("hidden");
+                        }
+                    } else {
+                        if ($('#'+id).hasClass('hidden')) {
+                            $('#'+id).removeClass('hidden');
+                        }
                     }
-                    /*$(this).toggle(!!name.match(search)).html(
-                        obj[i].replace(search, function (match) {
-                            return '<mark>' + match + '</mark>'
-                        }, 'gi')
-                    );*/
                 }
             });
         });
