@@ -36,7 +36,7 @@ class MangaDao {
                     }
                     if (results.rows.length === 0) {
                         console.log(name);
-                        return reject("Sem resultados");
+                        return reject("No results!");
                     }
                     return resolve(results.rows[0].id);
                 }
@@ -54,7 +54,7 @@ class MangaDao {
                     }
                     if (results.rows.length === 0) {
                         console.log(name);
-                        return reject("Sem resultados");
+                        return reject("No results!");
                     }
                     let authorDao = new AuthorDao(this._db);
                     authorDao.getNameAuthor(results.rows[0].author_id).then(name => {
@@ -75,7 +75,7 @@ class MangaDao {
                         return reject(error);
                     }
                     if (results.rows.length === 0) {
-                        return reject("Sem resultados");
+                        return reject("No results!");
                     }
                     let promises = [];
                     results.rows.forEach(row => {
@@ -103,7 +103,7 @@ class MangaDao {
                         return reject(error);
                     }
                     if (results.rows.length === 0) {
-                        return reject("Sem resultados");
+                        return reject("No results!");
                     }
                     let promises = [];
                     results.rows.forEach(row => {
@@ -112,7 +112,7 @@ class MangaDao {
                     });
                     Promise.all(promises).then((data) => {
                         for (let i = 0; i < data.length; i++) {
-                            results.rows[i]["Author"] = data[i];
+                            results.rows[i]["author"] = data[i];
                         }
                         return resolve(results.rows);
                     }).catch((err) => console.error(err));

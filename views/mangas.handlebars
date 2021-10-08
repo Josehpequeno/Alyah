@@ -60,10 +60,10 @@
         </div>
         <div id="list" class="flex flex-cols flex-wrap gap-4 grid md:grid-cols-2 md:items-center">
             {{#each mangas}}
-            <a href='/manga/{{name}}'>
-                <!-- Start of component -->
-                <div id="{{id}}"
-                    class="h-80 bg-color-secundary md:col-span-1 text-white p-5 rounded-md tracking-wide shadow-lg">
+            <!-- Start of component -->
+            <div id="{{id}}"
+                class="h-80 bg-color-secundary md:col-span-1 text-white p-5 rounded-md tracking-wide shadow-lg">
+                <a href='/manga/{{name}}'>
                     <div id="header" class="flex">
                         <div>
                             <div class="manga">
@@ -77,16 +77,16 @@
                         </div>
                     </div>
                     <div class="mt-4 md:justify-items-center text-center bg-color-primary-dark rounded-md">
-                        <small id="name" class="font-semibold">{{{name}}} de {{{Author}}}</small>
+                        <small id="name" class="font-semibold">{{{name}}} de {{{author}}}</small>
                         <div id="info" class="hidden">
                             <small id="manga" name="{{name}}" class="font-semibold">{{{name}}}</small>
-                            <small id="author" name="{{Author}}" class="font-semibold">{{{Author}}}</small>
+                            <small id="author" name="{{author}}" class="font-semibold">{{{author}}}</small>
                             <small id="id" name="{{id}}" class="font-semibold">{{{id}}}</small>
                         </div>
                     </div>
-                </div>
-                <!-- End of component -->
-            </a>
+                </a>
+            </div>
+            <!-- End of component -->
             {{/each}}
         </div>
     </div>
@@ -162,12 +162,12 @@
                     let author = array_author[i].getAttribute('name');
                     let id = array_id[i].getAttribute('name');
                     if (!(name.toLocaleLowerCase()).includes(search.toLocaleLowerCase()) && !(author.toLocaleLowerCase()).includes(search.toLocaleLowerCase())) {
-                        if (!$('#' + id).hasClass('hidden')) {
-                            $('#' + id).addClass("hidden");
+                        if (!$('#' + id).hasClass('page-hidden')) {
+                            $('#' + id).addClass('page-hidden');
                         }
                     } else {
-                        if ($('#' + id).hasClass('hidden')) {
-                            $('#' + id).removeClass('hidden');
+                        if ($('#' + id).hasClass('page-hidden')) {
+                            $('#' + id).removeClass('page-hidden');
                         }
                     }
                 }

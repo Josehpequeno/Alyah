@@ -1,4 +1,3 @@
-const sha256 = require("crypto-js/sha256");
 class FavoriteListDao {
     constructor(db) {
         this._db = db;

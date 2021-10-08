@@ -44,7 +44,7 @@ class ImagesDao {
                         return reject(error);
                     }
                     if (results.rows.length === 0) {
-                        return reject("Sem resultados");
+                        return reject("No results!");
                     }
                     return resolve(results.rows);
                 }

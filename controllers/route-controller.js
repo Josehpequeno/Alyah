@@ -198,6 +198,7 @@ class RouteController {
             let name = req.params.name;
             let imagesDao = new ImagesDao(db);
             imagesDao.getAllUrls(id).then(urls => {
+                console.log(urls);
                 let items = [];
                 urls.forEach(url => {
                     items.push(url);
@@ -248,7 +249,7 @@ class RouteController {
                     }
                     // console.log("Images: ");
                     // console.log(results.rows);
-                    res.status(200).send("Dados registrados : " + JSON.stringify(results.rows));
+                    res.status(200).send("Dados registrados : " + JSON.stringify(results.rows[results.rows.length-1]));
                 }
             );
         };

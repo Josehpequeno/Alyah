@@ -164,3 +164,6 @@ p {
         height: auto;
     }
 }
+.page-hidden {
+    display: none;
+}
