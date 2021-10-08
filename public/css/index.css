@@ -153,10 +153,12 @@ p {
     position: relative;
     background-size: cover;
     height: auto;
-    min-height: 100vh;
-    max-height: 100vh;
+    min-height: 75vh;
+    @media (min-width: 768px) {
+        min-height: 100vh;
+        max-height: 100vh;
+    }
 }
-
 @media screen and (min-height: 600px) {
     .manga-page img {
         max-height: 100vh;

@@ -252,7 +252,7 @@ pool.query(
 // }).catch(err => console.log(err));
 
 // pool.query(
-//     `DELETE FROM images;`,
+//     `DELETE FROM images WHERE chapter_id=12;`,
 //     (error, results) => {
 //         if (error) {
 //             throw error

@@ -234,7 +234,6 @@ class RouteController {
                     url,
                     chapter, manga);
             }
-            res.send(req.body);
             //adicionar de forma sequencial e assincrona.
             (async () => {
                 for (let url of urls) {
@@ -249,7 +248,7 @@ class RouteController {
                     }
                     // console.log("Images: ");
                     // console.log(results.rows);
-                    res.send("Dados registrados : ", JSON.stringify(results.rows));
+                    res.status(200).send("Dados registrados : " + JSON.stringify(results.rows));
                 }
             );
         };

@@ -36,7 +36,7 @@
         </header>
     </div>
     <div id="content" class="md:container md:mx-auto py-1 px-4 md:items-center h-screen">
-        <div class="manga-page h-screen">
+        <div class="manga-page">
             {{{images}}}
         </div>
     </div>
@@ -68,19 +68,14 @@
             let i = d - 38;
             let pages = Number($('#length').val());
             let opt = Number($('#options').val());
-            console.log(opt);
-            console.log("pages:  " + pages);
             if (i > 0 && opt + 1 < pages) {
-                console.log("i: " + i);
                 $('#options').val(opt + i);
             }
             else if (i < 0 && opt - 1 >= 0) {
-                console.log("i: " + i);
                 $('#options').val(opt + i);
             }
         }
         document.onkeyup = function (e) {
-            //console.log(e.keyCode);
             if (e.keyCode === 39 || e.keyCode === 37) {
                 arrow(e.keyCode);
                 optionsChange();
@@ -94,6 +89,21 @@
                 }
             }
         }
+    </script>
+    <script>
+        $("#content").click(function (e) {
+            let divWidth = $("#content").width();
+            let pages = Number($('#length').val());
+            let opt = Number($('#options').val());
+            let clickX = e.clientX;
+            if (clickX > divWidth / 2 && opt + 1 < pages) {
+                $('#options').val(opt + 1);
+
+            } else if (opt - 1 >= 0){
+                $('#options').val(opt - 1);
+            }
+            optionsChange();
+        });
     </script>
     <script>
         /* View in fullscreen */
