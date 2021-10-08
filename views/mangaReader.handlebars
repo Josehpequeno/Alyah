@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/nd_md/tailwindcss/dist/base.min.css" />
     <link rel="stylesheet" href="/nd_md/tailwindcss/dist/components.min.css" />
     <link rel="stylesheet" href="/nd_md/tailwindcss/dist/utilities.min.css" />
-    <link rel="stylesheet" href="/static/css/index.min.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
 </head>
 
 <body>
@@ -96,11 +96,14 @@
             let pages = Number($('#length').val());
             let opt = Number($('#options').val());
             let clickX = e.clientX;
-            if (clickX > divWidth / 2 && opt + 1 < pages) {
-                $('#options').val(opt + 1);
+            if (clickX > divWidth / 2) {
+                if (opt + 1 < pages){
+                $('#options').val(opt + 1);}
 
-            } else if (opt - 1 >= 0){
-                $('#options').val(opt - 1);
+            } else {
+                if (opt - 1 >= 0) {
+                    $('#options').val(opt - 1);
+                }
             }
             optionsChange();
         });
