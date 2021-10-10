@@ -230,9 +230,9 @@
             let favorited = $('#favorited');
             let manga_id = $('#manga_id').val();
             let favorites_id = $('#favorites_id').val();
-            let obj = { manga_id: manga_id, favorites_id: favorites_id, favorited: false };
+            let obj = { manga_id: manga_id, favorites_id: favorites_id, favorited: true };
             if (favorite.hasClass('hidden-element')) {
-                obj.favorited = true;
+                obj.favorited = false;
                 $.ajax({
                     url: '/favorite',
                     type: 'POST',

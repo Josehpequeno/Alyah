@@ -161,7 +161,7 @@ class RouteController {
         return (req, res) => {
             let name = req.params.name;
             let user = req.user;
-            console.log("user: " + JSON.stringify(user));
+            // console.log("user: " + JSON.stringify(user));
             let mangaDao = new MangaDao(db);
             mangaDao.getManga(name).then(manga => {
                 let chapterDao = new ChapterDao(db);
@@ -269,8 +269,8 @@ class RouteController {
             let manga_id = req.body.data.manga_id;
             let favorites_id = req.body.data.favorites_id;
             let favorited = req.body.data.favorited;
-            let favorite = new FavoriteListDao(db)
-            if (favorited) {
+            let favorite = new FavoriteListDao(db);
+            if (favorited == 'true') {
                 favorite.ExitsFavoriteList(manga_id, favorites_id).then(bool => {
                     if (bool) {
                         return bool;
