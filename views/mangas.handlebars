@@ -162,12 +162,12 @@
                     let author = array_author[i].getAttribute('name');
                     let id = array_id[i].getAttribute('name');
                     if (!(name.toLocaleLowerCase()).includes(search.toLocaleLowerCase()) && !(author.toLocaleLowerCase()).includes(search.toLocaleLowerCase())) {
-                        if (!$('#' + id).hasClass('page-hidden')) {
-                            $('#' + id).addClass('page-hidden');
+                        if (!$('#' + id).hasClass('hidden-element')) {
+                            $('#' + id).addClass('hidden-element');
                         }
                     } else {
-                        if ($('#' + id).hasClass('page-hidden')) {
-                            $('#' + id).removeClass('page-hidden');
+                        if ($('#' + id).hasClass('hidden-element')) {
+                            $('#' + id).removeClass('hidden-element');
                         }
                     }
                 }

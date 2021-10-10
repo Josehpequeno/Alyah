@@ -2,8 +2,8 @@ const templates = '../views/';
 const { validationResult } = require('express-validator');
 const UserDAO = require('../dao/user-dao');
 const MangaDao = require('../dao/manga-dao');
-const AuthorDao = require('../dao/author-dao');
 const ChapterDao = require('../dao/chapter-dao');
+const FavoriteListDao = require('../dao/favorite_list-dao');
 const ImagesDao = require('../dao/images-dao');
 const db = require('../config/db');
 const nodemailer = require('nodemailer');
@@ -50,11 +50,11 @@ class RouteController {
                 //console.log(passport);
                 passport.authenticate('local', (err, user, info) => {
                     if (info) {
-                        console.log(info);
                         return res.render(templates + 'login.handlebars', { layout: false, user: userReq });
                     }
                     if (err) {
-                        return next(err); // avança no processamento da requisição, passando um erro.
+                        return res.render(templates + 'login.handlebars', { layout: false, error: err, user: userReq });
+                        //return next(err); // avança no processamento da requisição, passando um erro.
                     }
                     if (user) {
                         req.login(user, err => {
@@ -133,7 +133,6 @@ class RouteController {
                         // })
                         // // cadastrar o email vazio e depois excluir
                         userDAO.createUser(userReq.name, userReq.email, userReq.password).then(user => {
-                            // console.log("user: " + JSON.stringify(user));
                             return res.render(templates + 'profile.handlebars', { layout: false, user: user, favorites: 0 });
                         }).catch(err => {
                             return res.render(templates + 'signup.handlebars', { layout: false, error: err, user: userReq });
@@ -146,7 +145,7 @@ class RouteController {
     signout() {
         return (req, res) => {
             req.logout();
-            return res.render(templates + 'home.handlebars', { layout: false, title: 'Alyah' });
+            return res.render(templates + 'login.handlebars', { layout: false, title: 'Alyah' });
         }
     }
     mangas() {
@@ -160,11 +159,19 @@ class RouteController {
     manga() {
         return (req, res) => {
             let name = req.params.name;
+            let user = req.user;
+            console.log("user: " + JSON.stringify(user));
             let mangaDao = new MangaDao(db);
             mangaDao.getManga(name).then(manga => {
                 let chapterDao = new ChapterDao(db);
                 chapterDao.getChapters(name).then(chapters => {
-                    return res.render(templates + 'manga.handlebars', { layout: false, manga: manga, chapters: chapters });
+                    let favoritesListDao = new FavoriteListDao(db);
+                    favoritesListDao.ExitsFavoriteList(manga.id, user.favorites_id).then(bool => {
+                        if (bool) {
+                            return res.render(templates + 'manga.handlebars', { layout: false, manga: manga, chapters: chapters, favorites_id: user.favorites_id, favorited: bool });
+                        }
+                        return res.render(templates + 'manga.handlebars', { layout: false, manga: manga, chapters: chapters, favorites_id: user.favorites_id });
+                    }).catch(err => console.log(err));
                 }).catch(err => console.log(err));
             }).catch(err => console.log(err));
         }
@@ -198,7 +205,7 @@ class RouteController {
             let name = req.params.name;
             let imagesDao = new ImagesDao(db);
             imagesDao.getAllUrls(id).then(urls => {
-                console.log(urls);
+                // console.log(urls);
                 let items = [];
                 urls.forEach(url => {
                     items.push(url);
@@ -249,7 +256,7 @@ class RouteController {
                     }
                     // console.log("Images: ");
                     // console.log(results.rows);
-                    res.status(200).send("Dados registrados : " + JSON.stringify(results.rows[results.rows.length-1]));
+                    res.status(200).send("Dados registrados : " + JSON.stringify(results.rows[results.rows.length - 1]));
                 }
             );
         };

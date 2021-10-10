@@ -316,4 +316,15 @@ pool.query(
 //     }
 // );
 
+pool.query(
+        `SELECT * FROM favorites_lists;`,
+        (error, results) => {
+            if (error) {
+                throw error;
+            }
+            console.log("favorite_lists: ");
+            console.log(results.rows);
+        }
+    );
+
 module.exports = pool;

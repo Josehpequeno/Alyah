@@ -6,13 +6,12 @@ class FavoriteDao {
     createFavorite () {
         return new Promise((resolve, reject) => {
             this._db.query(
-                `INSERT INTO favorites DEFAULT VALUES;`,
+                `INSERT INTO favorites DEFAULT VALUES RETURNING *;`,
                 (error, results) => {
                     if (error) {
                         return reject(error);
                     }
-                    console.log(results.insertId);
-                    return resolve(results.insertId);
+                    return resolve(results.rows[0].id);
                 }
             );
         });
