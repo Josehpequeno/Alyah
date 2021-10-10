@@ -22,7 +22,8 @@ class RouteController {
             editProfile: '/editprofile',
             changePassword: '/changepassword',
             mangaReader: '/mangaReader/:id/:name',
-            addImage: '/AddImages'
+            addImage: '/AddImages',
+            favorite: '/favorite'
         }
     }
     home() {
@@ -259,6 +260,43 @@ class RouteController {
                     res.status(200).send("Dados registrados : " + JSON.stringify(results.rows[results.rows.length - 1]));
                 }
             );
+        };
+    }
+
+    favorite() {
+        return (req, res) => {
+            // console.log(req.body.data);
+            let manga_id = req.body.data.manga_id;
+            let favorites_id = req.body.data.favorites_id;
+            let favorited = req.body.data.favorited;
+            let favorite = new FavoriteListDao(db)
+            if (favorited) {
+                favorite.ExitsFavoriteList(manga_id, favorites_id).then(bool => {
+                    if (bool) {
+                        return bool;
+                    }
+                    favorite.addFavoriteList(manga_id, favorites_id).then(() => {
+                        return !bool;
+                    }).catch((err) => {
+                        return err;
+                    })
+                }).catch(err => {
+                    return err;
+                })
+            } else {
+                favorite.ExitsFavoriteList(manga_id, favorites_id).then(bool => {
+                    if (bool) {
+                        favorite.removeFavoriteList(manga_id, favorites_id).then(() => {
+                            return !bool;
+                        }).catch((err) => {
+                            return err;
+                        })
+                    }
+                    return bool;
+                }).catch(err => {
+                    return err;
+                })
+            }
         };
     }
 }

@@ -49,8 +49,10 @@
                         <img alt="manga" class="w-11/12 md:w-full rounded-md" src="{{manga.cover}}" />
                         <div class="mt-4 md:justify-items-center text-center bg-color-primary-dark rounded-md">
                             <small id="name" class="font-semibold text-white">{{{manga.author}}}</small>
-                            <input id="manga_id" class="font-semibold text-white hidden-element" value="{{{manga.id}}}"/>
-                            <input id="favorites_id" class="font-semibold text-white hidden-element" value="{{{favorites_id}}}"/>
+                            <input id="manga_id" class="font-semibold text-white hidden-element"
+                                value="{{{manga.id}}}" />
+                            <input id="favorites_id" class="font-semibold text-white hidden-element"
+                                value="{{{favorites_id}}}" />
                         </div>
                         <div class="mt-4 md:justify-items-center text-center rounded-md" onclick="changeFavorite();">
                             {{#if favorited}}
@@ -221,20 +223,58 @@
     </div>
     <script src="/nd_md/handlebars/dist/handlebars.min.js"></script>
     <script src="/nd_md/jquery/dist/jquery.min.js"></script>
-    <script src="/nd_md/jquery/dist/jquery.slim.min.js"></script>
     <script src="/nd_md/popper.js/dist/umd/popper.min.js"></script>
-    <script src="/static/js/changeFavorite.js"></script>
     <script>
-        function changeFavorite() {
+        async function changeFavorite() {
             let favorite = $('#favorite');
             let favorited = $('#favorited');
             let manga_id = $('#manga_id').val();
             let favorites_id = $('#favorites_id').val();
+            let obj = { manga_id: manga_id, favorites_id: favorites_id, favorited: false };
             if (favorite.hasClass('hidden-element')) {
+                obj.favorited = true;
+                $.ajax({
+                    url: '/favorite',
+                    type: 'POST',
+                    dataType: "json",
+                    data: { data: obj },
+                    eforeSend: function () {
+                        //Caso você precise fazer alguma validação antes de enviar os dados
+                    },
+                    sucess: function () {
+                        //Em caso de sucesso
+                    },
+                    error: function (err) {
+                        //Em caso de erro
+                        console.log(err);
+                    }
+                }).done(function () {
+                    //Finalizando todos os passos da operação de AJAX
+                    console.log('Dados enviados');
+                });
                 favorite.removeClass('hidden-element');
                 favorited.addClass('hidden-element');
             }
             else {
+                $.ajax({
+                    url: '/favorite',
+                    type: 'POST',
+                    dataType: "json",
+                    data: { data: obj },
+                    eforeSend: function () {
+                        //Caso você precise fazer alguma validação antes de enviar os dados
+                    },
+                    sucess: function () {
+                        //Em caso de sucesso
+                    },
+                    error: function (err) {
+                        //Em caso de erro
+                        console.log(err);
+                    }
+                }).done(function () {
+                    //Finalizando todos os passos da operação de AJAX
+                    console.log('Dados enviados');
+                });
                 favorite.addClass('hidden-element');
                 favorited.removeClass('hidden-element');
             }

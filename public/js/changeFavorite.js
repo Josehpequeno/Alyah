@@ -1,8 +1,9 @@
-const db = require('../../config/db');
+const db = require(['../../config/db']);
 const FavoriteListDao = require('../../dao/favorite_list-dao');
 
 let favorite = new FavoriteListDao(db);
-function changeFavorite(manga_id, favorite_id, favorited) {
+function changeFavoriteDb(manga_id, favorite_id, favorited) {
+    console.log("here");
     if (favorited) {
         favorite.ExitsFavoriteList(manga_id, favorite_id).then(bool => {
             if (bool) {

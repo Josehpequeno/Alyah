@@ -7,14 +7,14 @@ module.exports = (app) => {
 
     app.get(routes.home, routeController.home());
     app.get(routes.signout, routeController.signout());
-    
+
     app.route(routes.login)
-    .get(routeController.login())
-    .post(User.validacoesLogin(), routeController.makeLogin());
+        .get(routeController.login())
+        .post(User.validacoesLogin(), routeController.makeLogin());
     app.route(routes.signup)
-    .get(routeController.signup())
-    .post(User.validacoes(), routeController.makeSignup());
-    
+        .get(routeController.signup())
+        .post(User.validacoes(), routeController.makeSignup());
+
     app.get(routes.mangas, routeController.mangas());
     app.get(routes.manga, routeController.manga());
     app.get(routes.populares, routeController.populares());
@@ -25,4 +25,5 @@ module.exports = (app) => {
 
     // *API
     app.post(routes.addImage, jwt.verify, routeController.addImage());
+    app.post(routes.favorite, routeController.favorite());
 }
