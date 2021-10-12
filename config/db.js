@@ -209,24 +209,7 @@ pool.query(
 //         console.log(results.rows);
 //     }
 // );
-// pool.query(
-//     //ALTER TABLE mangas ALTER COLUMN name TYPE text USING name::varchar;
-//     `SELECT * FROM mangas;`,
-//     //`UPDATE mangas SET name = 'Ahiro no Sora' WHERE name = 'Ahiru no Sora';`,
-//     (error, results) => {
-//         if (error) {
-//             throw error
-//         }
-//         //console.log("teste: " + results.rows);
-//         results.rows.forEach(element => {
-//             console.log(element.name + " => " + element.id);
-//             // if (element.name == "Ahiru no Sora"){
-//             //     console.log("here [x]");
-//             // }
-//         });
-//         console.log('================================');
-//     }
-// );
+
 // pool.query(
 //     `DELETE FROM chapters;`,
 //     (error, results) => {
@@ -316,15 +299,40 @@ pool.query(
 //     }
 // );
 
-pool.query(
-        `SELECT * FROM favorites_lists;`,
-        (error, results) => {
-            if (error) {
-                throw error;
-            }
-            console.log("favorite_lists: ");
-            console.log(results.rows);
-        }
-    );
+// pool.query(
+//         `SELECT * FROM favorites_lists;`,
+//         (error, results) => {
+//             if (error) {
+//                 throw error;
+//             }
+//             console.log("favorite_lists: ");
+//             console.log(results.rows);
+//         }
+//     );
 
+// pool.query(
+//     `SELECT * FROM mangas;`,
+//     (error, results) => {
+//         if (error) {
+//             throw error
+//         }
+//         results.rows.forEach(element => {
+//             console.log(element.name + " => " + element.id);
+//         });
+//         console.log('================================');
+//     }
+// );
+
+// pool.query(
+//     `SELECT * FROM users;`,
+//     (error, results) => {
+//         if (error) {
+//             throw error
+//         }
+//         results.rows.forEach(element => {
+//             console.log(element);
+//         });
+//         console.log('================================');
+//     }
+// );
 module.exports = pool;

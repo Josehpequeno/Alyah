@@ -62,12 +62,13 @@ class RouteController {
                             if (err) {
                                 return next(err);
                             }
-                            const userSession = req.session.passport.user;
-                            if (userSession.favorites == null) {
-                                return res.render(templates + 'profile.handlebars', { layout: false, user: userSession, favorites: 0 });
-                            } else {
-                                return res.render(templates + 'profile.handlebars', { layout: false, user: userSession, favorites: userSession.favorites });
-                            }
+                            // const userSession = req.session.passport.user;
+                            // if (userSession.favorites == null) {
+                            return res.redirect('/profile');
+                            // return res.render(templates + 'profile.handlebars', { layout: false, user: userSession, favorites: 0 });
+                            // } else {
+                            // return res.render(templates + 'profile.handlebars', { layout: false, user: userSession, favorites: userSession.favorites });
+                            // }
                         });
                     } else if (!user) {
                         const msg = "Login or password filled out incorrectly!";
@@ -134,7 +135,8 @@ class RouteController {
                         // })
                         // // cadastrar o email vazio e depois excluir
                         userDAO.createUser(userReq.name, userReq.email, userReq.password).then(user => {
-                            return res.render(templates + 'profile.handlebars', { layout: false, user: user, favorites: 0 });
+                            // return res.render(templates + 'profile.handlebars', { layout: false, user: user, favorites: 0 });
+                            return res.redirect('/profile');
                         }).catch(err => {
                             return res.render(templates + 'signup.handlebars', { layout: false, error: err, user: userReq });
                         });
@@ -146,7 +148,7 @@ class RouteController {
     signout() {
         return (req, res) => {
             req.logout();
-            return res.render(templates + 'login.handlebars', { layout: false, title: 'Alyah' });
+            return res.redirect('/login');
         }
     }
     mangas() {
@@ -187,7 +189,13 @@ class RouteController {
     }
     profile() {
         return (req, res) => {
-            return res.render(templates + 'profile.handlebars', { layout: false });
+            let user = req.user;
+            let favoritesListDao = new FavoriteListDao(db);
+            favoritesListDao.getAllMangaFavorited(user.favorites_id).then(results => {
+                let mangas = results;
+                req.user.favorites = mangas.length;
+                return res.render(templates + 'profile.handlebars', { layout: false, user: user, favorites: user.favorites, mangas: mangas });
+            }).catch(err => console.log(err));
         }
     }
     editProfile() {

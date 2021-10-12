@@ -65,6 +65,27 @@ class MangaDao {
             );
         });
     }
+    getMangaById(id) {
+        return new Promise((resolve, reject) => {
+            this._db.query(
+                'SELECT * FROM mangas WHERE id = $1;',
+                [id],
+                (error, results) => {
+                    if (error) {
+                        return reject(error);
+                    }
+                    if (results.rows.length === 0) {
+                        return reject("No results!");
+                    }
+                    let authorDao = new AuthorDao(this._db);
+                    authorDao.getNameAuthor(results.rows[0].author_id).then(name => {
+                        results.rows[0]["author"] = name;
+                        return resolve(results.rows[0]);
+                    }).catch(err => reject(err));
+                }
+            );
+        });
+    }
     getAllMangas() {
         return new Promise((resolve, reject) => {
             this._db.query(
@@ -96,7 +117,7 @@ class MangaDao {
     getAllMangasOrderByFavorites() {
         return new Promise((resolve, reject) => {
             this._db.query(
-                'SELECT * FROM mangas ORDER BY favorites_count LIMIT 10;',
+                'SELECT * FROM mangas ORDER BY favorites_count DESC LIMIT 10;',
                 [],
                 (error, results) => {
                     if (error) {
@@ -121,5 +142,55 @@ class MangaDao {
         });
     }
 
+    addFavoriteManga(id) {
+        return new Promise((resolve, reject) => {
+            this._db.query(
+                'SELECT * FROM mangas WHERE id = $1;',
+                [id],
+                (error, results) => {
+                    if (error) {
+                        return reject(error);
+                    }
+                    if (results.rows.length === 0) {
+                        return reject("No results!");
+                    }
+                    this._db.query('UPDATE mangas SET favorites_count = $1 WHERE id = $2;',
+                        [results.rows[0].favorites_count + 1, id],
+                        (error, results) => {
+                            if (error) {
+                                return reject(error);
+                            }
+                            return resolve();
+                        }
+                    );
+                }
+            );
+        });
+    }
+    removeFavoriteManga(id) {
+        return new Promise((resolve, reject) => {
+            this._db.query(
+                'SELECT * FROM mangas WHERE id = $1;',
+                [id],
+                (error, results) => {
+                    if (error) {
+                        return reject(error);
+                    }
+                    if (results.rows.length === 0) {
+                        return reject("No results!");
+                    }
+                    this._db.query('UPDATE mangas SET favorites_count = $1 WHERE id = $2;',
+                        [results.rows[0].favorites_count - 1, id],
+                        (error, results) => {
+                            if (error) {
+                                return reject(error);
+                            }
+                            return resolve();
+                        }
+                    );
+                }
+            );
+        });
+    }
 }
 module.exports = MangaDao;

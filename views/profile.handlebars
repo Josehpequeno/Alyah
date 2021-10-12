@@ -71,89 +71,21 @@
             <div class="border-b border-gray-300"></div>
             <article
                 class="flex px-10 mt-5 flex flex-cols flex-wrap md:items-center grid 2xl:grid-cols-6 xl:grid-cols-10 md:grid-cols-6 gap-10">
+                {{#each mangas}}
                 <!-- Start of component -->
-                <div
+                <div id="{{id}}"
                     class="h-80 w-52 px-5 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative manga-fav">
-                        <img src="/static/images/manga-static/manga1.jpg"
-                            class="foto w-full h-full object-cover rounded" alt="description" />
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">FLCL de Hajime Ueda</small>
+                    <a href='/manga/{{name}}'>
+                        <div class="cursor-pointer relative manga-fav">
+                            <img src="{{cover}}"
+                                class="foto w-full h-full object-cover rounded" alt="description" />
+                            <div class="mt-2 md:justify-items-center text-center rounded-md">
+                                <small id="name" class="font-semibold">{{{name}}} de {{{author}}}</small>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-80 w-52 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative manga-fav">
-                        <img src="/static/images/manga-static/manga2.jpeg"
-                            class="foto w-full h-full object-cover rounded" alt="description" />
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">Totsukuni no Shoujo de Nagabe</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-80 w-52 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative manga-fav">
-                        <img src="/static/images/manga-static/manga3.jpeg"
-                            class="foto w-full h-full object-cover rounded" alt="description" />
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">Oyasumi Punpun de Asano Inio</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-80 w-52 px-5 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative manga-fav">
-                        <img src="/static/images/manga-static/manga4.jpeg"
-                            class="foto w-full h-full object-cover rounded" alt="description" />
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">Natsu no Zenjitsu de Yoshida Motoi</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-80 w-52 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative manga-fav">
-                        <img src="/static/images/manga-static/manga5.jpeg"
-                            class="foto w-full h-full object-cover rounded" alt="description" />
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">Vagrant Soldier Ares de Ryu Geum Chel</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-80 w-52 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative manga-fav">
-                        <img src="/static/images/manga-static/manga6.jpg"
-                            class="foto w-full h-full object-cover rounded" alt="description" />
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">Tokyo Ghoul:re de Ishida Sui</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of component -->
-                <!-- Start of component -->
-                <div
-                    class="h-80 w-52 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
-                    <div class="cursor-pointer relative manga-fav">
-                        <img src="/static/images/manga-static/manga7.jpeg"
-                            class="foto w-full h-full object-cover rounded" alt="description" />
-                        <div class="mt-2 md:justify-items-center text-center rounded-md">
-                            <small id="name" class="font-semibold">Ahiru no Sora de Hinata Takeshi</small>
-                        </div>
-                    </div>
-                </div>
+                {{/each}}
                 <!-- End of component -->
             </article>
         </div>
