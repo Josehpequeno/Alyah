@@ -77,5 +77,18 @@ class UserDao {
             });
         });
     }
+
+    updateUser(id, name, email, description) {
+        return new Promise((resolve, reject) => {
+            this._db.query('UPDATE users SET name = $1, email = $2, description = $3 WHERE id = $4;',
+                [name, email, description, id],
+                (error, results) => {
+                    if (error) {
+                        return reject(error);
+                    }
+                    return resolve();
+                });
+        });
+    }
 }
 module.exports = UserDao;

@@ -28,6 +28,18 @@
                     class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center lg:items-center lg:justify-center mb-4 md:mb-0">
                     <img src="/static/images/logo2.png" alt="Logo Icon" style="height:34px;">
                 </a>
+                {{#if favorites_id}}
+                <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+                    <a href="/profile"
+                        class="inline-flex text-sm border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
+                        Profile
+                    </a>
+                    <a href="/signout"
+                        class="inline-flex text-sm border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
+                        Sign out
+                    </a>
+                </div>
+                {{else}}
                 <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
                     <a href="/login"
                         class="inline-flex text-sm border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
@@ -38,6 +50,7 @@
                         Sign up
                     </a>
                 </div>
+                {{/if}}
             </div>
         </header>
     </div>
@@ -49,11 +62,11 @@
                         <img alt="manga" class="w-11/12 md:w-full rounded-md" src="{{manga.cover}}" />
                         <div class="mt-4 md:justify-items-center text-center bg-color-primary-dark rounded-md">
                             <small id="name" class="font-semibold text-white">{{{manga.author}}}</small>
-                            <input id="manga_id" class="font-semibold text-white hidden-element"
-                                value="{{{manga.id}}}" />
-                            <input id="favorites_id" class="font-semibold text-white hidden-element"
-                                value="{{{favorites_id}}}" />
                         </div>
+                        <input id="manga_id" class="font-semibold text-white hidden-element" value="{{{manga.id}}}" />
+                        {{#if favorites_id}}
+                        <input id="favorites_id" class="font-semibold text-white hidden-element"
+                            value="{{{favorites_id}}}" />
                         <div class="mt-4 md:justify-items-center text-center rounded-md" onclick="changeFavorite();">
                             {{#if favorited}}
                             <a id="favorite" class="hidden-element inline-flex text-sm rounded text-white px-12
@@ -131,6 +144,7 @@
                             </a>
                             {{/if}}
                         </div>
+                        {{/if}}
                     </div>
                 </div>
                 <div class="ml-10">

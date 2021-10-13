@@ -49,9 +49,12 @@
                 <div class="ml-10">
                     <div class="flex items-center">
                         <h2 class="block leading-relaxed font-light text-white text-3xl">{{user.name}}</h2>
-                        <a href="\editprofile"
+                        <a href="/editprofile"
                             class="cursor-pointer h-7 px-3 ml-3 focus:outline-none hover:border-transparent text-center rounded border border-white hover:bg-white button bg-transparent text-white font-semibold">Editar
-                            perfil</a>
+                            Perfil</a>
+                        <a href="/changepassword"
+                            class="cursor-pointer h-7 px-3 ml-3 focus:outline-none hover:border-transparent text-center rounded border border-white hover:bg-white button bg-transparent text-white font-semibold">Mudar
+                            Senha</a>
                     </div>
                     <ul class="flex justify-content-around items-center">
                         <li>
@@ -77,8 +80,7 @@
                     class="h-80 w-52 px-5 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
                     <a href='/manga/{{name}}'>
                         <div class="cursor-pointer relative manga-fav">
-                            <img src="{{cover}}"
-                                class="foto w-full h-full object-cover rounded" alt="description" />
+                            <img src="{{cover}}" class="foto w-full h-full object-cover rounded" alt="description" />
                             <div class="mt-2 md:justify-items-center text-center rounded-md">
                                 <small id="name" class="font-semibold">{{{name}}} de {{{author}}}</small>
                             </div>

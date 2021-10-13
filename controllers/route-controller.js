@@ -29,8 +29,13 @@ class RouteController {
     home() {
         return (req, res) => {
             let mangaDao = new MangaDao(db);
+            let user = req.user;
             mangaDao.getAllMangas().then(results => {
-                return res.render(templates + 'home.handlebars', { layout: false, title: 'Alyah', mangas: results });
+                if (user) {
+                    return res.render(templates + 'home.handlebars', { layout: false, title: 'Alyah', mangas: results, user: user });
+                } else {
+                    return res.render(templates + 'home.handlebars', { layout: false, title: 'Alyah', mangas: results });
+                }
             }).catch(err => console.log(err));
         }
     }
@@ -48,7 +53,6 @@ class RouteController {
                 return res.render(templates + 'login.handlebars', { layout: false, error: err.errors[0].msg, user: userReq });
             } else {
                 const passport = req.passport;
-                //console.log(passport);
                 passport.authenticate('local', (err, user, info) => {
                     if (info) {
                         return res.render(templates + 'login.handlebars', { layout: false, user: userReq });
@@ -95,7 +99,6 @@ class RouteController {
                 //console.log(userReq);
                 const userDAO = new UserDAO(db);
                 userDAO.searchEmail(userReq.email).then(user => {
-                    console.log(user);
                     let msg = "This email is already being used!";
                     return res.render(templates + 'signup.handlebars', { layout: false, error: msg, user: userReq });
                 }).catch(err => {
@@ -148,14 +151,19 @@ class RouteController {
     signout() {
         return (req, res) => {
             req.logout();
-            return res.redirect('/login');
+            return res.redirect('/');
         }
     }
     mangas() {
         return (req, res) => {
+            let user = req.user;
             let mangaDao = new MangaDao(db);
             mangaDao.getAllMangas().then(results => {
-                return res.render(templates + 'mangas.handlebars', { layout: false, mangas: results });
+                if (user) {
+                    return res.render(templates + 'mangas.handlebars', { layout: false, mangas: results, user: user });
+                } else {
+                    return res.render(templates + 'mangas.handlebars', { layout: false, mangas: results });
+                }
             }).catch(err => console.log(err));
         }
     }
@@ -168,22 +176,32 @@ class RouteController {
             mangaDao.getManga(name).then(manga => {
                 let chapterDao = new ChapterDao(db);
                 chapterDao.getChapters(name).then(chapters => {
-                    let favoritesListDao = new FavoriteListDao(db);
-                    favoritesListDao.ExitsFavoriteList(manga.id, user.favorites_id).then(bool => {
-                        if (bool) {
-                            return res.render(templates + 'manga.handlebars', { layout: false, manga: manga, chapters: chapters, favorites_id: user.favorites_id, favorited: bool });
-                        }
-                        return res.render(templates + 'manga.handlebars', { layout: false, manga: manga, chapters: chapters, favorites_id: user.favorites_id });
-                    }).catch(err => console.log(err));
+                    if (user) {
+                        let favoritesListDao = new FavoriteListDao(db);
+                        favoritesListDao.ExitsFavoriteList(manga.id, user.favorites_id).then(bool => {
+                            if (bool) {
+                                return res.render(templates + 'manga.handlebars', { layout: false, manga: manga, chapters: chapters, favorites_id: user.favorites_id, favorited: bool });
+                            }
+                            return res.render(templates + 'manga.handlebars', { layout: false, manga: manga, chapters: chapters, favorites_id: user.favorites_id });
+                        }).catch(err => console.log(err));
+                    }
+                    else {
+                        return res.render(templates + 'manga.handlebars', { layout: false, manga: manga, chapters: chapters });
+                    }
                 }).catch(err => console.log(err));
             }).catch(err => console.log(err));
         }
     }
     populares() {
         return (req, res) => {
+            let user = req.user;
             let mangaDao = new MangaDao(db);
             mangaDao.getAllMangasOrderByFavorites().then(results => {
-                return res.render(templates + 'populares.handlebars', { layout: false, mangas: results });
+                if (user) {
+                    return res.render(templates + 'populares.handlebars', { layout: false, mangas: results, user: user });
+                } else {
+                    return res.render(templates + 'populares.handlebars', { layout: false, mangas: results });
+                }
             }).catch(err => console.log(err));
         }
     }
@@ -200,12 +218,82 @@ class RouteController {
     }
     editProfile() {
         return (req, res) => {
-            return res.render(templates + 'editProfile.handlebars', { layout: false });
+            let user = req.user;
+            return res.render(templates + 'editProfile.handlebars', { layout: false, user: user });
+        }
+    }
+    makeEditProfile() {
+        return (req, res) => {
+            const err = validationResult(req);
+            let userReq = req.body;
+            if (!err.isEmpty()) {
+                return res.render(templates + 'editProfile.handlebars', { layout: false, error: err.errors[0].msg, user: userReq });
+            }
+            userReq.description = req.body.description.trim();
+            let userSession = req.user;
+            let userDAO = new UserDAO(db);
+            console.log(userReq);
+            console.log(userSession);
+            if (userSession.name != userReq.name) {
+                userDAO.searchName(userReq.name).then(user => {
+                    let msg = "This username is already being used!";
+                    return res.render(templates + 'editProfile.handlebars', { layout: false, error: msg, user: userReq });
+                }).catch(err => {
+                    if (userSession.email != userReq.email) {
+                        userDAO.searchEmail(userReq.email).then(user => {
+                            let msg = "This email is already being used!";
+                            return res.render(templates + 'editProfile.handlebars', { layout: false, error: msg, user: userReq });
+                        }).catch(err => {
+                            userDAO.updateUser(userSession.id, userReq.name, userReq.email, userReq.description).then(() => {
+                                req.user.name = userReq.name;
+                                req.user.description = userReq.description;
+                                res.redirect('/profile');
+                            }).catch(err => { console.log(err); });
+                        });
+                    } else {
+                        userDAO.updateUser(userSession.id, userReq.name, userReq.email, userReq.description).then(() => {
+                            req.user.name = userReq.name;
+                            req.user.description = userReq.description;
+                            res.redirect('/profile');
+                        }).catch(err => { console.log(err); });
+                    }
+                });
+            }
+            else if (userSession.email != userReq.email) {
+                userDAO.searchEmail(userReq.email).then(user => {
+                    let msg = "This email is already being used!";
+                    return res.render(templates + 'editProfile.handlebars', { layout: false, error: msg, user: userReq });
+                }).catch(err => {
+                    userDAO.updateUser(userSession.id, userReq.name, userReq.email, userReq.description).then(() => {
+                        req.user.name = userReq.name;
+                        req.user.description = userReq.description;
+                        res.redirect('/profile');
+                    }).catch(err => { console.log(err); });
+                });
+            } else {
+                userDAO.updateUser(userSession.id, userReq.name, userReq.email, userReq.description).then(() => {
+                    req.user.name = userReq.name;
+                    req.user.description = userReq.description;
+                    res.redirect('/profile');
+                }).catch(err => { console.log(err); });
+            }
+
         }
     }
     changePassword() {
         return (req, res) => {
             return res.render(templates + 'changePassword.handlebars', { layout: false });
+        }
+    }
+    makeChangePassword() {
+        return (req, res) => {    
+            const err = validationResult(req);
+            let user = req.user;
+            let body = req.body;
+            console.log(body);
+            if (!err.isEmpty()) {
+                return res.render(templates + 'changePassword.handlebars', { layout: false, error: err.errors[0].msg });
+            }
         }
     }
     mangaReader() {
