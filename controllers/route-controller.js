@@ -7,6 +7,7 @@ const FavoriteListDao = require('../dao/favorite_list-dao');
 const ImagesDao = require('../dao/images-dao');
 const db = require('../config/db');
 const nodemailer = require('nodemailer');
+const sha256 = require("crypto-js/sha256");
 require('dotenv/config');
 class RouteController {
     static routes() {
@@ -88,7 +89,7 @@ class RouteController {
         }
     }
     makeSignup() {
-        return (req, res) => {
+        return (req, res, next) => {
             const err = validationResult(req);
             let userReq = req.body;
             if (!err.isEmpty()) {
@@ -139,7 +140,33 @@ class RouteController {
                         // // cadastrar o email vazio e depois excluir
                         userDAO.createUser(userReq.name, userReq.email, userReq.password).then(user => {
                             // return res.render(templates + 'profile.handlebars', { layout: false, user: user, favorites: 0 });
-                            return res.redirect('/profile');
+                            const passport = req.passport;
+                            passport.authenticate('local', (err, user, info) => {
+                                if (info) {
+                                    return res.render(templates + 'login.handlebars', { layout: false, user: userReq });
+                                }
+                                if (err) {
+                                    return res.render(templates + 'login.handlebars', { layout: false, error: err, user: userReq });
+                                    //return next(err); // avança no processamento da requisição, passando um erro.
+                                }
+                                if (user) {
+                                    req.login(user, err => {
+                                        if (err) {
+                                            return next(err);
+                                        }
+                                        // const userSession = req.session.passport.user;
+                                        // if (userSession.favorites == null) {
+                                        return res.redirect('/profile');
+                                        // return res.render(templates + 'profile.handlebars', { layout: false, user: userSession, favorites: 0 });
+                                        // } else {
+                                        // return res.render(templates + 'profile.handlebars', { layout: false, user: userSession, favorites: userSession.favorites });
+                                        // }
+                                    });
+                                } else if (!user) {
+                                    const msg = "Login or password filled out incorrectly!";
+                                    return res.render(templates + 'login.handlebars', { layout: false, error: msg, user: userReq });
+                                }
+                            })(req, res, next);
                         }).catch(err => {
                             return res.render(templates + 'signup.handlebars', { layout: false, error: err, user: userReq });
                         });
@@ -209,6 +236,7 @@ class RouteController {
         return (req, res) => {
             let user = req.user;
             let favoritesListDao = new FavoriteListDao(db);
+            console.log(user);
             favoritesListDao.getAllMangaFavorited(user.favorites_id).then(results => {
                 let mangas = results;
                 req.user.favorites = mangas.length;
@@ -286,14 +314,28 @@ class RouteController {
         }
     }
     makeChangePassword() {
-        return (req, res) => {    
+        return (req, res) => {
             const err = validationResult(req);
             let user = req.user;
             let body = req.body;
-            console.log(body);
+            // console.log(body);
             if (!err.isEmpty()) {
                 return res.render(templates + 'changePassword.handlebars', { layout: false, error: err.errors[0].msg });
             }
+            let userDao = new UserDAO(db);
+            userDao.search(user.email).then(u => {
+                if (sha256(body['current-password']) != u[0].password) {
+                    // console.log(sha256(body['current-password']));
+                    // console.log(u[0]);
+                    let msg = "incorrect current password!";
+                    return res.render(templates + 'changePassword.handlebars', { layout: false, error: msg });
+                } else {
+                    userDao.updateUserPassword(user.id, body.password).then(() => {
+                        let msg = "password changed successfully!"
+                        return res.render(templates + 'changePassword.handlebars', { layout: false, sucess: msg });
+                    }).catch(err => { console.log(err); });
+                }
+            }).catch(err => console.log(err));
         }
     }
     mangaReader() {

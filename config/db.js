@@ -335,4 +335,14 @@ pool.query(
 //         console.log('================================');
 //     }
 // );
+
+// pool.query(
+//     `DELETE FROM users WHERE name = 'admin';`,
+//     (error, results) => {
+//         if (error) {
+//             throw error
+//         }
+//         console.log(results.rows);
+//     }
+// );
 module.exports = pool;

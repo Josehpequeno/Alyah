@@ -67,7 +67,7 @@ class FavoriteListDao {
                         return reject(error);
                     }
                     if (results.rows.length === 0) {
-                        return resolve("No results!");
+                        return resolve([]);
                     }
                     let promises = [];
                     let mangaDao = new MangaDao(this._db);

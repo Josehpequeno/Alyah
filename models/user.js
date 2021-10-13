@@ -27,7 +27,8 @@ class Usuario {
             body('current-password').isLength({ min: 1 }).withMessage('Empty password field!'),
             body('password').isLength({ min: 1 }).withMessage('Empty password field!'),
             body('confirm-password').isLength({ min: 1 }).withMessage('Empty password confirmation field!'),
-            body('confirm-password').custom((value, {req}) => value === req.body.password).withMessage("Password field and confirmation password do not match!") 
+            body('confirm-password').custom((value, {req}) => value === req.body.password).withMessage("Password field and confirmation password do not match!"),
+            body('current-password').custom((value, {req}) => value !== req.body.password).withMessage("New password equals current password!") 
         ]
     }
 }

@@ -90,5 +90,17 @@ class UserDao {
                 });
         });
     }
+    updateUserPassword(id, password) {
+        return new Promise((resolve, reject) => {
+            this._db.query('UPDATE users SET password = $1 WHERE id = $2;',
+                [sha256(password).toString(), id],
+                (error, results) => {
+                    if (error) {
+                        return reject(error);
+                    }
+                    return resolve();
+                });
+        });
+    }
 }
 module.exports = UserDao;
