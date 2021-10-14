@@ -164,3 +164,9 @@ p {
 .hidden-element {
     display: none;
 }
+
+img#profile {
+    bottom: 0;
+    width: 100px;
+    height: 100px;
+}

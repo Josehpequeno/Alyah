@@ -62,7 +62,7 @@
                         </label>
                     </div>
                     {{/if}}
-                    <br/>
+                    <br />
                     <h3 class="text-white text-xl text-center">Edit Proflile</h3>
                     <form class="mt-4" method="POST" action="/editProfile">
                         <div class="py-5">
@@ -71,12 +71,7 @@
                             </label>
                             <div class="mt-1 flex items-center py-2">
                                 <span class="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="fill-current color-primary-dark bg-color-light-dark h-12 w-12 rounded-full object-cover"
-                                        alt="username" width="24" height="24" viewBox="0 0 24 24">
-                                        <path
-                                            d="M19 7.001c0 3.865-3.134 7-7 7s-7-3.135-7-7c0-3.867 3.134-7.001 7-7.001s7 3.134 7 7.001zm-1.598 7.18c-1.506 1.137-3.374 1.82-5.402 1.82-2.03 0-3.899-.685-5.407-1.822-4.072 1.793-6.593 7.376-6.593 9.821h24c0-2.423-2.6-8.006-6.598-9.819z" />
-                                    </svg>
+                                    <img src="{{user.profile}}" alt="userImage" />
                                 </span>
                                 <button type="button"
                                     class="inline-flex text-sm border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
@@ -170,13 +165,13 @@
             </div>-->
         </footer>
         <script src="/nd_md/jquery/dist/jquery.min.js"></script>
-    <script src="/nd_md/jquery/dist/jquery.slim.min.js"></script>
-    <script src="/nd_md/popper.js/dist/umd/popper.min.js"></script>
-    <script>
-        function closeAlert() {
-            $('#alert').addClass('hidden');
-        }
-    </script>
+        <script src="/nd_md/jquery/dist/jquery.slim.min.js"></script>
+        <script src="/nd_md/popper.js/dist/umd/popper.min.js"></script>
+        <script>
+            function closeAlert() {
+                $('#alert').addClass('hidden');
+            }
+        </script>
 </body>
 
 </html>

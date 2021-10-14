@@ -345,4 +345,33 @@ pool.query(
 //         console.log(results.rows);
 //     }
 // );
+// pool.query(
+//     `ALTER TABLE users ADD profile VARCHAR(255);`,
+//     (error, results) => {
+//         if (error) {
+//             throw error;
+//         }
+//         console.log('================================');
+//     }
+// );
+// pool.query(
+//     `ALTER TABLE mangas DROP COLUMN profile;`,
+//     (error, results) => {
+//         if (error) {
+//             throw error;
+//         }
+//         console.log('================================');
+//     }
+// );
+
+
+// pool.query(
+//     `DELETE FROM users;`,
+//     (error, results) => {
+//         if (error) {
+//             throw error
+//         }
+//         console.log(results.rows);
+//     }
+// );
 module.exports = pool;

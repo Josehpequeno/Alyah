@@ -50,7 +50,8 @@ module.exports = (app) => {
             email: user[0].email,
             favorites_id: user[0].favorites_id,
             favorites: favorites,
-            description: user[0].description
+            description: user[0].description,
+            profile: user[0].profile
         };
         done(null, usersession);
     });

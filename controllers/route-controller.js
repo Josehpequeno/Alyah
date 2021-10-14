@@ -235,18 +235,26 @@ class RouteController {
     profile() {
         return (req, res) => {
             let user = req.user;
-            let favoritesListDao = new FavoriteListDao(db);
-            favoritesListDao.getAllMangaFavorited(user.favorites_id).then(results => {
-                let mangas = results;
-                req.user.favorites = mangas.length;
-                return res.render(templates + 'profile.handlebars', { layout: false, user: user, favorites: user.favorites, mangas: mangas });
-            }).catch(err => console.log(err));
+            if (user) {
+                let favoritesListDao = new FavoriteListDao(db);
+                favoritesListDao.getAllMangaFavorited(user.favorites_id).then(results => {
+                    let mangas = results;
+                    req.user.favorites = mangas.length;
+                    return res.render(templates + 'profile.handlebars', { layout: false, user: user, favorites: user.favorites, mangas: mangas });
+                }).catch(err => console.log(err));
+            } else {
+                res.redirect('/login');
+            }
         }
     }
     editProfile() {
         return (req, res) => {
             let user = req.user;
-            return res.render(templates + 'editProfile.handlebars', { layout: false, user: user });
+            if (user) {
+                return res.render(templates + 'editProfile.handlebars', { layout: false, user: user });
+            } else {
+                res.redirect('/login');
+            }
         }
     }
     makeEditProfile() {
@@ -304,12 +312,16 @@ class RouteController {
                     res.redirect('/profile');
                 }).catch(err => { console.log(err); });
             }
-
         }
     }
     changePassword() {
         return (req, res) => {
-            return res.render(templates + 'changePassword.handlebars', { layout: false });
+            let user = req.user;
+            if (user) {
+                return res.render(templates + 'changePassword.handlebars', { layout: false });
+            } else {
+                res.redirect('/login');
+            }
         }
     }
     makeChangePassword() {
@@ -317,15 +329,12 @@ class RouteController {
             const err = validationResult(req);
             let user = req.user;
             let body = req.body;
-            // console.log(body);
             if (!err.isEmpty()) {
                 return res.render(templates + 'changePassword.handlebars', { layout: false, error: err.errors[0].msg });
             }
             let userDao = new UserDAO(db);
             userDao.search(user.email).then(u => {
                 if (sha256(body['current-password']) != u[0].password) {
-                    // console.log(sha256(body['current-password']));
-                    // console.log(u[0]);
                     let msg = "incorrect current password!";
                     return res.render(templates + 'changePassword.handlebars', { layout: false, error: msg });
                 } else {
@@ -394,7 +403,7 @@ class RouteController {
                     }
                     // console.log("Images: ");
                     // console.log(results.rows);
-                    res.status(200).send("Dados registrados : " + JSON.stringify(results.rows[results.rows.length - 1]));
+                    res.status(200).send("Dados registrados : " + JSON.stringify(results.rows));
                 }
             );
         };

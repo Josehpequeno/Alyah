@@ -40,12 +40,7 @@
     <div id="content" class="md:container md:mx-auto min-h-screen py-10">
         <div class="bg-color-secundary py-5 rounded">
             <div class="flex justify-center pb-10">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                    class="fill-current color-primary-dark bg-color-light-dark h-32 w-32 rounded-full object-cover"
-                    alt="username" width="24" height="24" viewBox="0 0 24 24">
-                    <path
-                        d="M19 7.001c0 3.865-3.134 7-7 7s-7-3.135-7-7c0-3.867 3.134-7.001 7-7.001s7 3.134 7 7.001zm-1.598 7.18c-1.506 1.137-3.374 1.82-5.402 1.82-2.03 0-3.899-.685-5.407-1.822-4.072 1.793-6.593 7.376-6.593 9.821h24c0-2.423-2.6-8.006-6.598-9.819z" />
-                </svg>
+                <img id="profile" src="{{user.profile}}" alt="userImage"/>
                 <div class="ml-10">
                     <div class="flex items-center">
                         <h2 class="block leading-relaxed font-light text-white text-3xl">{{user.name}}</h2>

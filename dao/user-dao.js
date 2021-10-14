@@ -1,5 +1,6 @@
 const sha256 = require("crypto-js/sha256");
 const FavoriteDao = require('./favorite-dao');
+const profileDefault = 'https://firebasestorage.googleapis.com/v0/b/alyah-bd.appspot.com/o/profileImage%2Fuser6.png?alt=media&token=d7574240-8c64-4ef8-8a41-25f03de0b95a';
 class UserDao {
     constructor(db) {
         this._db = db;
@@ -10,8 +11,8 @@ class UserDao {
             let favoriteDao = new FavoriteDao(this._db);
             favoriteDao.createFavorite().then(favorites_id => {
                 this._db.query(
-                    'INSERT INTO users (name, email, password, favorites_id) VALUES ($1, $2, $3, $4) RETURNING name, email, favorites_id',
-                    [name, email, sha256(password).toString(), favorites_id],
+                    'INSERT INTO users (name, email, password, favorites_id, profile) VALUES ($1, $2, $3, $4, $5) RETURNING name, email, favorites_id',
+                    [name, email, sha256(password).toString(), favorites_id, profileDefault],
                     (error, results) => {
                         if (error) {
                             return reject(error);
