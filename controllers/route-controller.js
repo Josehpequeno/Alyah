@@ -236,7 +236,6 @@ class RouteController {
         return (req, res) => {
             let user = req.user;
             let favoritesListDao = new FavoriteListDao(db);
-            console.log(user);
             favoritesListDao.getAllMangaFavorited(user.favorites_id).then(results => {
                 let mangas = results;
                 req.user.favorites = mangas.length;
