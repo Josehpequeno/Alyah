@@ -267,8 +267,8 @@ class RouteController {
             userReq.description = req.body.description.trim();
             let userSession = req.user;
             let userDAO = new UserDAO(db);
-            console.log(userReq);
-            console.log(userSession);
+            // console.log(userReq);
+            // console.log(userSession);
             if (userSession.name != userReq.name) {
                 userDAO.searchName(userReq.name).then(user => {
                     let msg = "This username is already being used!";
@@ -282,6 +282,7 @@ class RouteController {
                             userDAO.updateUser(userSession.id, userReq.name, userReq.email, userReq.description, userReq.profile).then(() => {
                                 req.user.name = userReq.name;
                                 req.user.description = userReq.description;
+                                req.user.profile = userReq.profile;
                                 res.redirect('/profile');
                             }).catch(err => { console.log(err); });
                         });
@@ -289,6 +290,7 @@ class RouteController {
                         userDAO.updateUser(userSession.id, userReq.name, userReq.email, userReq.description, userReq.profile).then(() => {
                             req.user.name = userReq.name;
                             req.user.description = userReq.description;
+                            req.user.profile = userReq.profile;
                             res.redirect('/profile');
                         }).catch(err => { console.log(err); });
                     }
@@ -302,6 +304,7 @@ class RouteController {
                     userDAO.updateUser(userSession.id, userReq.name, userReq.email, userReq.description, userReq.profile).then(() => {
                         req.user.name = userReq.name;
                         req.user.description = userReq.description;
+                        req.user.profile = userReq.profile;
                         res.redirect('/profile');
                     }).catch(err => { console.log(err); });
                 });
@@ -309,6 +312,7 @@ class RouteController {
                 userDAO.updateUser(userSession.id, userReq.name, userReq.email, userReq.description, userReq.profile).then(() => {
                     req.user.name = userReq.name;
                     req.user.description = userReq.description;
+                    req.user.profile = userReq.profile;
                     res.redirect('/profile');
                 }).catch(err => { console.log(err); });
             }
