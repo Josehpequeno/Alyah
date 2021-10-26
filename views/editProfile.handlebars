@@ -64,27 +64,35 @@
                     {{/if}}
                     <br />
                     <h3 class="text-white text-xl text-center">Edit Proflile</h3>
-                    <form class="mt-4" method="POST" action="/editProfile">
+                    <form action="/upload" method="post" enctype="multipart/form-data">
                         <div class="py-5">
                             <label class="block text-sm font-medium text-white">
                                 Photo
                             </label>
                             <div class="mt-1 flex items-center py-2">
                                 <span class="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-                                    <img src="{{user.profile}}" alt="userImage" />
+                                    <img src="{{profile}}" alt="userImage" />
                                 </span>
-                                <button type="button"
+                                <label for="filetoupload"
+                                    class="inline-flex text-sm border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
+                                    Select file
+                                </label>
+                                <input type="file" name="avatar" id="filetoupload" class="hidden" />
+                                <button id="upload" type="submit"
                                     class="inline-flex text-sm border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
                                     Change
                                 </button>
                             </div>
                         </div>
-                        <input type="hidden" name="_token" value="96LGLQC0ylNCwHDLyTqFuBvSMwOqHi7voLu8lwj4">
+                    </form>
+                    <form class="mt-4" method="POST" action="/editProfile">
                         <label class="block">
                             <span class="text-white text-sm">Username</span>
                             <input id="name" name="name"
                                 class="px-3 py-2 h-7 form-input mt-1 block w-full rounded-md bg-color-secundary border-gray-700 text-white"
                                 value="{{{user.name}}}" required autocomplete="username" autofocus>
+                            <input id="profile" name="profile" class="hidden" value="{{{profile}}}" required
+                                autocomplete="username" autofocus>
                         </label>
                         <label class="block mt-3">
                             <span class="text-white text-sm">Email</span>

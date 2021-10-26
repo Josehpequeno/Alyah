@@ -2,9 +2,11 @@ const RouteController = require('../controllers/route-controller');
 const routeController = new RouteController();
 const User = require('../models/user');
 const jwt = require('../config/jwt');
+const avatarController = require('../controllers/avatar-controller');
 module.exports = (app) => {
     const routes = RouteController.routes();
 
+    app.post('/upload', avatarController);
     app.get(routes.home, routeController.home());
     app.get(routes.signout, routeController.signout());
 

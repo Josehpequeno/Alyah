@@ -251,7 +251,7 @@ class RouteController {
         return (req, res) => {
             let user = req.user;
             if (user) {
-                return res.render(templates + 'editProfile.handlebars', { layout: false, user: user });
+                return res.render(templates + 'editProfile.handlebars', { layout: false, user: user, profile: user.profile });
             } else {
                 res.redirect('/login');
             }
@@ -279,14 +279,14 @@ class RouteController {
                             let msg = "This email is already being used!";
                             return res.render(templates + 'editProfile.handlebars', { layout: false, error: msg, user: userReq });
                         }).catch(err => {
-                            userDAO.updateUser(userSession.id, userReq.name, userReq.email, userReq.description).then(() => {
+                            userDAO.updateUser(userSession.id, userReq.name, userReq.email, userReq.description, userReq.profile).then(() => {
                                 req.user.name = userReq.name;
                                 req.user.description = userReq.description;
                                 res.redirect('/profile');
                             }).catch(err => { console.log(err); });
                         });
                     } else {
-                        userDAO.updateUser(userSession.id, userReq.name, userReq.email, userReq.description).then(() => {
+                        userDAO.updateUser(userSession.id, userReq.name, userReq.email, userReq.description, userReq.profile).then(() => {
                             req.user.name = userReq.name;
                             req.user.description = userReq.description;
                             res.redirect('/profile');
@@ -299,14 +299,14 @@ class RouteController {
                     let msg = "This email is already being used!";
                     return res.render(templates + 'editProfile.handlebars', { layout: false, error: msg, user: userReq });
                 }).catch(err => {
-                    userDAO.updateUser(userSession.id, userReq.name, userReq.email, userReq.description).then(() => {
+                    userDAO.updateUser(userSession.id, userReq.name, userReq.email, userReq.description, userReq.profile).then(() => {
                         req.user.name = userReq.name;
                         req.user.description = userReq.description;
                         res.redirect('/profile');
                     }).catch(err => { console.log(err); });
                 });
             } else {
-                userDAO.updateUser(userSession.id, userReq.name, userReq.email, userReq.description).then(() => {
+                userDAO.updateUser(userSession.id, userReq.name, userReq.email, userReq.description, userReq.profile).then(() => {
                     req.user.name = userReq.name;
                     req.user.description = userReq.description;
                     res.redirect('/profile');

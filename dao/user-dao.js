@@ -79,10 +79,10 @@ class UserDao {
         });
     }
 
-    updateUser(id, name, email, description) {
+    updateUser(id, name, email, description, profile) {
         return new Promise((resolve, reject) => {
-            this._db.query('UPDATE users SET name = $1, email = $2, description = $3 WHERE id = $4;',
-                [name, email, description, id],
+            this._db.query('UPDATE users SET name = $1, email = $2, description = $3, profile = $4 WHERE id = $5;',
+                [name, email, description, profile, id],
                 (error, results) => {
                     if (error) {
                         return reject(error);
