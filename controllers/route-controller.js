@@ -16,9 +16,9 @@ class RouteController {
             login: '/login',
             signup: '/signup',
             signout: '/signout',
-            mangas: '/mangas',
+            all: '/all',
             manga: '/manga/:name',
-            populares: '/populares',
+            popular: '/popular',
             profile: '/profile',
             editProfile: '/editprofile',
             changePassword: '/changepassword',
@@ -93,11 +93,9 @@ class RouteController {
             const err = validationResult(req);
             let userReq = req.body;
             if (!err.isEmpty()) {
-                // console.log(err.errors);
                 return res.render(templates + 'signup.handlebars', { layout: false, error: err.errors[0].msg, user: userReq });
             }
             else {
-                //console.log(userReq);
                 const userDAO = new UserDAO(db);
                 userDAO.searchEmail(userReq.email).then(user => {
                     let msg = "This email is already being used!";
@@ -181,15 +179,15 @@ class RouteController {
             return res.redirect('/');
         }
     }
-    mangas() {
+    all() {
         return (req, res) => {
             let user = req.user;
             let mangaDao = new MangaDao(db);
             mangaDao.getAllMangas().then(results => {
                 if (user) {
-                    return res.render(templates + 'mangas.handlebars', { layout: false, mangas: results, user: user });
+                    return res.render(templates + 'all.handlebars', { layout: false, mangas: results, user: user });
                 } else {
-                    return res.render(templates + 'mangas.handlebars', { layout: false, mangas: results });
+                    return res.render(templates + 'all.handlebars', { layout: false, mangas: results });
                 }
             }).catch(err => console.log(err));
         }
@@ -198,7 +196,6 @@ class RouteController {
         return (req, res) => {
             let name = req.params.name;
             let user = req.user;
-            // console.log("user: " + JSON.stringify(user));
             let mangaDao = new MangaDao(db);
             mangaDao.getManga(name).then(manga => {
                 let chapterDao = new ChapterDao(db);
@@ -219,15 +216,15 @@ class RouteController {
             }).catch(err => console.log(err));
         }
     }
-    populares() {
+    popular() {
         return (req, res) => {
             let user = req.user;
             let mangaDao = new MangaDao(db);
             mangaDao.getAllMangasOrderByFavorites().then(results => {
                 if (user) {
-                    return res.render(templates + 'populares.handlebars', { layout: false, mangas: results, user: user });
+                    return res.render(templates + 'popular.handlebars', { layout: false, mangas: results, user: user });
                 } else {
-                    return res.render(templates + 'populares.handlebars', { layout: false, mangas: results });
+                    return res.render(templates + 'popular.handlebars', { layout: false, mangas: results });
                 }
             }).catch(err => console.log(err));
         }
@@ -267,8 +264,6 @@ class RouteController {
             userReq.description = req.body.description.trim();
             let userSession = req.user;
             let userDAO = new UserDAO(db);
-            // console.log(userReq);
-            // console.log(userSession);
             if (userSession.name != userReq.name) {
                 userDAO.searchName(userReq.name).then(user => {
                     let msg = "This username is already being used!";
@@ -356,7 +351,6 @@ class RouteController {
             let name = req.params.name;
             let imagesDao = new ImagesDao(db);
             imagesDao.getAllUrls(id).then(urls => {
-                // console.log(urls);
                 let items = [];
                 urls.forEach(url => {
                     items.push(url);
@@ -415,7 +409,6 @@ class RouteController {
 
     favorite() {
         return (req, res) => {
-            // console.log(req.body.data);
             let manga_id = req.body.data.manga_id;
             let favorites_id = req.body.data.favorites_id;
             let favorited = req.body.data.favorited;

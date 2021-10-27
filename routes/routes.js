@@ -23,9 +23,9 @@ module.exports = (app) => {
         .get(routeController.changePassword())
         .post(User.validationsChangePassword(), routeController.makeChangePassword());
 
-    app.get(routes.mangas, routeController.mangas());
+    app.get(routes.all, routeController.all());
     app.get(routes.manga, routeController.manga());
-    app.get(routes.populares, routeController.populares());
+    app.get(routes.popular, routeController.popular());
     app.get(routes.profile, routeController.profile());
     app.get(routes.mangaReader, routeController.mangaReader());
 

@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="/nd_md/tailwindcss/dist/components.min.css" />
     <link rel="stylesheet" href="/nd_md/tailwindcss/dist/utilities.min.css" />
     <link rel="stylesheet" href="/static/css/index.min.css" />
-    <style>
-        @import url(https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css);
-    </style>
 </head>
 
 <body>
@@ -19,10 +16,10 @@
         <header class="text-gray-100 body-font shadow w-full">
             <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center text-white">
                 <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
-                    <a href="/mangas"
-                        class="mr-5 hover:text-white-900 cursor-pointer border-b border-transparent hover:border-green-600">Mangás</a>
-                    <a href="/populares"
-                        class="mr-5 hover:text-white-900 cursor-pointer border-b border-transparent hover:border-green-600">Populares</a>
+                    <a href="/all"
+                        class="mr-5 hover:text-white-900 cursor-pointer border-b border-transparent hover:border-green-600">All</a>
+                    <a href="/popular"
+                        class="mr-5 hover:text-white-900 cursor-pointer border-b border-transparent hover:border-green-600">Most Popular</a>
                 </nav>
                 <a href="/"
                     class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center lg:items-center lg:justify-center mb-4 md:mb-0">
@@ -55,28 +52,14 @@
         </header>
     </div>
     <div id="content" class="md:container md:mx-auto min-h-screen py-10">
-        <div class="min-w-screen flex items-center justify-center px-5 pb-10">
-            <div class="w-full mx-auto rounded-xl bg-color-secundary-light shadow-lg p-10 text-gray-800 relative overflow-hidden resize-x min-w-80 max-w-3xl"
-                x-data="app()" x-init="generatePassword()">
-                <div class="relative mt-1">
-                    <input type="text" id="search"
-                        class="w-full pl-3 pr-10 py-2 border-2 border-gray-200 rounded-xl hover:border-gray-300 focus:outline-none focus:border-blue-500 transition-colors"
-                        placeholder="Search...">
-                    <button
-                        class="block w-7 h-7 text-center text-xl leading-0 absolute top-2 right-2 text-gray-400 focus:outline-none hover:text-gray-900 transition-colors"><i
-                            class="mdi mdi-magnify"></i></button>
-                </div>
-                <div class="absolute top-0 left-0 w-full h-2 flex">
-                    <div class="h-2 bg-color-primary-dark flex-1"></div>
-                </div>
-            </div>
+        <div class="px-5 pb-10 color-light text-4xl">
+            #Top 10
         </div>
-        <div id="list" class="flex flex-cols flex-wrap gap-4 grid md:grid-cols-2 md:items-center">
+        <div class="flex flex-cols flex-wrap gap-4 grid md:grid-cols-2 md:items-center">
             {{#each mangas}}
-            <!-- Start of component -->
-            <div id="{{id}}"
-                class="h-80 bg-color-secundary md:col-span-1 text-white p-5 rounded-md tracking-wide shadow-lg">
-                <a href='/manga/{{name}}'>
+            <a href='/manga/{{name}}'>
+                <!-- Start of component -->
+                <div class="h-80 bg-color-secundary md:col-span-1 text-white p-5 rounded-md tracking-wide shadow-lg">
                     <div id="header" class="flex">
                         <div>
                             <div class="manga">
@@ -91,15 +74,10 @@
                     </div>
                     <div class="mt-4 md:justify-items-center text-center bg-color-primary-dark rounded-md">
                         <small id="name" class="font-semibold">{{{name}}} de {{{author}}}</small>
-                        <div id="info" class="hidden">
-                            <small id="manga" name="{{name}}" class="font-semibold">{{{name}}}</small>
-                            <small id="author" name="{{author}}" class="font-semibold">{{{author}}}</small>
-                            <small id="id" name="{{id}}" class="font-semibold">{{{id}}}</small>
-                        </div>
                     </div>
-                </a>
-            </div>
-            <!-- End of component -->
+                </div>
+                <!-- End of component -->
+            </a>
             {{/each}}
         </div>
     </div>
@@ -160,33 +138,8 @@
             </div>-->
         </footer>
     </div>
-    <script src="/nd_md/jquery/dist/jquery.min.js"></script>
-    <script src="/nd_md/jquery/dist/jquery.slim.min.js"></script>
-    <script src="/nd_md/popper.js/dist/umd/popper.min.js"></script>
-    <script>
-        $('#search').on('keyup change', function () {
-            var search = $(this).val();
-            $('#list').each(function () {
-                let array_manga = $('#list #info #manga').toArray();
-                let array_author = $('#list #info #author').toArray();
-                let array_id = $('#list #info #id').toArray();
-                for (let i = 0; i < array_manga.length; i++) {
-                    let name = array_manga[i].getAttribute('name');
-                    let author = array_author[i].getAttribute('name');
-                    let id = array_id[i].getAttribute('name');
-                    if (!(name.toLocaleLowerCase()).includes(search.toLocaleLowerCase()) && !(author.toLocaleLowerCase()).includes(search.toLocaleLowerCase())) {
-                        if (!$('#' + id).hasClass('hidden-element')) {
-                            $('#' + id).addClass('hidden-element');
-                        }
-                    } else {
-                        if ($('#' + id).hasClass('hidden-element')) {
-                            $('#' + id).removeClass('hidden-element');
-                        }
-                    }
-                }
-            });
-        });
-    </script>
+    <!--responsável pela renderização do app vue do lado do servidor-->
+    <!--vue-ssr-outlet-->
 </body>
 
 </html>

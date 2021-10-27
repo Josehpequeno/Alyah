@@ -19,10 +19,11 @@
         <header class="text-gray-100 body-font shadow w-full">
             <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center text-white">
                 <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
-                    <a href="/mangas"
-                        class="mr-5 hover:text-white-900 cursor-pointer border-b border-transparent hover:border-green-600">Mangás</a>
-                    <a href="/populares"
-                        class="mr-5 hover:text-white-900 cursor-pointer border-b border-transparent hover:border-green-600">Populares</a>
+                    <a href="/all"
+                        class="mr-5 hover:text-white-900 cursor-pointer border-b border-transparent hover:border-green-600">All</a>
+                    <a href="/popular"
+                        class="mr-5 hover:text-white-900 cursor-pointer border-b border-transparent hover:border-green-600">Most
+                        Popular</a>
                 </nav>
                 <a href="/"
                     class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center lg:items-center lg:justify-center mb-4 md:mb-0">
@@ -40,7 +41,7 @@
     <div id="content" class="md:container md:mx-auto min-h-screen py-10">
         <div class="bg-color-secundary py-5 rounded">
             <div class="flex justify-center pb-10">
-                <img id="profile" src="{{user.profile}}" alt="userImage" class="rounded-full overflow-hidden"/>
+                <img id="profile" src="{{user.profile}}" alt="userImage" class="rounded-full overflow-hidden" />
                 <div class="ml-10">
                     <div class="flex items-center">
                         <h2 class="block leading-relaxed font-light text-white text-3xl">{{user.name}}</h2>
