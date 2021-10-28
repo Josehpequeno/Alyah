@@ -34,7 +34,6 @@ class UserDao {
                     if (error) {
                         reject(error);
                     }
-                    //response.status(200).send(`User modified with ID: ${id}`)
                     resolve(results.rows);
                 }
             );

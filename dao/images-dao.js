@@ -11,7 +11,6 @@ class ImagesDao {
             chapterDao.getChapters(manga).then(results => {
                 console.log(results);
                 let chapter_id;
-                //var arrayJson = JSON.parse(results);
                 results.forEach(function (chapter) {
                     if (chapter.name === chapter_name) {
                         chapter_id = chapter.id;
@@ -24,7 +23,6 @@ class ImagesDao {
                         if (error) {
                             return reject(error);
                         }
-                        // console.log(results);
                         return resolve(results.rows[0].id);
                     }
                 );

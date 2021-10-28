@@ -1,12 +1,10 @@
 const express = require('express');
 const consign = require('consign');
-//const methodOverride = require("method-override");
 var compression = require('compression');
 var exphbs = require('express-handlebars');
 const templates = '../views/';
 // const jwt = require('jsonwebtoken'); //token
 require('dotenv/config');
-//const db = require('./db');
 module.exports = () => {
     const app = express();
     app.engine('handlebars', exphbs());
@@ -21,7 +19,7 @@ module.exports = () => {
 
     require('./auth')(app);
     consign().include('routes').into(app);
-    //token para o uso da api.
+    //* Token para o uso da api.
     // const token = jwt.sign({ id: 0 }, process.env.SECRET, {
     //     expiresIn: 300 // expires in 5min
     // });

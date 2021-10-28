@@ -6,7 +6,7 @@ const ChapterDao = require('../dao/chapter-dao');
 const FavoriteListDao = require('../dao/favorite_list-dao');
 const ImagesDao = require('../dao/images-dao');
 const db = require('../config/db');
-const nodemailer = require('nodemailer');
+// const nodemailer = require('nodemailer');
 const sha256 = require("crypto-js/sha256");
 require('dotenv/config');
 class RouteController {
@@ -50,7 +50,6 @@ class RouteController {
             const err = validationResult(req);
             let userReq = req.body;
             if (!err.isEmpty()) {
-                // console.log(err.errors);
                 return res.render(templates + 'login.handlebars', { layout: false, error: err.errors[0].msg, user: userReq });
             } else {
                 const passport = req.passport;
@@ -60,20 +59,13 @@ class RouteController {
                     }
                     if (err) {
                         return res.render(templates + 'login.handlebars', { layout: false, error: err, user: userReq });
-                        //return next(err); // avança no processamento da requisição, passando um erro.
                     }
                     if (user) {
                         req.login(user, err => {
                             if (err) {
                                 return next(err);
                             }
-                            // const userSession = req.session.passport.user;
-                            // if (userSession.favorites == null) {
                             return res.redirect('/profile');
-                            // return res.render(templates + 'profile.handlebars', { layout: false, user: userSession, favorites: 0 });
-                            // } else {
-                            // return res.render(templates + 'profile.handlebars', { layout: false, user: userSession, favorites: userSession.favorites });
-                            // }
                         });
                     } else if (!user) {
                         const msg = "Login or password filled out incorrectly!";
@@ -145,20 +137,13 @@ class RouteController {
                                 }
                                 if (err) {
                                     return res.render(templates + 'login.handlebars', { layout: false, error: err, user: userReq });
-                                    //return next(err); // avança no processamento da requisição, passando um erro.
                                 }
                                 if (user) {
                                     req.login(user, err => {
                                         if (err) {
                                             return next(err);
                                         }
-                                        // const userSession = req.session.passport.user;
-                                        // if (userSession.favorites == null) {
                                         return res.redirect('/profile');
-                                        // return res.render(templates + 'profile.handlebars', { layout: false, user: userSession, favorites: 0 });
-                                        // } else {
-                                        // return res.render(templates + 'profile.handlebars', { layout: false, user: userSession, favorites: userSession.favorites });
-                                        // }
                                     });
                                 } else if (!user) {
                                     const msg = "Login or password filled out incorrectly!";

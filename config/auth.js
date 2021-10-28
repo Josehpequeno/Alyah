@@ -21,9 +21,6 @@ module.exports = (app) => {
         (email, password, done) => {//done, função que precisa executar quando tiver feito a autenticação do usuário
             const userDao = new UserDao(db);
             (userDao.search(email)).then(user => {
-                // console.log("Senha recebida: " + sha256(password));
-                // console.log("Senha: "+ user[0].password);
-                // console.log(sha256(password) == user[0].password);
                 if (!user || sha256(password) != user[0].password) {
                     return done(null, false);
                 }
@@ -63,11 +60,6 @@ module.exports = (app) => {
     app.set('trust proxy', 1);
 
     app.use(session({
-        /*cookie: {
-            secure: true,
-            maxAge: 60000
-        },
-        store: new RedisStore({ client: redisClient }),*/
         cookie: { maxAge: 86400000 },
         store: new MemoryStore({
             checkPeriod: 86400000 // prune expired entries every 24h
@@ -85,9 +77,6 @@ module.exports = (app) => {
 
     app.use((req, resp, next) => {
         req.passport = passport;
-        //req.session = true;
-        //req.session = session.;
         next();//injeção de dependências
     });
-
 }

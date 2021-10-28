@@ -36,7 +36,6 @@ class ChapterDao {
                         if (error) {
                             return reject(error);
                         }
-                        // console.log("here: "+ JSON.stringify(results.rows[0]));
                         return resolve(results.rows);
                     }
                 );

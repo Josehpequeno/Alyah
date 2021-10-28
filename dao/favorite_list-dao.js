@@ -13,7 +13,6 @@ class FavoriteListDao {
                     if (error) {
                         return reject(error);
                     }
-                    // console.log(results.insertId);
                     let mangaDao = new MangaDao(this._db);
                     mangaDao.addFavoriteManga(manga_id).then(() => {
                         return resolve();

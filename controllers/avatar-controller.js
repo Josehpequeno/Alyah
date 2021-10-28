@@ -26,8 +26,6 @@ module.exports = async (req, res, next) => {
             } else {
                 image.url = `https://alyah.herokuapp.com/static/uploads/${image.id}`;
             }
-            // console.log(image);
-            // res.status(200).json({ error: 0, payload: { id: image.id, url: image.url } });
             return res.render(templates + 'editProfile.handlebars', { layout: false, user: user, profile: image.url });
         }
     });
