@@ -22,8 +22,8 @@ module.exports = async (req, res, next) => {
             const image = {};
             image.id = req.file.filename;
             if (process.env.NODE_ENV !== 'production') {
-                image.url = `/home/joseh/Alyah/public/uploads/${image.id}`;//não funciona localmente ao menos que você coloque o caminho onde está localizado.
-                // image.url = `/static/uploads/${image.id}`
+                // image.url = `/home/joseh/Alyah/public/uploads/${image.id}`;//não funciona localmente ao menos que você coloque o caminho onde está localizado.
+                image.url = `/static/uploads/${image.id}`
                 return res.render(templates + 'editProfile.handlebars', { layout: false, user: user, profile: image.url });
             } else {
                 image.url = `https://alyah.herokuapp.com/static/uploads/${image.id}`;

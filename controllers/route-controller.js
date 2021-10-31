@@ -31,7 +31,7 @@ class RouteController {
         return (req, res) => {
             let mangaDao = new MangaDao(db);
             let user = req.user;
-            mangaDao.getAllMangas().then(results => {
+            mangaDao.getMangasHome().then(results => {
                 if (user) {
                     return res.render(templates + 'home.handlebars', { layout: false, title: 'Alyah', mangas: results, user: user });
                 } else {
@@ -205,7 +205,7 @@ class RouteController {
         return (req, res) => {
             let user = req.user;
             let mangaDao = new MangaDao(db);
-            mangaDao.getAllMangasOrderByFavorites().then(results => {
+            mangaDao.getMangasOrderByFavorites().then(results => {
                 if (user) {
                     return res.render(templates + 'popular.handlebars', { layout: false, mangas: results, user: user });
                 } else {
@@ -243,6 +243,7 @@ class RouteController {
         return (req, res) => {
             const err = validationResult(req);
             let userReq = req.body;
+            console.log(userReq);
             if (!err.isEmpty()) {
                 return res.render(templates + 'editProfile.handlebars', { layout: false, error: err.errors[0].msg, user: userReq });
             }
@@ -359,73 +360,6 @@ class RouteController {
                 return res.render(templates + 'mangaReader.handlebars', { layout: false, items: items, options: opt, images: images, length: i, manga: name });
             }).catch(err => console.log(err));
         }
-    }
-    addImage() {
-        return (req, res) => {
-            const ImagesDao = require('../dao/images-dao');
-            let imagesDao = new ImagesDao(db);
-            let manga = req.body.manga;
-            let chapter = req.body.chapter;
-            let urls = req.body.urls;
-            async function f1(url) {
-                await imagesDao.createImages(
-                    url,
-                    chapter, manga);
-            }
-            //adicionar de forma sequencial e assincrona.
-            (async () => {
-                for (let url of urls) {
-                    await f1(url);
-                }
-            })();
-            db.query(
-                `SELECT * FROM images;`,
-                (error, results) => {
-                    if (error) {
-                        throw error;
-                    }
-                    // console.log("Images: ");
-                    // console.log(results.rows);
-                    res.status(200).send("Dados registrados : " + JSON.stringify(results.rows));
-                }
-            );
-        };
-    }
-
-    favorite() {
-        return (req, res) => {
-            let manga_id = req.body.data.manga_id;
-            let favorites_id = req.body.data.favorites_id;
-            let favorited = req.body.data.favorited;
-            let favorite = new FavoriteListDao(db);
-            if (favorited == 'true') {
-                favorite.ExitsFavoriteList(manga_id, favorites_id).then(bool => {
-                    if (bool) {
-                        return bool;
-                    }
-                    favorite.addFavoriteList(manga_id, favorites_id).then(() => {
-                        return !bool;
-                    }).catch((err) => {
-                        return err;
-                    })
-                }).catch(err => {
-                    return err;
-                })
-            } else {
-                favorite.ExitsFavoriteList(manga_id, favorites_id).then(bool => {
-                    if (bool) {
-                        favorite.removeFavoriteList(manga_id, favorites_id).then(() => {
-                            return !bool;
-                        }).catch((err) => {
-                            return err;
-                        })
-                    }
-                    return bool;
-                }).catch(err => {
-                    return err;
-                })
-            }
-        };
     }
 }
 module.exports = RouteController;

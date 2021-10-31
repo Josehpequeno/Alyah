@@ -3,8 +3,11 @@ const routeController = new RouteController();
 const User = require('../models/user');
 const jwt = require('../config/jwt');
 const avatarController = require('../controllers/avatar-controller');
+const ApiController = require('../controllers/api-controller');
+const apiController = new ApiController();
 module.exports = (app) => {
     const routes = RouteController.routes();
+    const routesApi = ApiController.routes();
 
     app.post('/upload', avatarController);
     app.get(routes.home, routeController.home());
@@ -30,6 +33,6 @@ module.exports = (app) => {
     app.get(routes.mangaReader, routeController.mangaReader());
 
     // *API
-    app.post(routes.addImage, jwt.verify, routeController.addImage());
-    app.post(routes.favorite, routeController.favorite());
+    app.post(routesApi.addImage, jwt.verify, apiController.addImage());
+    app.post(routesApi.favorite, apiController.favorite());
 }
