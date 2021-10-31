@@ -48,6 +48,7 @@ module.exports = async (req, res, next) => {
             image.id = req.file.filename;
             if (process.env.NODE_ENV !== 'production') {
                 image.url = `/home/joseh/Alyah/public/uploads/${image.id}`;//não funciona localmente ao menos que você coloque o caminho onde está localizado.
+                // image.url = `/static/uploads/${image.id}`
                 cloudinary.v2.uploader.upload(image.url, (error, result) => {
                     if (error) console.log(error);
                     if (result) {
@@ -56,7 +57,7 @@ module.exports = async (req, res, next) => {
                     }
                 });
             } else {
-                image.url = `https://alyah.herokuapp.com/public/uploads/${image.id}`;
+                image.url = `https://alyah.herokuapp.com/static/uploads/${image.id}`;
                 cloudinary.v2.uploader.upload(image.url, (error, result) => {
                     if (error) console.log(error);
                     if (result) {
