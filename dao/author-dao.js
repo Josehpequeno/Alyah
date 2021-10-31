@@ -24,8 +24,8 @@ class AuthorDao {
                 'SELECT * FROM authors WHERE name = $1',
                 [name],
                 (error, results) => {
-                    if (error) {
-                        return reject(error);
+                    if (error || results.rows.length === 0) {
+                        return reject("No results!");
                     }
                     return resolve(results.rows[0].id);
                 }
@@ -38,7 +38,7 @@ class AuthorDao {
                 'SELECT * FROM authors WHERE id = $1',
                 [id],
                 (error, results) => {
-                    if (error) {
+                    if (error || results.rows.length === 0) {
                         return reject(error);
                     }
                     return resolve(results.rows[0]);
@@ -56,7 +56,6 @@ class AuthorDao {
                         return reject(error);
                     }
                     if (results.rows.length === 0) {
-                        console.log(results.rows);
                         return reject("No author with this id!")
                     }
                     return resolve(results.rows[0].name);

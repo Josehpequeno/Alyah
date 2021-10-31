@@ -211,7 +211,7 @@ pool.query(
 // );
 
 // pool.query(
-//     `DELETE FROM chapters;`,
+//     `DELETE FROM chapters WHERE id=15;`,
 //     (error, results) => {
 //         if (error) {
 //             throw error
@@ -317,7 +317,7 @@ pool.query(
 //             throw error
 //         }
 //         results.rows.forEach(element => {
-//             console.log(element.name + " => " + element.id);
+//             console.log(element);
 //         });
 //         console.log('================================');
 //     }
@@ -374,4 +374,14 @@ pool.query(
 //         console.log(results.rows);
 //     }
 // );
+// pool.query(
+//     `ALTER TABLE images ALTER COLUMN url TYPE VARCHAR(600);`,
+//     (error, results) => {
+//         if (error) {
+//             throw error;
+//         }
+//         console.log("ok!");
+//     }
+// );
+
 module.exports = pool;

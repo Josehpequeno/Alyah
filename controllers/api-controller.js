@@ -1,42 +1,62 @@
 const FavoriteListDao = require('../dao/favorite_list-dao');
 const ImagesDao = require('../dao/images-dao');
+const MangaDao = require('../dao/manga-dao');
+const ChapterDao = require('../dao/chapter-dao');
 const db = require('../config/db');
 
 class ApiController {
     static routes() {
         return {
-            addImage: '/AddImages',
+            addManga: '/addManga',
+            addChapter: '/addChapter',
             favorite: '/favorite'
         }
     }
-    addImage() {
+
+    addManga() {
         return (req, res) => {
+            let mangaDao = new MangaDao(db);
+            let manga = req.body.name;
+            let description = req.body.description;
+            let author = req.body.author;
+            let cover = req.body.cover;
+            // console.log(req.body);
+            mangaDao.createManga(manga, description, author, cover).then((results) => {
+                res.status(200).send("Dados registrados : " + JSON.stringify(results));
+            }).catch((err) => { res.status(500).send("Error : " + JSON.stringify(err)); });
+        };
+    }
+    addChapter() {
+        return (req, res) => {
+            let chapterDao = new ChapterDao(db);
             let imagesDao = new ImagesDao(db);
             let manga = req.body.manga;
             let chapter = req.body.chapter;
             let urls = req.body.urls;
-            async function f1(url) {
-                await imagesDao.createImages(
-                    url,
-                    chapter, manga);
-            }
-            //adicionar de forma sequencial e assincrona.
-            (async () => {
-                for (let url of urls) {
-                    await f1(url);
+            chapterDao.createChapter(manga, chapter).then(() => {
+                async function f1(url) {
+                    await imagesDao.createImages(
+                        url,
+                        chapter, manga);
                 }
-            })();
-            db.query(
-                `SELECT * FROM images;`,
-                (error, results) => {
-                    if (error) {
-                        throw error;
+                //adicionar de forma sequencial e assincrona.
+                (async () => {
+                    for (let url of urls) {
+                        await f1(url);
                     }
-                    // console.log("Images: ");
-                    // console.log(results.rows);
-                    res.status(200).send("Dados registrados : " + JSON.stringify(results.rows));
-                }
-            );
+                })();
+                db.query(
+                    `SELECT * FROM images;`,
+                    (error, results) => {
+                        if (error) {
+                            throw error;
+                        }
+                        // console.log("Images: ");
+                        // console.log(results.rows);
+                        res.status(200).send("Dados registrados : " + JSON.stringify(results.rows));
+                    }
+                );
+            }).catch((err) => { res.status(500).send("Error : " + JSON.stringify(err)); });
         };
     }
 

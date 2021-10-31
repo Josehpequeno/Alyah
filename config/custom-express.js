@@ -3,8 +3,6 @@ const consign = require('consign');
 var compression = require('compression');
 var exphbs = require('express-handlebars');
 const templates = '../views/';
-// const jwt = require('jsonwebtoken'); //token
-require('dotenv/config');
 module.exports = () => {
     const app = express();
     app.engine('handlebars', exphbs());
@@ -19,11 +17,7 @@ module.exports = () => {
 
     require('./auth')(app);
     consign().include('routes').into(app);
-    //* Token para o uso da api.
-    // const token = jwt.sign({ id: 0 }, process.env.SECRET, {
-    //     expiresIn: 300 // expires in 5min
-    // });
-    // console.log(token);
+    
     app.use(function (req, res, next) {
         return res.status(404).render(templates + '404.handlebars', { layout: false });
     });

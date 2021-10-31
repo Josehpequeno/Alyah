@@ -9,7 +9,6 @@ module.exports = (app) => {
     const routes = RouteController.routes();
     const routesApi = ApiController.routes();
 
-    app.post('/upload', avatarController);
     app.get(routes.home, routeController.home());
     app.get(routes.signout, routeController.signout());
 
@@ -33,6 +32,10 @@ module.exports = (app) => {
     app.get(routes.mangaReader, routeController.mangaReader());
 
     // *API
-    app.post(routesApi.addImage, jwt.verify, apiController.addImage());
+    app.post(routesApi.addManga, jwt.verify, apiController.addManga());
+    app.post(routesApi.addChapter, jwt.verify, apiController.addChapter());
     app.post(routesApi.favorite, apiController.favorite());
+
+    //* Rota de Upload de imagens na foto de perfil.
+    app.post('/upload', avatarController);
 }

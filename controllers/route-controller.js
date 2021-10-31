@@ -243,7 +243,7 @@ class RouteController {
         return (req, res) => {
             const err = validationResult(req);
             let userReq = req.body;
-            console.log(userReq);
+            // console.log(userReq);
             if (!err.isEmpty()) {
                 return res.render(templates + 'editProfile.handlebars', { layout: false, error: err.errors[0].msg, user: userReq });
             }

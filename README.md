@@ -52,6 +52,8 @@ $ npm install
 $ npm run start
 # Run the application in development mode
 $ npm run dev
+# Run the application in development mode plus API access
+$ npm run dev+api
 ```
 
 ### Technology

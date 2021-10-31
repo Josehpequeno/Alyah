@@ -9,7 +9,6 @@ class ImagesDao {
         return new Promise((resolve, reject) => {
             let chapterDao = new ChapterDao(this._db);
             chapterDao.getChapters(manga).then(results => {
-                console.log(results);
                 let chapter_id;
                 results.forEach(function (chapter) {
                     if (chapter.name === chapter_name) {
