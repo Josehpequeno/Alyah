@@ -161,6 +161,7 @@ p {
         max-height: 100vh;
     }
 }
+
 .hidden-element {
     display: none;
 }
@@ -175,4 +176,17 @@ img#profile-edit {
     bottom: 0;
     width: 50px;
     height: 50px;
+}
+
+.login {
+    max-width: auto;
+    height: auto; 
+    overflow: hidden; 
+} 
+
+@media screen and (min-width: 1024px) { 
+    .login {
+        width: 200px;
+        height: 34px;
+    }
 }
