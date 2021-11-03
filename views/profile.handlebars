@@ -18,7 +18,7 @@
     <div class="bg-color-secundary-dark">
         <header class="text-gray-100 body-font shadow w-full">
             <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center text-white">
-                <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
+                <nav class="flex lg:w-2/5 flex-wrap items-center text-3xl lg:text-base md:ml-auto">
                     <a href="/all"
                         class="mr-5 hover:text-white-900 cursor-pointer border-b border-transparent hover:border-green-600">All</a>
                     <a href="/popular"
@@ -27,11 +27,11 @@
                 </nav>
                 <a href="/"
                     class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center lg:items-center lg:justify-center mb-4 md:mb-0">
-                    <img src="/static/images/logo2.png" alt="Logo Icon" style="height:34px;">
+                    <img src="/static/images/logo2.png" alt="Logo Icon" class="logo-header">
                 </a>
                 <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
                     <a href="/signout"
-                        class="inline-flex text-sm border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
+                        class="inline-flex text-2xl lg:text-sm  border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
                         Sign out
                     </a>
                 </div>
@@ -44,17 +44,17 @@
                 <img id="profile" src="{{user.profile}}" alt="userImage" class="rounded-full overflow-hidden" />
                 <div class="ml-10">
                     <div class="flex items-center">
-                        <h2 class="block leading-relaxed font-light text-white text-3xl">{{user.name}}</h2>
+                        <h2 class="block leading-relaxed font-light text-white text-4xl lg:text-3xl">{{user.name}}</h2>
                         <a href="/editprofile"
-                            class="cursor-pointer h-7 px-3 ml-3 focus:outline-none hover:border-transparent text-center rounded border border-white hover:bg-white button bg-transparent text-white font-semibold">Editar
+                            class="text-xl lg:text-base cursor-pointer h-8 lg:h-7 px-4 lg:px-3 ml-3 focus:outline-none hover:border-transparent text-center rounded border border-white hover:bg-white button bg-transparent text-white font-semibold">Editar
                             Perfil</a>
                         <a href="/changepassword"
-                            class="cursor-pointer h-7 px-3 ml-3 focus:outline-none hover:border-transparent text-center rounded border border-white hover:bg-white button bg-transparent text-white font-semibold">Mudar
+                            class="text-xl lg:text-base cursor-pointer h-8 lg:h-7 px-3 ml-3 focus:outline-none hover:border-transparent text-center rounded border border-white hover:bg-white button bg-transparent text-white font-semibold">Mudar
                             Senha</a>
                     </div>
                     <ul class="flex justify-content-around items-center">
                         <li>
-                            <span class="block text-base flex text-white">
+                            <span class="block text-2xl lg:text-base flex text-white py-4 lg:py-2">
                                 <span class="font-bold mr-2">{{favorites}} </span>
                                 Favorites
                             </span>
@@ -63,7 +63,7 @@
                     <br>
                     <div>
                         {{!-- <h1 class="text-base text-white font-bold font-light">Username</h1> --}}
-                        <span class="text-base text-white">{{user.description}}</span>
+                        <span class="text-2xl lg:text-base text-white">{{user.description}}</span>
                     </div>
                 </div>
             </div>
@@ -73,11 +73,11 @@
                 {{#each mangas}}
                 <!-- Start of component -->
                 <div id="{{id}}"
-                    class="h-80 w-52 px-5 bg-color-primary-dark 2xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
+                    class="h-full w-full lg:w-52 px-5 bg-color-primary-dark 2xl:col-span-1 lg:col-span-2 sm:col-span-3 text-white p-5 rounded-md tracking-wide shadow-lg">
                     <a href='/manga/{{name}}'>
                         <div class="cursor-pointer relative manga-fav">
                             <img src="{{cover}}" class="foto w-full h-full object-cover rounded" alt="description" />
-                            <div class="mt-2 md:justify-items-center text-center rounded-md">
+                            <div class="text-3xl lg:text-base mt-2 md:justify-items-center text-center rounded-md">
                                 <small id="name" class="font-semibold">{{{name}}} de {{{author}}}</small>
                             </div>
                         </div>
@@ -124,10 +124,10 @@
                             </svg></a>
                     </li>
                 </ul>
-                <div class="flex mx-auto text-white text-center">
+                <div class="flex mx-auto text-white text-center text-xl lg:text-sm">
                     Josehpequeno © 2021
                 </div>
-                <div class="flex mx-auto text-white text-center">
+                <div class="flex mx-auto text-white text-center text-xl lg:text-sm">
                     <a href='https://www.freepik.com/vectors/background'><small>Background vector created by
                             kjpargeter
                             - www.freepik.com</small></a>

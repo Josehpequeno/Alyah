@@ -138,11 +138,8 @@ p {
 }
 
 .manga-fav img {
-    max-width: 400px;
-    max-height: 225px;
-    height: auto;
-    width: 100%;
-    min-height: auto;
+    width: 800px;
+    height: 450px;
     background-size: 100%;
     background-repeat: no-repeat
 }
@@ -168,8 +165,8 @@ p {
 
 img#profile {
     bottom: 0;
-    width: 100px;
-    height: 100px;
+    width: 175px;
+    height: 175px;
 }
 
 img#profile-edit {
@@ -178,16 +175,36 @@ img#profile-edit {
     height: 50px;
 }
 
-.login {
+.logo {
     max-width: auto;
     height: auto;
     overflow: hidden;
 }
 
+.logo-header {
+    max-width: 250px;
+    height: auto;
+    overflow: hidden;
+}
+
 @media screen and (min-width: 1024px) {
-    .login {
+    .logo {
         width: 200px;
         height: 34px;
+    }
+    .logo-header {
+        height: 34px;
+    }
+    img#profile {
+        bottom: 0;
+        width: 100px;
+        height: 100px;
+    }
+    .manga-fav img {
+        width: 400px;
+        height: 225px;
+        background-size: 100%;
+        background-repeat: no-repeat
     }
 }
 
