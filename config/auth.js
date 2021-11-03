@@ -27,7 +27,6 @@ module.exports = (app) => {
                 if (user.favorites_id != null) {
                     let favoriteDao = new FavoriteDao(db);
                     favoriteDao.search(user.favorites_id).then(favorites_array =>{
-                        console.log(favorites_array);
                         favorites =  favorites_array.length;
                     }).catch(err => {
                         console.log(err);
@@ -35,7 +34,7 @@ module.exports = (app) => {
                 }
                 return done(null, user);
             }).catch(err => {
-                console.log(err); 
+                // console.log(err); 
                 return done(err, false);
             });
         }

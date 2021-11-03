@@ -12,11 +12,12 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 </head>
 
-<body class="bg-black space-y-16">
+<body class="bg-black">
     {{#if error}}
     <div id="alert" class="alert-banner w-full fixed top-0">
         <input type="checkbox" class="hidden" id="banneralert">
-        <label class="close cursor-pointer flex items-center justify-between w-full p-2 bg-red-500 shadow text-white"
+        <label
+            class="text-4xl lg:text-xl close cursor-pointer flex items-center justify-between w-full p-2 bg-red-500 shadow text-white"
             title="close" for="banneralert">
             {{{error}}}
             <div onclick="closeAlert();">
@@ -39,9 +40,10 @@
                             <img src="/static/images/logo2.png" class="object-center" alt="Logo Icon">
                         </a>
                     </div>
-                    <h3 class="text-white text-6xl lg:text-2xl font-medium self-center text-center py-12 lg:py-2">Login</h3>
+                    <h3 class="text-white text-6xl lg:text-2xl self-center text-center py-12 lg:py-2">Login</h3>
                     <form method="POST" action="/login">
                         <div class="mx-10 lg:mx-2 my-10 lg:mt-5 flex flex-col">
+                            <input type="hidden" name="_token" value="96LGLQC0ylNCwHDLyTqFuBvSMwOqHi7voLu8lwj4">
                             <label class="block space-y-5 lg:space-y-2">
                                 <span class="text-3xl lg:text-sm text-white">Email or Username</span>
                                 <input id="email" name="email"
@@ -80,8 +82,8 @@
                                     Login
                                 </button>
                             </div>
-                            <p class="text-3xl lg:text-sm text-center text-white py-10 lg:py-5">Don&#x27;t have an account yet? <a
-                                    href="/signup"
+                            <p class="text-3xl lg:text-sm text-center text-white py-10 lg:py-5">Don&#x27;t have an
+                                account yet? <a href="/signup"
                                     class="text-blue-500 focus:outline-none focus:underline focus:text-indigo-500 dark:focus:border-indigo-800">Create
                                     an account</a>.</p>
                         </div>
@@ -90,10 +92,14 @@
             </div>
         </main>
     </div>
-    <!-- Footer Mentions -->
-    <div class="dark:bg-gray-900 w-full text-center text-3xl lg:text-base text-gray-400 fixed bottom-0">
-        Josehpequeno © 2021
-    </div>
+    <script src="/nd_md/jquery/dist/jquery.min.js"></script>
+    <script src="/nd_md/jquery/dist/jquery.slim.min.js"></script>
+    <script src="/nd_md/popper.js/dist/umd/popper.min.js"></script>
+    <script>
+        function closeAlert() {
+            $('#alert').addClass('hidden');
+        }
+    </script>
 </body>
 
 </html>

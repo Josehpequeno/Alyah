@@ -180,13 +180,23 @@ img#profile-edit {
 
 .login {
     max-width: auto;
-    height: auto; 
-    overflow: hidden; 
-} 
+    height: auto;
+    overflow: hidden;
+}
 
-@media screen and (min-width: 1024px) { 
+@media screen and (min-width: 1024px) {
     .login {
         width: 200px;
         height: 34px;
     }
+}
+
+.ok {
+    background-color: green;
+    height: 5px
+}
+
+.fail {
+    background-color: red;
+    height: 5px
 }
