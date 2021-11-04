@@ -171,8 +171,8 @@ img#profile {
 
 img#profile-edit {
     bottom: 0;
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
 }
 
 .logo {
@@ -185,6 +185,10 @@ img#profile-edit {
     max-width: 250px;
     height: auto;
     overflow: hidden;
+}
+
+.nav-lg {
+    display: none;
 }
 
 @media screen and (min-width: 1024px) {
@@ -205,6 +209,14 @@ img#profile-edit {
         height: 225px;
         background-size: 100%;
         background-repeat: no-repeat
+    }
+    .nav-lg {
+        display: flex;
+    }
+    img#profile-edit {
+        bottom: 0;
+        width: 50px;
+        height: 50px;
     }
 }
 

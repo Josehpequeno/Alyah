@@ -243,22 +243,22 @@ class RouteController {
         return (req, res) => {
             const err = validationResult(req);
             let userReq = req.body;
+            let userSession = req.user;
             // console.log(userReq);
             if (!err.isEmpty()) {
-                return res.render(templates + 'editProfile.handlebars', { layout: false, error: err.errors[0].msg, user: userReq });
+                return res.render(templates + 'editProfile.handlebars', { layout: false, error: err.errors[0].msg, user: userReq, profile: userSession.profile });
             }
             userReq.description = req.body.description.trim();
-            let userSession = req.user;
             let userDAO = new UserDAO(db);
             if (userSession.name != userReq.name) {
                 userDAO.searchName(userReq.name).then(user => {
                     let msg = "This username is already being used!";
-                    return res.render(templates + 'editProfile.handlebars', { layout: false, error: msg, user: userReq });
+                    return res.render(templates + 'editProfile.handlebars', { layout: false, error: msg, user: userReq, profile: userSession.profile });
                 }).catch(err => {
                     if (userSession.email != userReq.email) {
                         userDAO.searchEmail(userReq.email).then(user => {
                             let msg = "This email is already being used!";
-                            return res.render(templates + 'editProfile.handlebars', { layout: false, error: msg, user: userReq });
+                            return res.render(templates + 'editProfile.handlebars', { layout: false, error: msg, user: userReq, profile: userSession.profile });
                         }).catch(err => {
                             userDAO.updateUser(userSession.id, userReq.name, userReq.email, userReq.description, userReq.profile).then((url) => {
                                 req.user.name = userReq.name;
@@ -280,7 +280,7 @@ class RouteController {
             else if (userSession.email != userReq.email) {
                 userDAO.searchEmail(userReq.email).then(user => {
                     let msg = "This email is already being used!";
-                    return res.render(templates + 'editProfile.handlebars', { layout: false, error: msg, user: userReq });
+                    return res.render(templates + 'editProfile.handlebars', { layout: false, error: msg, user: userReq, profile: userSession.profile });
                 }).catch(err => {
                     userDAO.updateUser(userSession.id, userReq.name, userReq.email, userReq.description, userReq.profile).then((url) => {
                         req.user.name = userReq.name;

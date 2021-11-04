@@ -16,39 +16,65 @@
     <div class="bg-color-secundary-dark">
         <header class="text-gray-100 body-font shadow w-full">
             <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center text-white">
-                <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
+                <nav class="flex lg:w-2/5 flex-wrap items-center text-3xl lg:text-base md:ml-auto">
                     <a href="/all"
                         class="mr-5 hover:text-white-900 cursor-pointer border-b border-transparent hover:border-green-600">All</a>
                     <a href="/popular"
-                        class="mr-5 hover:text-white-900 cursor-pointer border-b border-transparent hover:border-green-600">Most Popular</a>
+                        class="mr-5 hover:text-white-900 cursor-pointer border-b border-transparent hover:border-green-600">Most
+                        Popular</a>
                 </nav>
                 <a href="/"
                     class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center lg:items-center lg:justify-center mb-4 md:mb-0">
-                    <img src="/static/images/logo2.png" alt="Logo Icon" style="height:34px;">
+                    <img src="/static/images/logo2.png" alt="Logo Icon" class="logo-header">
                 </a>
-                <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+                <div class="nav-lg lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
                     <a href="/profile"
-                        class="inline-flex text-sm border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
+                        class="inline-flex text-2xl lg:text-sm  border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
                         Profile
                     </a>
                     <a href="/signout"
-                        class="inline-flex text-sm border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
+                        class="inline-flex text-2xl lg:text-sm  border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
                         Sign out
                     </a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="lg:hidden flex items-center absolute right-0">
+                    <button class="block mobile-menu-button lg:hidden cursor-pointer ml-auto relative w-12 h-12 p-4">
+                        <svg id="open" class="fill-current text-white" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20">
+                            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                        </svg>
+                        <svg id="close" class="fill-current text-white hidden" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20">
+                            <path
+                                d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="hidden mobile-menu mb-24">
+                <div
+                    class="bg-color-secundary-dark origin-top-right absolute right-1 mt-2 w-52 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <div class="py-1">
+                        <a href="/profile" class="text-2xl lg:text-sm block px-4 py-9 text-sm text-white" tabindex="-1"
+                            id="menu-item-0">Profile</a>
+                        <a href="/signout" class="text-2xl lg:text-sm block px-4 py-9 text-sm text-white" tabindex="-1"
+                            id="menu-item-1"> Sign out</a>
+                    </div>
                 </div>
             </div>
         </header>
     </div>
-
     <div class="container mx-auto min-h-screen font-nunito py-10">
         <main>
-            <div class="flex items-center justify-center mt-16 mx-6">
-                <div class="p-6 max-w-sm w-full bg-color-secundary-dark shadow rounded-md">
+            <div class="flex items-center justify-center lg:mt-0 mx-6 absolute lg:inset-x-0 lg:top-16">
+                <div
+                    class="my-24 p-10 bg-color-secundary-dark shadow rounded-3xl lg:rounded-md h-full w-full lg:w-auto py-28 lg:p-6">
                     {{#if error}}
                     <div id="alert" class="alert-banner w-full">
                         <input type="checkbox" class="hidden" id="banneralert">
                         <label
-                            class="close cursor-pointer flex items-center justify-between w-full p-2 bg-red-500 shadow text-white"
+                            class="text-4xl lg:text-xl close cursor-pointer flex items-center justify-between w-full p-2 bg-red-500 shadow text-white"
                             title="close" for="banneralert">
                             {{{error}}}
                             <div onclick="closeAlert();">
@@ -63,21 +89,24 @@
                     </div>
                     {{/if}}
                     <br />
-                    <h3 class="text-white text-xl text-center">Edit Proflile</h3>
+                    <h3 class="text-white text-5xl lg:text-xl self-center text-center py-12 lg:py-2 w-full">Edit Profile
+                    </h3>
                     <form action="/upload" method="post" enctype="multipart/form-data">
-                        <div class="py-5">
-                            <label class="block text-sm font-medium text-white">
+                        <div class="py-5 space-y-5 lg:space-y-2">
+                            <label class="block text-3xl lg:text-sm font-medium text-white">
                                 Photo
                             </label>
-                            <div class="mt-1 flex items-center py-2">
-                                <span class="inline-block h-12 w-12 bg-gray-100 rounded-full overflow-hidden">
+                            <div class="mt-1 flex items-center py-2 ml-4 mr-96 lg:mr-40">
+                                <span
+                                    class="inline-block h-24 w-24 flex items-center justify-center lg:h-12 lg:w-12 bg-gray-100 rounded-full overflow-hidden">
                                     <img id="profile-edit" src="{{profile}}" alt="userImage" />
                                 </span>
                                 <label for="filetoupload"
-                                    class="inline-flex text-sm border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
+                                    class="inline-flex text-3xl lg:text-sm border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
                                     Change
                                 </label>
-                                <input type="file" name="avatar" id="filetoupload" class="hidden" onchange="this.form.submit()" />
+                                <input type="file" name="avatar" id="filetoupload" class="hidden"
+                                    onchange="this.form.submit()" />
                                 {{!-- <button id="upload" type="submit"
                                     class="inline-flex text-sm border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
                                     Change
@@ -86,28 +115,28 @@
                         </div>
                     </form>
                     <form class="mt-4" method="POST" action="/editProfile">
-                        <label class="block">
-                            <span class="text-white text-sm">Username</span>
+                        <label class="block space-y-5 lg:space-y-2">
+                            <span class="text-white text-3xl lg:text-sm">Username</span>
                             <input id="name" name="name"
-                                class="px-3 py-2 h-7 form-input mt-1 block w-full rounded-md bg-color-secundary border-gray-700 text-white"
+                                class="text-3xl lg:text-sm px-3 py-2 h-16 lg:h-8 form-input mt-1 block w-full rounded-xl lg:rounded-md bg-color-secundary border-gray-700 text-white"
                                 value="{{{user.name}}}" required autocomplete="username" autofocus>
                             <input id="profile" name="profile" class="hidden" value="{{{profile}}}" required
                                 autocomplete="username" autofocus>
                         </label>
-                        <label class="block mt-3">
-                            <span class="text-white text-sm">Email</span>
+                        <label class="block mt-6 lg:mt-3 space-y-5 lg:space-y-2">
+                            <span class="text-white text-3xl lg:text-sm">Email</span>
                             <input type="email" id="email" name="email"
-                                class="px-3 py-2 h-7 form-input mt-1 block w-full rounded-md bg-color-secundary border-gray-700 text-white"
+                                class="text-3xl lg:text-sm px-3 py-2 h-16 lg:h-8 form-input mt-1 block w-full rounded-xl lg:rounded-md bg-color-secundary border-gray-700 text-white"
                                 value="{{{user.email}}}" required autocomplete="email" autofocus>
                         </label>
-                        <label class="block mt-3">
-                            <span class="text-white text-sm">Description</span>
+                        <label class="block mt-6 lg:mt-3 space-y-5 lg:space-y-2">
+                            <span class="text-white text-3xl lg:text-sm">Description</span>
                             <textarea id="description" name="description" rows="3" autofocus
-                                class="form-textarea resize-none border rounded-md px-3 py-2 mt-1 block w-full bg-color-secundary border-gray-700 text-white">{{{user.description}}}</textarea>
+                                class="form-textarea resize-none border text-3xl lg:text-sm px-3 py-2 mt-1 block w-full rounded-xl lg:rounded-md bg-color-secundary border-gray-700 text-white">{{{user.description}}}</textarea>
                         </label>
-                        <div class="mt-6">
+                        <div class="mt-12 lg:mt-6">
                             <button type="submit"
-                                class="w-full py-2 px-4 text-center bg-color-sucess rounded-md text-white text-sm hover:bg-blue-500 focus:outline-none">
+                                class="w-full py-6 lg:py-2 px-4 text-center bg-color-sucess rounded-xl lg:rounded-md text-white text-3xl lg:text-sm hover:bg-blue-500 focus:outline-none">
                                 Save
                             </button>
                         </div>
@@ -116,7 +145,7 @@
             </div>
         </main>
     </div>
-    <div class="bg-color-secundary-dark bottom-0 py-2">
+    <div class="bg-color-secundary-dark mt-24 bottom-0 py-2">
         <footer class="flex flex-wrap items-center justify-between p-3 m-auto">
             <div class="container mx-auto flex flex-col flex-wrap items-center justify-between">
                 <ul class="flex mx-auto text-white text-center">
@@ -136,7 +165,7 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="p-2 cursor-pointer"><a href="mailto:hicarojbs21@gmail.com?subject=Alyah mangas reader">
+                    <li class="p-2 cursor-pointer"><a href="mailto:hicarojbs21@gmail.com?subject=Alyah manga reader">
                             <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"
                                 class="fill-current text-white" fill-rule="evenodd" clip-rule="evenodd">
                                 <path
@@ -152,10 +181,10 @@
                             </svg></a>
                     </li>
                 </ul>
-                <div class="flex mx-auto text-white text-center">
+                <div class="flex mx-auto text-white text-center text-xl lg:text-sm">
                     Josehpequeno © 2021
                 </div>
-                <div class="flex mx-auto text-white text-center">
+                <div class="flex mx-auto text-white text-center text-xl lg:text-sm">
                     <a href='https://www.freepik.com/vectors/background'><small>Background vector created by
                             kjpargeter
                             - www.freepik.com</small></a>
@@ -172,14 +201,32 @@
                 </div>
             </div>-->
         </footer>
-        <script src="/nd_md/jquery/dist/jquery.min.js"></script>
-        <script src="/nd_md/jquery/dist/jquery.slim.min.js"></script>
-        <script src="/nd_md/popper.js/dist/umd/popper.min.js"></script>
-        <script>
-            function closeAlert() {
-                $('#alert').addClass('hidden');
+    </div>
+    <script src="/nd_md/jquery/dist/jquery.min.js"></script>
+    <script src="/nd_md/jquery/dist/jquery.slim.min.js"></script>
+    <script src="/nd_md/popper.js/dist/umd/popper.min.js"></script>
+    <script>
+        function closeAlert() {
+            $('#alert').addClass('hidden');
+        }
+    </script>
+    <script>
+        // Grab HTML Elements
+        const btn = document.querySelector("button.mobile-menu-button");
+        const menu = document.querySelector(".mobile-menu");
+
+        // Add Event Listeners
+        btn.addEventListener("click", () => {
+            menu.classList.toggle('hidden');
+            if ($('#open').hasClass("hidden")) {
+                $('#open').removeClass('hidden');
+                $('#close').addClass('hidden')
+            } else {
+                $('#open').addClass('hidden');
+                $('#close').removeClass('hidden')
             }
-        </script>
+        });
+    </script>
 </body>
 
 </html>
