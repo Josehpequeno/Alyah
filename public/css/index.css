@@ -205,6 +205,11 @@ img#profile-edit {
     height: 70px;
 }
 
+.fullscreen-btn svg {
+    width: 48px;
+    height: 48px;
+}
+
 @media screen and (min-width: 1024px) {
     .logo {
         width: 200px;
@@ -248,6 +253,10 @@ img#profile-edit {
     }
     .fav {
         display: none;
+    }
+    .fullscreen-btn svg {
+        width: 24px;
+        height: 24px;
     }
 }
 

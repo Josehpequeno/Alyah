@@ -335,6 +335,7 @@ class RouteController {
         return (req, res) => {
             let id = req.params.id;
             let name = req.params.name;
+            let chapter_id = req.params.id;
             let imagesDao = new ImagesDao(db);
             imagesDao.getAllUrls(id).then(urls => {
                 let items = [];
@@ -353,11 +354,12 @@ class RouteController {
                 items.map(function (item) {
                     if (images === '') {
                         images += `<img alt="manga" src="${item.url}" id="page_${i}" />`;
+                    } else {
+                        images += `<img alt="manga" src="${item.url}" class="hidden" id="page_${i}" />`;
                     }
-                    images += `<img alt="manga" src="${item.url}" class="hidden" id="page_${i}" />`;
                     i++;
                 });
-                return res.render(templates + 'mangaReader.handlebars', { layout: false, items: items, options: opt, images: images, length: i, manga: name });
+                return res.render(templates + 'mangaReader.handlebars', { layout: false, chapter: chapter_id, items: items, options: opt, images: images, length: i, manga: name });
             }).catch(err => console.log(err));
         }
     }
