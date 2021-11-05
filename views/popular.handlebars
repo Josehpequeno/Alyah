@@ -95,10 +95,10 @@
         </div>
         <div class="flex flex-cols flex-wrap gap-8 lg:gap-4 grid grid-cols-1 lg:grid-cols-2 md:items-center">
             {{#each mangas}}
+            <!-- Start of component -->
             <a href='/manga/{{name}}'>
-                <!-- Start of component -->
                 <div
-                    class="h-full lg:h-1/2 bg-color-secundary md:col-span-1 text-white p-8 lg:p-5  rounded-md tracking-wide shadow-lg">
+                    class="h-full lg:h-1/2 bg-color-secundary md:col-span-1 text-white p-8 lg:p-5 rounded-md tracking-wide shadow-lg">
                     <div id="header" class="flex">
                         <div>
                             <div class="manga">
@@ -116,8 +116,8 @@
                         <small id="name" class="font-semibold">{{{name}}} de {{{author}}}</small>
                     </div>
                 </div>
-                <!-- End of component -->
             </a>
+            <!-- End of component -->
             {{/each}}
         </div>
     </div>

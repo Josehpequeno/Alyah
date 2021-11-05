@@ -189,13 +189,13 @@ class RouteController {
                         let favoritesListDao = new FavoriteListDao(db);
                         favoritesListDao.ExitsFavoriteList(manga.id, user.favorites_id).then(bool => {
                             if (bool) {
-                                return res.render(templates + 'manga.handlebars', { layout: false, manga: manga, chapters: chapters, favorites_id: user.favorites_id, favorited: bool });
+                                return res.render(templates + 'manga.handlebars', { layout: false, user: user, manga: manga, chapters: chapters, favorites_id: user.favorites_id, favorited: bool });
                             }
-                            return res.render(templates + 'manga.handlebars', { layout: false, manga: manga, chapters: chapters, favorites_id: user.favorites_id });
+                            return res.render(templates + 'manga.handlebars', { layout: false, user: user, manga: manga, chapters: chapters, favorites_id: user.favorites_id });
                         }).catch(err => console.log(err));
                     }
                     else {
-                        return res.render(templates + 'manga.handlebars', { layout: false, manga: manga, chapters: chapters });
+                        return res.render(templates + 'manga.handlebars', { layout: false, user: user, manga: manga, chapters: chapters });
                     }
                 }).catch(err => console.log(err));
             }).catch(err => console.log(err));

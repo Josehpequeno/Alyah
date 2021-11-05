@@ -109,30 +109,32 @@
         <div id="list" class="flex flex-cols flex-wrap gap-8 lg:gap-4 grid grid-cols-1 lg:grid-cols-2 md:items-center">
             {{#each mangas}}
             <!-- Start of component -->
-            <div id="{{id}}"
-                class="h-full bg-color-secundary md:col-span-1 text-white p-8 lg:p-5 rounded-md tracking-wide shadow-lg">
-                <div id="header" class="flex">
-                    <div>
-                        <div class="manga">
-                            <img alt="manga" class="w-full h-full rounded-xl lg:rounded-md" src="{{cover}}" />
+            <a href='/manga/{{name}}'>
+                <div id="{{id}}"
+                    class="h-full bg-color-secundary md:col-span-1 text-white p-8 lg:p-5 rounded-md tracking-wide shadow-lg">
+                    <div id="header" class="flex">
+                        <div>
+                            <div class="manga">
+                                <img alt="manga" class="w-full h-full rounded-xl lg:rounded-md" src="{{cover}}" />
+                            </div>
+                        </div>
+                        <div id="body" class="flex flex-col ml-5 text-2xl lg:text-base">
+                            <p id="job" class="md:text-left mt-0">
+                                {{{description}}}
+                            </p>
                         </div>
                     </div>
-                    <div id="body" class="flex flex-col ml-5 text-2xl lg:text-base">
-                        <p id="job" class="md:text-left mt-0">
-                            {{{description}}}
-                        </p>
+                    <div
+                        class="mt-4 bg-color-primary-dark text-2xl lg:text-base md:justify-items-center text-center rounded-md">
+                        <small id="name" class="font-semibold">{{{name}}} de {{{author}}}</small>
+                        <div id="info" class="hidden">
+                            <small id="manga" name="{{name}}" class="font-semibold">{{{name}}}</small>
+                            <small id="author" name="{{author}}" class="font-semibold">{{{author}}}</small>
+                            <small id="id" name="{{id}}" class="font-semibold">{{{id}}}</small>
+                        </div>
                     </div>
                 </div>
-                <div
-                    class="mt-4 bg-color-primary-dark text-2xl lg:text-base md:justify-items-center text-center rounded-md">
-                    <small id="name" class="font-semibold">{{{name}}} de {{{author}}}</small>
-                    <div id="info" class="hidden">
-                        <small id="manga" name="{{name}}" class="font-semibold">{{{name}}}</small>
-                        <small id="author" name="{{author}}" class="font-semibold">{{{author}}}</small>
-                        <small id="id" name="{{id}}" class="font-semibold">{{{id}}}</small>
-                    </div>
-                </div>
-            </div>
+            </a>
             <!-- End of component -->
             {{/each}}
         </div>

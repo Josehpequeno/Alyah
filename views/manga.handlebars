@@ -17,97 +17,178 @@
 <body>
     <div class="bg-color-secundary-dark">
         <header class="text-gray-100 body-font shadow w-full">
-            <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center text-white">
-                <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
+            <div class="container mx-auto flex flex-wrap p-12 lg:p-5 flex-col md:flex-row items-center text-white">
+                <nav class="flex lg:w-2/5 flex-wrap items-center text-3xl lg:text-base md:ml-auto">
                     <a href="/all"
-                        class="mr-5 hover:text-white-900 cursor-pointer border-b border-transparent hover:border-green-600">All</a>
+                        class="mr-16 lg:mr-5 hover:text-white-900 cursor-pointer border-b border-transparent hover:border-green-600">All</a>
                     <a href="/popular"
-                        class="mr-5 hover:text-white-900 cursor-pointer border-b border-transparent hover:border-green-600">Most Popular</a>
+                        class="lg:mr-5 hover:text-white-900 cursor-pointer border-b border-transparent hover:border-green-600">Most
+                        Popular</a>
                 </nav>
                 <a href="/"
                     class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center lg:items-center lg:justify-center mb-4 md:mb-0">
-                    <img src="/static/images/logo2.png" alt="Logo Icon" style="height:34px;">
+                    <img src="/static/images/logo2.png" alt="Logo Icon" class="logo-header">
                 </a>
-                {{#if favorites_id}}
-                <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+                {{#if user}}
+                <div class="nav-lg lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
                     <a href="/profile"
-                        class="inline-flex text-sm border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
+                        class="inline-flex text-2xl lg:text-sm  border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
                         Profile
                     </a>
                     <a href="/signout"
-                        class="inline-flex text-sm border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
+                        class="inline-flex text-2xl lg:text-sm  border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
                         Sign out
                     </a>
                 </div>
                 {{else}}
-                <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+                <div class="nav-lg lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
                     <a href="/login"
-                        class="inline-flex text-sm border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
+                        class="inline-flex text-2xl lg:text-sm  border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
                         Log in
                     </a>
                     <a href="/signup"
-                        class="inline-flex text-sm border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
+                        class="inline-flex text-2xl lg:text-sm  border rounded text-white ml-4 py-2 px-3 rounded-lg hover:border-transparent hover:bg-white button">
                         Sign up
                     </a>
+                </div>
+                {{/if}}
+                <!-- Mobile menu button -->
+                <div class="lg:hidden flex items-center absolute right-5">
+                    <button class="block mobile-menu-button lg:hidden cursor-pointer ml-auto relative w-16 h-16 p-4">
+                        <svg id="open" class="fill-current text-white" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20">
+                            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                        </svg>
+                        <svg id="close" class="fill-current text-white hidden" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20">
+                            <path
+                                d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="hidden mobile-menu mb-24">
+                {{#if user}}
+                <div
+                    class="bg-color-secundary-dark origin-top-right absolute right-1 mt-2 w-52 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <div class="py-1">
+                        <a href="/profile" class="text-2xl lg:text-sm block px-4 py-9 text-sm text-white" tabindex="-1"
+                            id="menu-item-0">Profile</a>
+                        <a href="/signout" class="text-2xl lg:text-sm block px-4 py-9 text-sm text-white" tabindex="-1"
+                            id="menu-item-1"> Sign out</a>
+                    </div>
+                </div>
+                {{else}}
+                <div
+                    class="bg-color-secundary-dark origin-top-right absolute right-1 mt-2 w-52 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <div class="py-1">
+                        <a href="/login" class="text-2xl lg:text-sm block px-4 py-9 text-sm text-white" tabindex="-1"
+                            id="menu-item-0">Log in</a>
+                        <a href="/signout" class="text-2xl lg:text-sm block px-4 py-9 text-sm text-white" tabindex="-1"
+                            id="menu-item-1">Sign up</a>
+                    </div>
                 </div>
                 {{/if}}
             </div>
         </header>
     </div>
-    <div id="content" class="md:container md:mx-auto min-h-screen py-10">
+    <div id="content" class="md:container md:mx-auto min-h-screen pt-20 pb-0">
         <div class="bg-color-secundary py-5 rounded">
             <div class="flex px-10 pb-10">
                 <div>
                     <div class="manga">
-                        <img alt="manga" class="w-11/12 md:w-full rounded-md" src="{{manga.cover}}" />
-                        <div class="mt-4 md:justify-items-center text-center bg-color-primary-dark rounded-md">
+                        <img alt="manga" class="w-full h-full rounded-xl lg:rounded-md" src="{{manga.cover}}" />
+                        <div
+                            class="mt-4 bg-color-primary-dark text-2xl lg:text-base md:justify-items-center text-center rounded-md">
                             <small id="name" class="font-semibold text-white">{{{manga.author}}}</small>
                         </div>
                         <input id="manga_id" class="font-semibold text-white hidden-element" value="{{{manga.id}}}" />
                     </div>
+                    <div class="px-3 mt-5 -mb-5 md:justify-items-center text-center rounded-md fav"
+                        onclick="changeFavoriteMob();">
+                        {{#if favorited}}
+                        <a id="favorite-mob" class="favorite hidden-element inline-flex text-sm rounded text-white px-10
+                            rounded-lg hover:border-transparent hover:bg-white button inline-flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                class="fill-current" version="1.1" x="0px" y="0px" viewBox="0 0 100 100"
+                                enable-background="new 0 0 100 100" xml:space="preserve">
+                                <path
+                                    d="M83,41c0-9.5-7.5-17-17-17c-8.331,0-12.564,5.253-16,8.6c-3.48-3.392-7.675-8.6-16-8.6c-9.5,0-17,7.5-17,17  c0,14.9,27,33.9,32.8,35h0.4c1.899-0.4,6.2-2.7,11.1-6.2c2,2,4.7,3.2,7.8,3.2c9.56,0,14.466-11.301,8.2-18.3  C80.7,50.1,83,45.4,83,41z M50,74c-5.7-1.3-31-19.8-31-33c0-8.4,6.6-15,15-15c7.441,0,10.868,4.461,16,9.4  c5.116-4.923,8.539-9.4,16-9.4c8.4,0,15,6.6,15,15c0,3.8-2.1,8.1-5.3,12.3C73.8,51.9,71.5,51,69,51c-9.206,0-13.902,10.396-9.1,17.2  C55.6,71.4,51.8,73.6,50,74z M75,63h-5v5h-2v-5h-5v-2h5v-5h2v5h5V63z" />
+                            </svg>Favorite
+                        </a>
+                        <a id="favorited-mob" class="favorited inline-flex text-sm rounded text-white hover:text-black px-10
+                            rounded-lg hover:border-transparent hover:bg-white button inline-flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                class="fill-current" version="1.1" x="0px" y="0px" viewBox="0 0 100 100"
+                                enable-background="new 0 0 100 100" xml:space="preserve">
+                                <path
+                                    d="M66,26c-7.455,0-10.89,4.482-16,9.4c-5.116-4.923-8.54-9.4-16-9.4c-8.4,0-15,6.6-15,15c0,13.2,25.3,31.7,31,33  c5.7-1.3,31-19.8,31-33C81,32.6,74.4,26,66,26z M34,32c-5,0-9,4-9,9c0,1.342-2,1.34-2,0c0-6.1,4.9-11,11-11  C35.342,30,35.34,32,34,32z" />
+                            </svg>Favorited
+                        </a>
+                        {{else}}
+                        <a id="favorite-mob" class="favorite inline-flex text-sm rounded text-white hover:text-black px-10
+                            rounded-lg hover:border-transparent hover:bg-white button inline-flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                class="fill-current" version="1.1" x="0px" y="0px" viewBox="0 0 100 100"
+                                enable-background="new 0 0 100 100" xml:space="preserve">
+                                <path
+                                    d="M83,41c0-9.5-7.5-17-17-17c-8.331,0-12.564,5.253-16,8.6c-3.48-3.392-7.675-8.6-16-8.6c-9.5,0-17,7.5-17,17  c0,14.9,27,33.9,32.8,35h0.4c1.899-0.4,6.2-2.7,11.1-6.2c2,2,4.7,3.2,7.8,3.2c9.56,0,14.466-11.301,8.2-18.3  C80.7,50.1,83,45.4,83,41z M50,74c-5.7-1.3-31-19.8-31-33c0-8.4,6.6-15,15-15c7.441,0,10.868,4.461,16,9.4  c5.116-4.923,8.539-9.4,16-9.4c8.4,0,15,6.6,15,15c0,3.8-2.1,8.1-5.3,12.3C73.8,51.9,71.5,51,69,51c-9.206,0-13.902,10.396-9.1,17.2  C55.6,71.4,51.8,73.6,50,74z M75,63h-5v5h-2v-5h-5v-2h5v-5h2v5h5V63z" />
+                            </svg>Favorite
+                        </a>
+                        <a id="favorited-mob" class="favorited hidden-element inline-flex text-sm rounded text-white hover:text-black px-10
+                            rounded-lg hover:border-transparent hover:bg-white button inline-flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                class="fill-current" version="1.1" x="0px" y="0px" viewBox="0 0 100 100"
+                                enable-background="new 0 0 100 100" xml:space="preserve">
+                                <path
+                                    d="M66,26c-7.455,0-10.89,4.482-16,9.4c-5.116-4.923-8.54-9.4-16-9.4c-8.4,0-15,6.6-15,15c0,13.2,25.3,31.7,31,33  c5.7-1.3,31-19.8,31-33C81,32.6,74.4,26,66,26z M34,32c-5,0-9,4-9,9c0,1.342-2,1.34-2,0c0-6.1,4.9-11,11-11  C35.342,30,35.34,32,34,32z" />
+                            </svg>Favorited
+                        </a>
+                        {{/if}}
+                    </div>
                 </div>
                 <div class="ml-10">
                     <div class="flex items-center">
-                        <h2 class="block leading-relaxed font-light text-white text-3xl">{{manga.name}}</h2>
+                        <h2 class="block leading-relaxed font-light text-white text-4xl lg:text-3xl">{{manga.name}}</h2>
                         {{#if favorites_id}}
                         <input id="favorites_id" class="font-semibold text-white hidden-element"
                             value="{{{favorites_id}}}" />
-                        <div class="px-3 mt-2 md:justify-items-center text-center rounded-md"
+                        <div class="px-3 mt-2 md:justify-items-center text-center rounded-md nav-lg"
                             onclick="changeFavorite();">
                             {{#if favorited}}
-                            <a id="favorite" class="hidden-element inline-flex text-sm rounded text-white px-10
+                            <a id="favorite" class="favorite hidden-element inline-flex text-sm rounded text-white px-10
                             rounded-lg hover:border-transparent hover:bg-white button inline-flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                     class="fill-current" version="1.1" x="0px" y="0px" viewBox="0 0 100 100"
-                                    width="40px" height="35px" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    enable-background="new 0 0 100 100" xml:space="preserve">
                                     <path
                                         d="M83,41c0-9.5-7.5-17-17-17c-8.331,0-12.564,5.253-16,8.6c-3.48-3.392-7.675-8.6-16-8.6c-9.5,0-17,7.5-17,17  c0,14.9,27,33.9,32.8,35h0.4c1.899-0.4,6.2-2.7,11.1-6.2c2,2,4.7,3.2,7.8,3.2c9.56,0,14.466-11.301,8.2-18.3  C80.7,50.1,83,45.4,83,41z M50,74c-5.7-1.3-31-19.8-31-33c0-8.4,6.6-15,15-15c7.441,0,10.868,4.461,16,9.4  c5.116-4.923,8.539-9.4,16-9.4c8.4,0,15,6.6,15,15c0,3.8-2.1,8.1-5.3,12.3C73.8,51.9,71.5,51,69,51c-9.206,0-13.902,10.396-9.1,17.2  C55.6,71.4,51.8,73.6,50,74z M75,63h-5v5h-2v-5h-5v-2h5v-5h2v5h5V63z" />
                                 </svg>Favorite
                             </a>
-                            <a id="favorited" class="inline-flex text-sm rounded text-white hover:text-black px-10
+                            <a id="favorited" class="favorited inline-flex text-sm rounded text-white hover:text-black px-10
                             rounded-lg hover:border-transparent hover:bg-white button inline-flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                     class="fill-current" version="1.1" x="0px" y="0px" viewBox="0 0 100 100"
-                                    width="32px" height="35px" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    enable-background="new 0 0 100 100" xml:space="preserve">
                                     <path
                                         d="M66,26c-7.455,0-10.89,4.482-16,9.4c-5.116-4.923-8.54-9.4-16-9.4c-8.4,0-15,6.6-15,15c0,13.2,25.3,31.7,31,33  c5.7-1.3,31-19.8,31-33C81,32.6,74.4,26,66,26z M34,32c-5,0-9,4-9,9c0,1.342-2,1.34-2,0c0-6.1,4.9-11,11-11  C35.342,30,35.34,32,34,32z" />
                                 </svg>Favorited
                             </a>
                             {{else}}
-                            <a id="favorite" class="inline-flex text-sm rounded text-white hover:text-black px-10
+                            <a id="favorite" class="favorite inline-flex text-sm rounded text-white hover:text-black px-10
                             rounded-lg hover:border-transparent hover:bg-white button inline-flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                     class="fill-current" version="1.1" x="0px" y="0px" viewBox="0 0 100 100"
-                                    width="40px" height="35px" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    enable-background="new 0 0 100 100" xml:space="preserve">
                                     <path
                                         d="M83,41c0-9.5-7.5-17-17-17c-8.331,0-12.564,5.253-16,8.6c-3.48-3.392-7.675-8.6-16-8.6c-9.5,0-17,7.5-17,17  c0,14.9,27,33.9,32.8,35h0.4c1.899-0.4,6.2-2.7,11.1-6.2c2,2,4.7,3.2,7.8,3.2c9.56,0,14.466-11.301,8.2-18.3  C80.7,50.1,83,45.4,83,41z M50,74c-5.7-1.3-31-19.8-31-33c0-8.4,6.6-15,15-15c7.441,0,10.868,4.461,16,9.4  c5.116-4.923,8.539-9.4,16-9.4c8.4,0,15,6.6,15,15c0,3.8-2.1,8.1-5.3,12.3C73.8,51.9,71.5,51,69,51c-9.206,0-13.902,10.396-9.1,17.2  C55.6,71.4,51.8,73.6,50,74z M75,63h-5v5h-2v-5h-5v-2h5v-5h2v5h5V63z" />
                                 </svg>Favorite
                             </a>
-                            <a id="favorited" class="hidden-element inline-flex text-sm rounded text-white hover:text-black px-10
+                            <a id="favorited" class="favorited hidden-element inline-flex text-sm rounded text-white hover:text-black px-10
                             rounded-lg hover:border-transparent hover:bg-white button inline-flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                     class="fill-current" version="1.1" x="0px" y="0px" viewBox="0 0 100 100"
-                                    width="32px" height="35px" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    enable-background="new 0 0 100 100" xml:space="preserve">
                                     <path
                                         d="M66,26c-7.455,0-10.89,4.482-16,9.4c-5.116-4.923-8.54-9.4-16-9.4c-8.4,0-15,6.6-15,15c0,13.2,25.3,31.7,31,33  c5.7-1.3,31-19.8,31-33C81,32.6,74.4,26,66,26z M34,32c-5,0-9,4-9,9c0,1.342-2,1.34-2,0c0-6.1,4.9-11,11-11  C35.342,30,35.34,32,34,32z" />
                                 </svg>Favorited
@@ -117,7 +198,7 @@
                         {{/if}}
                     </div>
                     <br>
-                    <div id="body" class="flex flex-col ml-1 text-white">
+                    <div id="body" class="flex flex-col ml-1 text-white text-2xl lg:text-base">
                         <p id="job" class="md:text-left mt-0">{{{manga.description}}}
                         </p>
                     </div>
@@ -125,86 +206,70 @@
             </div>
             <div class="border-b border-gray-300"></div>
             <article
-                class="flex px-8 mt-5 flex flex-cols flex-wrap md:items-center grid 2xl:grid-cols-12 xl:grid-cols-10 md:grid-cols-12 gap-10">
+                class="flex px-10 mt-5 flex-cols flex-wrap md:items-center grid grid-cols-4 2xl:grid-cols-12 lg:grid-cols-10 gap-16 lg:gap-10">
                 {{#each chapters}}
+                <!-- Start of component -->
                 <a href='/mangaReader/{{id}}/{{../manga.name}}'>
-                    <!-- Start of component -->
                     <div
-                        class="h-20 w-20 px-5 bg-color-primary-dark 2xl:col-span-1 xl:col-span-1 md:col-span-2 sm:col-span-2 text-white p-5 rounded-md tracking-wide shadow-lg">
+                        class="h-32 w-32 lg:h-20 lg:w-20 px-5 bg-color-primary-dark text-white lg:p-5 p-10 rounded-md tracking-wide shadow-lg">
                         <div class="cursor-pointer relative mangas-fav">
-                            <div class="mt-2 md:justify-items-center text-center rounded-md">
+                            <div class="mt-2 md:justify-items-center text-center rounded-md text-3xl lg:text-base">
                                 <small id="name" class="font-semibold">{{{name}}}</small>
                             </div>
                         </div>
                     </div>
-                    <!-- End of component -->
                 </a>
+                <!-- End of component -->
                 {{/each}}
             </article>
         </div>
     </div>
-    <div class="bg-color-secundary-dark bottom-0 py-2">
+    <div class="bg-color-secundary-dark mt-24 bottom-0 py-2">
         <footer class="flex flex-wrap items-center justify-between p-3 m-auto">
             <div class="container mx-auto flex flex-col flex-wrap items-center justify-between">
                 <ul class="flex mx-auto text-white text-center">
-                    <li class="p-2 cursor-pointer"><a href="https://www.linkedin.com/in/hicaro-jose-2aa269166/">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="fill-current text-white" width="24"
-                                height="24" viewBox="0 0 24 24">
+                    <li class="p-8 lg:p-2 cursor-pointer h-28 w-28 lg:h-10 lg:w-10"><a
+                            href="https://www.linkedin.com/in/hicaro-jose-2aa269166/">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="fill-current text-white" viewBox="0 0 24 24">
                                 <path
                                     d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                             </svg>
                         </a>
                     </li>
-                    <li class="p-2 cursor-pointer"><a href="https://www.instagram.com/mentalityslow/">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="fill-current text-white" width="24"
-                                height="24" viewBox="0 0 24 24">
+                    <li class="p-8 lg:p-2 cursor-pointer h-28 w-28 lg:h-10 lg:w-10"><a
+                            href="https://www.instagram.com/mentalityslow/">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="fill-current text-white" viewBox="0 0 24 24">
                                 <path
                                     d="M15.233 5.488c-.843-.038-1.097-.046-3.233-.046s-2.389.008-3.232.046c-2.17.099-3.181 1.127-3.279 3.279-.039.844-.048 1.097-.048 3.233s.009 2.389.047 3.233c.099 2.148 1.106 3.18 3.279 3.279.843.038 1.097.047 3.233.047 2.137 0 2.39-.008 3.233-.046 2.17-.099 3.18-1.129 3.279-3.279.038-.844.046-1.097.046-3.233s-.008-2.389-.046-3.232c-.099-2.153-1.111-3.182-3.279-3.281zm-3.233 10.62c-2.269 0-4.108-1.839-4.108-4.108 0-2.269 1.84-4.108 4.108-4.108s4.108 1.839 4.108 4.108c0 2.269-1.839 4.108-4.108 4.108zm4.271-7.418c-.53 0-.96-.43-.96-.96s.43-.96.96-.96.96.43.96.96-.43.96-.96.96zm-1.604 3.31c0 1.473-1.194 2.667-2.667 2.667s-2.667-1.194-2.667-2.667c0-1.473 1.194-2.667 2.667-2.667s2.667 1.194 2.667 2.667zm4.333-12h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm.952 15.298c-.132 2.909-1.751 4.521-4.653 4.654-.854.039-1.126.048-3.299.048s-2.444-.009-3.298-.048c-2.908-.133-4.52-1.748-4.654-4.654-.039-.853-.048-1.125-.048-3.298 0-2.172.009-2.445.048-3.298.134-2.908 1.748-4.521 4.654-4.653.854-.04 1.125-.049 3.298-.049s2.445.009 3.299.048c2.908.133 4.523 1.751 4.653 4.653.039.854.048 1.127.048 3.299 0 2.173-.009 2.445-.048 3.298z" />
                             </svg>
                         </a>
                     </li>
-                    <li class="p-2 cursor-pointer"><a href="mailto:hicarojbs21@gmail.com?subject=Alyah mangas reader">
-                            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"
-                                class="fill-current text-white" fill-rule="evenodd" clip-rule="evenodd">
+                    <li class="p-8 lg:p-2 cursor-pointer h-28 w-28 lg:h-10 lg:w-10"><a
+                            href="mailto:hicarojbs21@gmail.com?subject=Alyah manga reader">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="fill-current text-white" fill-rule="evenodd"
+                                viewBox="0 0 24 24" clip-rule="evenodd">
                                 <path
                                     d="M19 24h-14c-2.761 0-5-2.239-5-5v-14c0-2.761 2.239-5 5-5h14c2.762 0 5 2.239 5 5v14c0 2.761-2.238 5-5 5zm-.141-6.333c.63 0 1.141-.512 1.141-1.142v-9.05c0-.63-.511-1.142-1.141-1.142h-13.718c-.63 0-1.141.512-1.141 1.142v9.05c0 .63.511 1.142 1.141 1.142h13.718zm-6.859-4.058l-6.228-4.321-.014 7.712h12.457v-7.712l-6.215 4.321zm5.913-6.609c-1.745 1.215-5.913 4.153-5.913 4.153l-5.947-4.153h11.86z" />
                             </svg>
                         </a>
                     </li>
-                    <li class="p-2 cursor-pointer">
+                    <li class="p-8 lg:p-2 cursor-pointer h-28 w-28 lg:h-10 lg:w-10">
                         <a href="https://github.com/Josehpequeno"><svg xmlns="http://www.w3.org/2000/svg"
-                                class="fill-current text-white" width="24" height="24" viewBox="0 0 24 24">
+                                class="fill-current text-white" viewBox="0 0 24 24">
                                 <path
                                     d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-4.466 19.59c-.405.078-.534-.171-.534-.384v-2.195c0-.747-.262-1.233-.55-1.481 1.782-.198 3.654-.875 3.654-3.947 0-.874-.312-1.588-.823-2.147.082-.202.356-1.016-.079-2.117 0 0-.671-.215-2.198.82-.64-.18-1.324-.267-2.004-.271-.68.003-1.364.091-2.003.269-1.528-1.035-2.2-.82-2.2-.82-.434 1.102-.16 1.915-.077 2.118-.512.56-.824 1.273-.824 2.147 0 3.064 1.867 3.751 3.645 3.954-.229.2-.436.552-.508 1.07-.457.204-1.614.557-2.328-.666 0 0-.423-.768-1.227-.825 0 0-.78-.01-.055.487 0 0 .525.246.889 1.17 0 0 .463 1.428 2.688.944v1.489c0 .211-.129.459-.528.385-3.18-1.057-5.472-4.056-5.472-7.59 0-4.419 3.582-8 8-8s8 3.581 8 8c0 3.533-2.289 6.531-5.466 7.59z" />
                             </svg></a>
                     </li>
                 </ul>
-                <div class="flex mx-auto text-white text-center">
+                <div class="flex mx-auto text-white text-center text-xl lg:text-sm">
                     Josehpequeno © 2021
                 </div>
-                <div class="flex mx-auto text-white text-center">
+                <div class="flex mx-auto text-white text-center text-xl lg:text-sm">
                     <a href='https://www.freepik.com/vectors/background'><small>Background vector created by
                             kjpargeter
                             - www.freepik.com</small></a>
                 </div>
-                <div class="flex mx-auto text-white text-center">
-                    <small>
-                        Icons made by <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware">Good
-                            Ware</a>
-                        from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-                    </small>
-                </div>
             </div>
-            <!-- BUY ME A BEER AND HELP SUPPORT OPEN-SOURCE RESOURCES -->
-            <!--<div class="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
-                <div>
-                    <a title="Buy me a beer" href="https://www.buymeacoffee.com/scottwindon" target="_blank"
-                        class="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12">
-                        <img class="object-cover object-center w-full h-full rounded-full"
-                            src="https://i.pinimg.com/originals/60/fd/e8/60fde811b6be57094e0abc69d9c2622a.jpg" />
-                    </a>
-                </div>
-            </div>-->
         </footer>
     </div>
     <script src="/nd_md/handlebars/dist/handlebars.min.js"></script>
@@ -265,6 +330,79 @@
                 favorited.removeClass('hidden-element');
             }
         }
+    </script>
+    <script>
+        async function changeFavoriteMob() {
+            let favorite = $('#favorite-mob');
+            let favorited = $('#favorited-mob');
+            let manga_id = $('#manga_id').val();
+            let favorites_id = $('#favorites_id').val();
+            let obj = { manga_id: manga_id, favorites_id: favorites_id, favorited: true };
+            if (favorite.hasClass('hidden-element')) {
+                obj.favorited = false;
+                $.ajax({
+                    url: '/favorite',
+                    type: 'POST',
+                    dataType: "json",
+                    data: { data: obj },
+                    eforeSend: function () {
+                        //Caso você precise fazer alguma validação antes de enviar os dados
+                    },
+                    sucess: function () {
+                        //Em caso de sucesso
+                    },
+                    error: function (err) {
+                        //Em caso de erro
+                        console.log(err);
+                    }
+                }).done(function () {
+                    //Finalizando todos os passos da operação de AJAX
+                    console.log('Dados enviados');
+                });
+                favorite.removeClass('hidden-element');
+                favorited.addClass('hidden-element');
+            }
+            else {
+                $.ajax({
+                    url: '/favorite',
+                    type: 'POST',
+                    dataType: "json",
+                    data: { data: obj },
+                    eforeSend: function () {
+                        //Caso você precise fazer alguma validação antes de enviar os dados
+                    },
+                    sucess: function () {
+                        //Em caso de sucesso
+                    },
+                    error: function (err) {
+                        //Em caso de erro
+                        console.log(err);
+                    }
+                }).done(function () {
+                    //Finalizando todos os passos da operação de AJAX
+                    console.log('Dados enviados');
+                });
+                favorite.addClass('hidden-element');
+                favorited.removeClass('hidden-element');
+            }
+        }
+    </script>
+    <script>
+        // Grab HTML Elements
+        const btn = document.querySelector("button.mobile-menu-button");
+        const menu = document.querySelector(".mobile-menu");
+
+        // Add Event Listeners
+        btn.addEventListener("click", () => {
+            menu.classList.toggle('hidden');
+            if ($('#open').hasClass("hidden")) {
+                $('#open').removeClass('hidden');
+                $('#close').addClass('hidden')
+            } else {
+                $('#open').addClass('hidden');
+                $('#close').removeClass('hidden')
+            }
+        });
     </script>
 </body>
 
