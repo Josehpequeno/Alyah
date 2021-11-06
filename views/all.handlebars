@@ -74,7 +74,7 @@
                     <div class="py-1">
                         <a href="/profile" class="text-2xl lg:text-sm block px-4 py-9 text-sm text-white" tabindex="-1"
                             id="menu-item-0">Profile</a>
-                        <a href="/signout" class="text-2xl lg:text-sm block px-4 py-9 text-sm text-white" tabindex="-1"
+                        <a href="/signup" class="text-2xl lg:text-sm block px-4 py-9 text-sm text-white" tabindex="-1"
                             id="menu-item-1"> Sign out</a>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
             </div>
         </header>
     </div>
-    <div id="content" class="md:container md:mx-auto min-h-screen py-10">
+    <div id="content" class="md:container md:mx-auto py-10">
         <div class="min-w-screen flex items-center justify-center px-5 pb-10">
             <div class="w-full mx-auto rounded-xl bg-color-secundary-light shadow-lg p-10 text-gray-800 relative overflow-hidden min-w-80 max-w-3xl"
                 x-data="app()" x-init="generatePassword()">
@@ -106,11 +106,11 @@
                 </div>
             </div>
         </div>
-        <div id="list" class="flex flex-cols flex-wrap gap-8 lg:gap-4 grid grid-cols-1 lg:grid-cols-2 md:items-center">
+        <div id="list" class="flex flex-cols flex-wrap gap-8 lg:gap-4 grid grid-cols-1 lg:grid-cols-2 top-0">
             {{#each mangas}}
             <!-- Start of component -->
-            <a href='/manga/{{name}}'>
-                <div id="{{id}}"
+            <a id="{{id}}" href='/manga/{{name}}'>
+                <div
                     class="h-full bg-color-secundary md:col-span-1 text-white p-8 lg:p-5 rounded-md tracking-wide shadow-lg">
                     <div id="header" class="flex">
                         <div>
