@@ -150,12 +150,14 @@ p {
     position: relative;
     background-size: cover;
     height: auto;
+    width: 100vw;
 }
 
 @media screen and (min-width: 1024px) {
     .manga-page img {
         min-height: 100vh;
         max-height: 100vh;
+        width: auto;
     }
 }
 

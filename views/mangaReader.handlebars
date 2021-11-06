@@ -41,8 +41,8 @@
             </div>
         </header>
     </div>
-    <div id="content" class="md:container md:mx-auto py-1 px-4 md:items-center h-screen">
-        <div class="manga-page">
+    <div id="content" class="md:mx-auto lg:block py-1 px-0 w-max lg:w-full lg:px-4 md:items-center h-screen">
+        <div class="manga-page m-auto">
             {{{images}}}
         </div>
     </div>
@@ -94,7 +94,20 @@
                     closeFullscreen();
                 }
             }
+            else if (e.key == "Escape") {
+                $("#content").removeClass("flex");
+            }
         }
+    </script>
+    <script>
+        $(document).bind('fullscreenchange webkitfullscreenchange mozfullscreenchange msfullscreenchange', function (e) {
+            var fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullscreenElement || document.msFullscreenElement;
+            if (!fullscreenElement) {
+                $("#content").removeClass("flex");
+            } else {
+                openFullscreen();
+            }
+        });
     </script>
     <script>
         $("#content").click(function (e) {
@@ -126,6 +139,7 @@
             } else if (elem.msRequestFullscreen) { /* IE11 */
                 elem.msRequestFullscreen();
             }
+            $("#content").addClass("flex");
         }
         /* Close fullscreen */
         function closeFullscreen() {
@@ -136,6 +150,7 @@
             } else if (document.msExitFullscreen) { /* IE11 */
                 document.msExitFullscreen();
             }
+            $("#content").removeClass("flex");
         }
     </script>
 </body>

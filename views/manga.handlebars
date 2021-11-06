@@ -104,6 +104,7 @@
                         </div>
                         <input id="manga_id" class="font-semibold text-white hidden-element" value="{{{manga.id}}}" />
                     </div>
+                    {{#if favorites_id}}
                     <div class="px-3 mt-5 -mb-5 md:justify-items-center text-center rounded-md fav"
                         onclick="changeFavoriteMob();">
                         {{#if favorited}}
@@ -146,6 +147,7 @@
                         </a>
                         {{/if}}
                     </div>
+                    {{/if}}
                 </div>
                 <div class="ml-10">
                     <div class="flex items-center">
