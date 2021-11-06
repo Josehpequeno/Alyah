@@ -5,6 +5,19 @@ body {
     background-size: cover
 }
 
+footer {
+    position: relative;
+}
+
+html, body {
+    height: 100%;
+    /* Needed for container's min-height  */
+}
+.container-all{
+    min-height:100%;
+    padding-bottom: 40px; /* Put height of the footer here. Needed for higher than screen height pages */
+}
+
 .color-primary {
     color: #3B3F62
 }
